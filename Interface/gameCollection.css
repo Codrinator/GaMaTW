@@ -1,0 +1,43 @@
+.navMenu{
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    position:fixed;
+    top:0;
+    width: 100%;
+    overflow: hidden;
+    font-family: Impact,"Arial Narrow","Optima","Geneva";
+    background-color: #333;
+}
+body{
+    margin: 0;
+}
+.navMenu li{
+    display: inline;
+    float:left;
+    position: relative;
+    left:30%;
+    width: auto;
+}
+.title{
+    color:aliceblue;
+    display: inline;
+    padding: 20px 25px 20px 25px;
+    float:left;
+    text-decoration: none;
+}
+.navMenu a {
+    color: aliceblue;
+    display: block;
+    padding: 20px 25px 20px 25px;
+    text-decoration: none;
+}
+.navMenu a:hover {
+    color: darkblue;
+    background-color: lightgrey;
+}
+main{
+    position:relative;
+    top:10000px;
+}
