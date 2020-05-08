@@ -1,0 +1,33 @@
+/* Sa se conceapa o aplicatie Web care inventariaza (colectii de) jocuri clasice (fizice) si digitale (electronice), inclusiv realizeaza managementul (meta-)datelor aferente: categorie, dimensiuni, imagini, destinatari – copii mici, (pre)scolari, adolescenti, adulti, persoane cu nevoi speciale –, reguli, restrictii (e.g., necesita platforma P, se bazeaza exclusiv pe interactiune vocala) si altele. Sistemul va oferi suport pentru activitati de organizare de campionate vizand diverse jocuri, plus administrarea utilizatorilor. Se vor genera statistici diverse ce pot fi exportate in formate deschise – minimal, CSV, DocBook si PDF. Se va realiza, de asemenea, un clasament al celor mai populare jocuri si grupuri de jucatori, disponibil si ca flux de date RSS.*/
+
+
+
+
+
+Main page ----> legaturi spre celelate pagini;
+---> tot aici, eventual Hot Games right now! (top games -- RSS feed)
+
+Vom avea separat jocuri fizice de video games. BD generata de Mockaroo
+
+Login --- pagina separata; cand se doreste accesul la o functionalitate ce necesita autentificarea, se va face o trimitire spre login page;
+
+Bara care va fi sticky ---> pentru navigare; pe ea vom pune doua chestii: una pentru jocuri fizice, una pentru jocuri electronice; aici vom avea search, tag-uri; e efectiv unde ai jocurile inventariate, poti sa intri pe ele, sa le cauti,
+sa aflii informatii despre ele;
+De ex: joc digital : nume, etc, poti da click pe joc din asta si sa ti se faca mai mare, sa iti dea mai multe informatii (luate din BD)
+
+Statistici: cum anume afisam statisticile, unde, si ce statistici sa fie efectiv?
+
+
+MAIN --RSS FEED
+LOGIN + REGISTER page
+CREATE TOURNAMENT
+JOCURI FIZICE
+JOCURI DIGITALE
+MY ACCOUNT
+ABOUT ME  - STATISTICI
+
+
+
+
+
+ 
