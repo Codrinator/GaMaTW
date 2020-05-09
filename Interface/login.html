@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamma</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<nav>
+    <ul class="navMenu">
+        <div class="title">The Gamma Project</div>
+        <li><a href="homePage.html">Home</a></li>
+        <li><a href="gameCollection.html">Game Collection</a></li>
+        <li><a href="#">Tournaments</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Register</a></li>
+    </ul>
+</nav>
+<main>
+    <div class="formWrapper">
+        <div class="formLogin">
+            <form class="loginForm">
+                <label class="formText" for="usernameLogin"><p style="text-align: center; margin-top: 5vh;">Username</p>
+                </label> <br>
+                <p style="text-align: center; margin-top: -2.5vh; margin-bottom: 1vh">
+                    <input class="inputBox"
+                           type="text"
+                           style="padding: 5px; width: 15vw;height: 3.2vh"
+                           id="usernameLogin"
+                           name="username">
+                </p> <br>
+
+                <label class="formText" for="passwordLogin"><p style="text-align: center ">Password</p></label> <br>
+                <p style="text-align: center;margin-top: -2.5vh">
+                    <input class="inputBox" type="password" style="padding: 5px; width: 15vw; height: 3.2vh" id="passwordLogin" name="password">
+                </p>
+                <br>
+                <input type="submit"
+                       style="margin-left: 12vw; width: 8vw;border-radius: 7px;border: 2px solid #2e3346; height: 3.5vh"
+                       value="Log in"> <br>
+
+                <input type="checkbox" style="margin-left: 11vw;margin-top: 4vh" id="checkboxLogin" name="checkboxLogin"
+                       value="remember">
+                <label for="checkboxLogin" style="color: aliceblue"> Remember me? </label>
+            </form>
+            <!-- href=pagina de register -->
+            <div class="register"><a href="www.google.com" style="text-decoration: none; color: aliceblue"><b>You don't
+                have an account yet?</b></a></div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
