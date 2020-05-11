@@ -42,7 +42,7 @@ main{
     position:relative;
     top:75px;
 }
-.blended_grid{
+.myblock {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
@@ -50,28 +50,12 @@ main{
     margin-left: 15px;
     margin-right: 15px;
     margin-top: 75px;
-    }
+}
 .pageHeader{
     grid-column: 1/6;
-    grid-row: 1;
+    grid-row: 1/6;
     background-color: lightslategrey;
     border: 2px solid #2e3346;
-}
-.pageLeftMenu{
-    grid-column: 1;
-    grid-row: 2/5;
-    background-color: lightslategrey;
-    border: 2px solid #2e3346;
-}
-.pageContent{
-    grid-column: 2/6;
-    grid-row: 2/5;
-    background-color: lightslategrey;
-    border: 2px solid #2e3346;
-}
-.pageFooter{
-    grid-column: 1/6;
-    grid-row: 5/6;
-    background-color: lightslategrey;
-    border: 2px solid #2e3346;
+    text-align: center;
+    font-size: 150px;
 }
