@@ -49,6 +49,7 @@ body{
 .formText{
     color: aliceblue;
     font-family: Impact,"Arial Narrow","Optima","Geneva";
+    text-align: center;
 }
 
 .register{
