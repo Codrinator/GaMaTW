@@ -1,0 +1,30 @@
+{
+  "name": "proiecttw",
+  "version": "1.0.0",
+  "description": "Proiect Gamma TW",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codrinator/GaMaTW.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Codrinator/GaMaTW/issues"
+  },
+  "homepage": "https://github.com/Codrinator/GaMaTW#readme",
+  "dependencies": {
+    "@types/node": "^14.0.1",
+    "ejs": "^3.1.3",
+    "finalhandler": "^1.1.2",
+    "http": "0.0.1-security",
+    "mongoose": "^5.9.14",
+    "nodemon": "^2.0.4",
+    "router": "^1.3.5",
+    "ts-node": "^8.10.1"
+  }
+}
