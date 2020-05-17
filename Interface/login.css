@@ -16,7 +16,7 @@
     padding: 0px;
     box-sizing: border-box;
     list-style: none;
-    font-family: Arial, Helvetica, sans-serif;
+
 }
 body{
     margin: 0;
@@ -48,13 +48,14 @@ body{
 
 .formText{
     color: aliceblue;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Impact,"Arial Narrow","Optima","Geneva";
 }
 
 .register{
     text-align: right;
-
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 1.7vh;
+    margin-bottom: 2vh;
     margin-top: 11.5vh;
     margin-right: 1vh;
 }
