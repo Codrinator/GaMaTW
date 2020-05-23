@@ -7,45 +7,45 @@
 </head>
 <body>
 
-    <nav>
-        <ul class="navMenu">
-            <div class="title">The Gamma Project</div>
-            <li><a href="homePage.html">Home</a></li>
-            <li><a href="gameCollection.html">Game Collection</a></li>
-            <li><a href="tournaments.html">Tournaments</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="register.html">Register</a></li>
-        </ul>
-    </nav>
+<nav>
+    <ul class="navMenu">
+        <div class="title">The Gamma Project</div>
+        <li><a href="homePage.html">Home</a></li>
+        <li><a href="gameCollection.html">Game Collection</a></li>
+        <li><a href="tournaments.html">Tournaments</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+    </ul>
+</nav>
 <main>
     <div class="formWrapper">
         <div class="formLogin">
             <form class="loginForm">
-                <label class="formText" for="usernameLogin"><p style="text-align: center; margin-top: 5vh;">Username</p>
-                </label> <br>
-                <p style="text-align: center; margin-top: -2.5vh; margin-bottom: 1vh">
+                <p class="pAllignText1">
+                    <label class="formText" for="usernameLogin">Username
+                    </label></p> <br>
+                <p class="pAllignText2">
                     <input class="inputBox"
                            type="text"
-                           style="padding: 5px; width: 15vw;height: 3.2vh"
                            id="usernameLogin"
                            name="username">
                 </p> <br>
-
-                <label class="formText" for="passwordLogin"><p style="text-align: center ">Password</p></label> <br>
-                <p style="text-align: center;margin-top: -2.5vh">
-                    <input class="inputBox" type="password" style="padding: 5px; width: 15vw; height: 3.2vh" id="passwordLogin" name="password">
+                <p class="pAllignText4">
+                <label class="formText" for="passwordLogin">Password</label></p> <br>
+                <p class="pAllignText3">
+                    <input class="inputBox" type="password"
+                           id="passwordLogin" name="password">
                 </p>
                 <br>
                 <input type="submit"
-                       style="margin-left: 12vw; width: 8vw;border-radius: 7px;border: 2px solid #2e3346; height: 3.5vh"
-                       value="Log in"> <br>
+                       class="submitButton" value="Log in"> <br>
 
-                <input type="checkbox" style="margin-left: 11vw;margin-top: 4vh" id="checkboxLogin" name="checkboxLogin"
+                <input type="checkbox" class="checkboxButton"  id="checkboxLogin" name="checkboxLogin"
                        value="remember">
-                <label for="checkboxLogin" style="color: aliceblue"> Remember me? </label>
+                <label for="checkboxLogin" class="checkboxLoginLabel"> Remember me? </label>
             </form>
             <!-- href=pagina de register -->
-            <div class="register"><a href="register.html" style="text-decoration: none; color: aliceblue"><b>You don't
+            <div class="register"><a href="register.html" class="registerButton"><b>You don't
                 have an account yet?</b></a></div>
         </div>
     </div>

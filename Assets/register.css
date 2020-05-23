@@ -1,76 +1,123 @@
-.navMenu{
+.navMenu {
     list-style-type: none;
     text-decoration: none;
     margin: 0;
     padding: 0;
     position: absolute;
-    top:0;
+    top: 0;
     width: 100%;
     overflow: hidden;
-    font-family: Impact,"Arial Narrow","Optima","Geneva";
+    font-family: Impact, "Arial Narrow", "Optima", "Geneva";
     background-color: #333;
 
 }
+
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     list-style: none;
-    font-family: 'Helvetica', sans-serif;
 }
-body{
+
+body {
     margin: 0;
 }
-.navMenu li{
+
+.navMenu li {
     display: inline;
-    float:left;
+    float: left;
     position: relative;
-    left:30%;
+    left: 30%;
     width: auto;
 }
-.title{
-    color:aliceblue;
+
+.title {
+    color: aliceblue;
     display: inline;
     padding: 20px 25px 20px 25px;
-    float:left;
+    float: left;
     text-decoration: none;
 }
+
 .navMenu a {
     color: aliceblue;
     display: block;
     padding: 20px 25px 20px 25px;
     text-decoration: none;
 }
+
 .navMenu a:hover {
     color: darkblue;
     background-color: lightgrey;
 }
 
-.formText{
-    color: aliceblue;
-    font-family: Arial, Helvetica, sans-serif;
+.pAllignText {
+    margin-top: -1vh;
+    text-align: center;
 }
 
-.login{
+.formText {
+    color: aliceblue;
+
+    font-family: Impact, "Arial Narrow", "Optima", "Geneva";
+}
+
+.already {
+    text-decoration: none;
+    color: aliceblue
+}
+
+.login {
+
     text-align: right;
-    margin-bottom: 2vh;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 1.7vh;
-    margin-top: 11.5vh;
+    margin-top: 16vh;
     margin-right: 1vh;
 }
 
-.inputBox{
-    border-radius: 7px;
-    border: 2px solid #2e3346;
+.pInputBox1 {
+    text-align: center;
+    margin-top: 5vh;
 }
 
-.formWrapper{
+.pInputBox2 {
+    text-align: center;
+    margin-top: -2.5vh;
+    margin-bottom: 1vh
+}
+
+.inputBox {
+    border-radius: 7px;
+    border: 2px solid #2e3346;
+    padding: 5px;
+    width: 15vw;
+    height: 3.2vh
+
+}
+.pAllignText1{
+    text-align: center;margin-top: -2.5vh
+}
+.passwordLabel {
+    text-align: center;
+}
+
+.formWrapper {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
 }
-.formLogin{
+
+.submitButton {
+    margin-left: 12vw;
+    width: 8vw;
+    border-radius: 7px;
+    border: 2px solid #2e3346;
+    height: 3.5vh
+}
+
+.formLogin {
     border-radius: 7px;
     border: 2px solid #2e3346;
     background: #333;
