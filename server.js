@@ -1,19 +1,19 @@
 const mongoose = require('mongoose');
 const http = require('http');
-const Router = require('router');
+const router = require('./Routes/index').router;
 const finalhandler = require('finalhandler');
-
+const ejs = require('ejs');
 
 mongoose.connect('mongodb+srv://myUser:myUser@gamatw-dmppl.mongodb.net/test?retryWrites=true&w=majority');
-const PORT = 11101;
-const router =Router();
+const PORT = 11100;
 
-//test code--
+
+/*
 const User = require('./Models/index');
 const user = User.User({username: 'Dragos',password: 'parola'}).save(function (err) {
     if (err) throw err;
     console.log('user saved');
-});
+});*/
 //
 
 const server = http.createServer(function(req, res) {
