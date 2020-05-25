@@ -9,11 +9,11 @@ const PORT = 11101;
 const router =Router();
 
 //test code--
-const User = require('./Models/index');
+/*const User = require('./Models/index');
 const user = User.User({username: 'Dragos',password: 'parola'}).save(function (err) {
     if (err) throw err;
     console.log('user saved');
-});
+}); */
 //
 
 const server = http.createServer(function(req, res) {
