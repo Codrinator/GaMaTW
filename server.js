@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const http = require('http');
 const router = require('./Routes/index').router;
 const finalhandler = require('finalhandler');
-const ejs = require('ejs');
 
 mongoose.connect('mongodb+srv://myUser:myUser@gamatw-dmppl.mongodb.net/test?retryWrites=true&w=majority');
 const PORT = 11100;

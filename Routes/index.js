@@ -1,16 +1,21 @@
 const Router = require('router');
 const router = Router();
-const fs = require('fs');
+const statics = require('./staticFiles');
 
-fs.readFile('./Views/homePage.html', function (err, html) {
-    if (err) {
-        throw err;
-    }
-    router.get('/', function (req, res) {
-        res.writeHeader(200, {"Content-Type": "text/html"});
-        res.write(html);
-        res.end();
-    });
-});
+
+router.get('/', statics.homePage);
+router.get('/Assets/Styles/home.css', statics.homePageStyle);
+
+router.get('/gameCollection', statics.gameCollection);
+router.get('/Assets/Styles/gameCollection.css', statics.gameCollectionStyle);
+
+router.get('/tournaments', statics.tournaments);
+router.get('/Assets/Styles/tournaments.css', statics.tournamentsStyle);
+
+router.get('/login', statics.login);
+router.get('/Assets/Styles/login.css', statics.loginStyle);
+
+router.get('/register', statics.register);
+router.get('/Assets/Styles/register.css', statics.registerStyle);
 
 module.exports = {router};
