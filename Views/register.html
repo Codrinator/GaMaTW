@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gamma</title>
+    <script src="../Assets/Scripts/register.js"></script>
     <link rel="stylesheet" href="../Assets/Styles/register.css">
 </head>
 <body>
@@ -20,11 +21,10 @@
 <main>
     <div class="formWrapper">
         <div class="formLogin">
-            <form class="loginForm">
+            <form class="loginForm" method="post">
                 <p class="pInputBox1">
-                <label class="formText" for="usernameRegister">Choose an
-                    username
-                </label> </p><br>
+                    <label class="formText" for="usernameRegister">Choose an username
+                    </label></p><br>
                 <p class="pInputBox2">
                     <input class="inputBox"
                            type="text"
@@ -32,8 +32,8 @@
                            name="usernameRegister">
                 </p> <br>
                 <p class="pAllignText">
-                <label class="formText" for="passwordRegister">Choose a password
-                </label> </p><br>
+                    <label class="formText" for="passwordRegister">Choose a password
+                    </label></p><br>
                 <p class="pAllignText1">
                     <input class="inputBox" type="password"
                            id="passwordRegister" name="passwordRegister">
@@ -47,10 +47,9 @@
                 </p><br>
 
                 <input type="submit" class="submitButton"
-                       value="Register"> <br>
-
+                       value="Register" onclick="InsertUser()"> <br>
             </form>
-            <!-- href=pagina de register -->
+
             <div class="login"><a href="login.html" class="already"><b>You already have
                 an account?</b></a></div>
         </div>
