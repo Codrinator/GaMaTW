@@ -23,6 +23,7 @@ router.get('/Assets/Styles/login.css', statics.loginStyle);
 
 router.get('/register', statics.register);
 router.get('/Assets/Styles/register.css', statics.registerStyle);
+router.get('/Assets/Scripts/register.js',statics.registerScript);
 
 
 
