@@ -6,7 +6,7 @@ const controllers = require('../Controllers/index');
 
 auth.use(sanitize.sanitizeMiddleware);
 auth.post('/login' , controllers.login);
-auth.post('/register' ,controller.register);
+auth.post('/register' ,controllers.register);
 
 
 module.exports = {auth};
