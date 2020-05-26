@@ -9,7 +9,7 @@ const login = async function (req,res){
         if (!userByUsername.length){
             res.statusCode = 401;
             res.end(JSON.stringify({
-                succes : false,
+                success : false,
                 status : 'Invalid username'
             }));
         } else {
@@ -19,13 +19,13 @@ const login = async function (req,res){
             if (hashedPWD.localeCompare(user.password) !== 0){
                 res.statusCode = 401;
                 res.end(JSON.stringify({
-                    succes : false,
+                    success : false,
                     status : 'Invalid password'
                 }));
             } else {
                 res.statusCode = 200;
                 res.end(JSON.stringify({
-                    succes : true,
+                    success : true,
                     username : username,
                     token : 'Not Available Yet'
                 }));
@@ -35,7 +35,7 @@ const login = async function (req,res){
         console.log(error);
         res.statusCode = 500;
         res.end(JSON.stringify({
-            succes : false
+            success : false
         }));
     }
 }
