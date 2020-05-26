@@ -1,4 +1,43 @@
 const crypto = require('crypto');
-const hash = crypto.createHash('sha256');
-console.log(hash.update("asd").digest('hex'));
+const User = require('../Models/index').User;
 
+const login = async function (req,res){
+    try {
+        const username = req.body.username;
+        const password = req.body.password;
+        const userByUsername = await User.findUserByUsername(username);
+        if (!userByUsername.length){
+            res.statusCode = 401;
+            res.end(JSON.stringify({
+                succes : false,
+                status : 'Invalid username'
+            }));
+        } else {
+            const user = userByUsername[0];
+            const hash = crypto.createHash('sha256');
+            const hashedPWD = hash.update(password).digest('hex');
+            if (hashedPWD.localeCompare(user.password) !== 0){
+                res.statusCode = 401;
+                res.end(JSON.stringify({
+                    succes : false,
+                    status : 'Invalid password'
+                }));
+            } else {
+                res.statusCode = 200;
+                res.end(JSON.stringify({
+                    succes : true,
+                    username : username,
+                    token : 'Not Available Yet'
+                }));
+            }
+        }
+    }catch (error) {
+        console.log(error);
+        res.statusCode = 500;
+        res.end(JSON.stringify({
+            succes : false
+        }));
+    }
+}
+
+module.exports = {login};

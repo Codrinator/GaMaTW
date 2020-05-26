@@ -6,6 +6,7 @@ const finalhandler = require('finalhandler');
 mongoose.connect('mongodb+srv://myUser:myUser@gamatw-dmppl.mongodb.net/test?retryWrites=true&w=majority');
 const PORT = 11100;
 
+
 /*
 const User = require('./Models/index');
 const user = User.User({username: 'Dragos',password: 'parola'}).save(function (err) {
