@@ -1,6 +1,12 @@
 const Router = require('router');
-const router = Router();
 const statics = require('./staticFiles');
+const bodyParser = require('body-parser');
+const auth = require('./auth').auth;
+const router = Router();
+const api = Router();
+router.use('/api/',api);
+api.use(bodyParser.urlencoded());
+api.use('/auth',auth);
 
 
 router.get('/', statics.homePage);
@@ -17,5 +23,7 @@ router.get('/Assets/Styles/login.css', statics.loginStyle);
 
 router.get('/register', statics.register);
 router.get('/Assets/Styles/register.css', statics.registerStyle);
+
+
 
 module.exports = {router};

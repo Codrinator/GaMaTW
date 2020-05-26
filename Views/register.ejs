@@ -21,7 +21,7 @@
 <main>
     <div class="formWrapper">
         <div class="formLogin">
-            <form class="loginForm" method="post">
+            <form class="loginForm" method="post" action="/api/auth/register">
                 <p class="pInputBox1">
                 <label class="formText" for="usernameRegister">Choose an
                     username
@@ -47,7 +47,7 @@
                            id="passwordConfirmRegister" name="passwordConfirmRegister">
                 </p><br>
 
-                <input type="submit" class="submitButton"
+                <input type="submit" class="submitButton" onclick="InsertUser()"
                        value="Register"> <br>
 
             </form>

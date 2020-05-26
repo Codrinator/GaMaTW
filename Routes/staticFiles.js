@@ -1,6 +1,4 @@
-const fs = require('fs');
 const ejs = require('ejs');
-
 
 
 const homePage = async function (req,res) {
