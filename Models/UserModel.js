@@ -5,6 +5,12 @@ const userSchema = new mongoose.Schema({
     password: String
 });
 
-const User = mongoose.model('User',userSchema);
+const User = mongoose.model('User', userSchema);
 
-module.exports = {User};
+const findUserByUsername = async function (username) {
+    const query = User.find();
+    query.where({username: username});
+    return query.exec();
+};
+
+module.exports = {User, findUserByUsername};
