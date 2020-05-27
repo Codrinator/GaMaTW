@@ -59,3 +59,21 @@ main{
     text-align: center;
     font-size: 150px;
 }
+
+.navbarHoverBlock{
+    color: aliceblue;
+    display: block;
+    padding: 20px 25px 20px 25px;
+    text-decoration: none;
+}
+.navbarHoverBlock:hover{
+    color: darkblue;
+    background-color: lightgrey;
+}
+
+.navbarNoHover{
+    color: aliceblue;
+    display: block;
+    padding: 20px 25px 20px 25px;
+    text-decoration: none;
+}

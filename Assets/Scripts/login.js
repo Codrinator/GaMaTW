@@ -8,6 +8,16 @@ function processRequest(){
     request.responseType = 'json';
     request.onload = function () {
         if (request.response.success === true){
+            const rememberCheck = document.getElementById("checkboxLogin");
+            if (rememberCheck.checked) {
+                localStorage.setItem("isLogged" , true);
+                localStorage.setItem("user" , request.response.username);
+                localStorage.setItem("token" , request.response.token);
+            } else {
+                sessionStorage.setItem("isLogged" , true);
+                sessionStorage.setItem("user" , request.response.username);
+                sessionStorage.setItem("token" , request.response.token);
+            }
             window.location.href = "/"
         }
         alert(request.response.status);
