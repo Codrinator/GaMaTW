@@ -29,6 +29,7 @@ router.get('/Assets/Styles/register.css', statics.registerStyle);
 
 router.get('/Assets/Scripts/register.js',statics.registerScript);
 router.get('/Assets/Scripts/login.js', scripts.loginScript);
+router.get('/Assets/Scripts/loadPageOptions.js', scripts.loadPageScript);
 
 
 module.exports = {router};
