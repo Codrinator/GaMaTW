@@ -26,6 +26,7 @@ const login = async function (req,res){
                 res.statusCode = 200;
                 res.end(JSON.stringify({
                     success : true,
+                    status : "Logged In!",
                     username : username,
                     token : 'Not Available Yet'
                 }));

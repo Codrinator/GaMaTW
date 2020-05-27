@@ -15,10 +15,10 @@ const user = User.User({username: 'Dragos',password: 'parola'}).save(function (e
 });*/
 //
 
-const server = http.createServer(function(req, res) {
+const index = http.createServer(function(req, res) {
     router(req, res, finalhandler(req, res));
 });
 
 
 console.log("Server is listening on port: "+PORT)
-server.listen(PORT);
+index.listen(PORT);

@@ -122,7 +122,6 @@ body {
     height: 3.2vh;
     border: 2px solid #2e3346;
 }
-
 .formWrapper {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
