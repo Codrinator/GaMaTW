@@ -122,18 +122,8 @@ const registerStyle = async function (req,res) {
     });
 };
 
-const registerScript = async function (req,res) {
-    ejs.renderFile('./Assets/Scripts/register.js', function(err, str){
-        if (err) {
-            throw err;
-        } else {
-            res.writeHeader(200, {"Content-Type": "application/javascript"});
-            res.write(str);
-            res.end();
-        }
-    });
-};
+
 
 
 module.exports = {homePage, homePageStyle, gameCollection, gameCollectionStyle, tournaments,
-                  tournamentsStyle, login, loginStyle, register, registerStyle,registerScript};
+                  tournamentsStyle, login, loginStyle, register, registerStyle};
