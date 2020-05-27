@@ -23,12 +23,10 @@ router.get('/Assets/Styles/tournaments.css', statics.tournamentsStyle);
 
 router.get('/login', statics.login);
 router.get('/Assets/Styles/login.css', statics.loginStyle);
+router.get('/Assets/Scripts/login.js', scripts.loginScript);
 
 router.get('/register', statics.register);
 router.get('/Assets/Styles/register.css', statics.registerStyle);
-
-router.get('/Assets/Scripts/register.js',statics.registerScript);
-router.get('/Assets/Scripts/login.js', scripts.loginScript);
-
+router.get('/Assets/Scripts/register.js',scripts.registerScript);
 
 module.exports = {router};

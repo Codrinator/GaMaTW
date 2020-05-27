@@ -5,11 +5,23 @@ const loginScript = async function (req,res) {
         if (err) {
             throw err;
         } else {
-            res.writeHeader(200, {"Content-Type": "text/js"});
+            res.writeHeader(200, {"Content-Type": "application/javascript"});
             res.write(str);
             res.end();
         }
     });
 };
 
-module.exports = {loginScript};
+const registerScript = async function (req,res) {
+    fs.readFile('./Assets/Scripts/register.js', function(err, str){
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "application/javascript"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
+module.exports = {loginScript,registerScript};
