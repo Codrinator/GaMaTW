@@ -22,7 +22,12 @@
 body {
     margin: 0;
 }
-
+.errorText{
+    margin-top: 2vh;
+    text-align: center;
+    color: aliceblue;
+    font-family: Impact, "Arial Narrow", "Optima", "Geneva";
+}
 .navMenu li {
     display: inline;
     float: left;
