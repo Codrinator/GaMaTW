@@ -31,7 +31,12 @@ body {
     left: 30%;
     width: auto;
 }
-
+.errorText{
+    margin-top: 2.5vh;
+    text-align: center;
+    color: aliceblue;
+    font-family: Impact, "Arial Narrow", "Optima", "Geneva";
+}
 .title {
     color: aliceblue;
     display: inline;
