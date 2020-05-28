@@ -25,7 +25,7 @@ const register = async function register(req, res) {
             success: 'false',
             status: 'Username has special characters. Only numbers and letters are allowed'
         }));
-    } else if (await User.findUserByUsername(username) === '[]') {
+    } else if ((await User.findUserByUsername(username)).length !== 0) {
         res.end(JSON.stringify({
             success: 'false',
             status: 'Username already taken'
@@ -51,6 +51,7 @@ const register = async function register(req, res) {
             status: 'Passwords do not match'
         }));
     else {
+
         const hash = crypto.createHash('sha256');
         const hashedPassword = hash.update(password).digest('hex');
         User.User({username: username, password: hashedPassword}).save(function (err) {
