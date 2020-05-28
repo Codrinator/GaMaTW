@@ -39,6 +39,6 @@ const login = async function (req,res){
             success : false
         }));
     }
-}
+};
 
 module.exports = {login};

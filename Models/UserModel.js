@@ -12,7 +12,7 @@ const findUserByUsername = async function(username){
     const query = User.find();
     query.where({username : username});
     return query.exec();
-}
+};
 
 module.exports = {User,findUserByUsername};
 

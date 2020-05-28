@@ -44,7 +44,7 @@ function appendLoginAndRegister(){
     login.appendChild(loginAnchor);
     navMenu.appendChild(login);
 
-    const register = document.createElement('li')
+    const register = document.createElement('li');
     const registerAnchor = document.createElement('a');
     registerAnchor.href = "/register";
     registerAnchor.textContent = "Register";

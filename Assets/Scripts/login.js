@@ -21,7 +21,7 @@ function processRequest(){
             window.location.href = "/"
         }
         alert(request.response.status);
-    }
+    };
     request.send(JSON.stringify({
         username : formData.get("username"),
         password : formData.get("password")
