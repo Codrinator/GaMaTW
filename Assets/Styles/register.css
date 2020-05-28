@@ -23,6 +23,8 @@ body {
     margin: 0;
 }
 .errorText{
+    margin-right: 7vw;
+    margin-left: 7vw;
     margin-top: 2vh;
     text-align: center;
     color: aliceblue;
