@@ -29,7 +29,7 @@ const loadPageScript = async function (req, res) {
         if (err) {
             throw err;
         } else {
-            res.writeHeader(200, {"Content-Type": "text/js"});
+            res.writeHeader(200, {"Content-Type": "application/javascript"});
             res.write(str);
             res.end();
         }
