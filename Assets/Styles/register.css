@@ -23,11 +23,11 @@ body {
     margin: 0;
 }
 .errorText{
-    margin-right: 7vw;
-    margin-left: 7vw;
+    margin-right: 6vw;
+    margin-left: 6vw;
     margin-top: 2vh;
     text-align: center;
-    color: aliceblue;
+    color: 	rgb(220,20,20);
     font-family: Impact, "Arial Narrow", "Optima", "Geneva";
 }
 .navMenu li {

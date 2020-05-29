@@ -23,7 +23,7 @@ const register = async function register(req, res) {
     } else if (letterNumberRegex.test(username) === false) {
         res.end(JSON.stringify({
             success: 'false',
-            status: 'Username has special characters. Only numbers and letters are allowed'
+            status: 'Username contains special characters. Only numbers and letters are allowed'
         }));
     } else if ((await User.findUserByUsername(username)).length !== 0) {
         res.end(JSON.stringify({
