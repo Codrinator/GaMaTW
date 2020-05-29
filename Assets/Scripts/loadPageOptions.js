@@ -1,3 +1,4 @@
+const loc = window.location.href.substring(22);
 
 const isLogged = (sessionStorage.getItem("isLogged") !== null) ? sessionStorage.getItem("isLogged") :
                  ((localStorage.getItem("isLogged") !== null) ? localStorage.getItem("isLogged") : false);
@@ -51,4 +52,16 @@ function appendLoginAndRegister(){
     registerAnchor.classList.add("navbarHoverBlock");
     register.appendChild(registerAnchor);
     navMenu.appendChild(register);
+}
+
+addActiveClass();
+function addActiveClass(){
+    const navBar = document.getElementsByClassName("navMenu");
+    const navList = navBar[0].children;
+    for (let i = 1 ; i <navList.length ; i++){
+        const tempString = navList[i].firstElementChild.toString().substring(22);
+        if (tempString === loc){
+            navList[i].firstElementChild.classList.add("active");
+        }
+    }
 }

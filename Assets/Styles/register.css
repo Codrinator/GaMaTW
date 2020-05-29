@@ -48,14 +48,14 @@ body {
     text-decoration: none;
 }
 
-.navMenu a {
+.navbarHoverBlock , .navbarNoHover{
     color: aliceblue;
     display: block;
     padding: 20px 25px 20px 25px;
     text-decoration: none;
 }
 
-.navMenu a:hover {
+.navbarHoverBlock:hover , .active{
     color: darkblue;
     background-color: lightgrey;
 }
