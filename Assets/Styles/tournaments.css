@@ -1,47 +1,56 @@
-.navMenu{
+.navMenu {
     list-style-type: none;
     text-decoration: none;
     margin: 0;
     padding: 0;
-    position:fixed;
-    top:0;
+    position: fixed;
+    top: 0;
     width: 100%;
     overflow: hidden;
-    font-family: Impact,"Arial Narrow","Optima","Geneva";
+    font-family: Impact, "Arial Narrow", "Optima", "Geneva";
     background-color: #333;
     z-index: 1;
 }
-body{
+
+body {
     margin: 0;
 }
-.navMenu li{
+
+.navMenu li {
     display: inline;
-    float:left;
+    float: left;
     position: relative;
-    left:30%;
+    left: 30%;
     width: auto;
 }
-.title{
-    color:aliceblue;
+
+.title {
+    color: aliceblue;
     display: inline;
     padding: 20px 25px 20px 25px;
-    float:left;
+    margin-left: -30vw;
+    margin-right: 30vw;
+    float: left;
     text-decoration: none;
 }
-.navMenu a {
+
+.navbarHoverBlock , .navbarNoHover{
     color: aliceblue;
     display: block;
     padding: 20px 25px 20px 25px;
     text-decoration: none;
 }
-.navMenu a:hover {
+
+.navbarHoverBlock:hover , .active{
     color: darkblue;
     background-color: lightgrey;
 }
-main{
-    position:relative;
-    top:75px;
+
+main {
+    position: relative;
+    top: 75px;
 }
+
 .myblock {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -51,7 +60,8 @@ main{
     margin-right: 15px;
     margin-top: 75px;
 }
-.pageHeader{
+
+.pageHeader {
     grid-column: 1/6;
     grid-row: 1/6;
     background-color: lightslategrey;

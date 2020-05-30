@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamma</title>
+    <link rel="stylesheet" href="../Assets/Styles/login.css">
+</head>
+<body>
+
+<nav>
+    <ul class="navMenu">
+        <li class="title"> The Gamma Project</li>
+        <li><a class="navbarHoverBlock" href="/">Home</a></li>
+        <li><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
+        <li><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
+    </ul>
+</nav>
+<main>
+    <div class="formWrapper">
+        <div class="formLogin">
+            <form class="loginForm">
+                <p class="pAllignText1">
+                    <label class="formText" for="usernameLogin">Username
+                    </label></p> <br>
+                <p class="pAllignText2">
+                    <input class="inputBox"
+                           type="text"
+                           id="usernameLogin"
+                           name="username">
+                </p> <br>
+                <p class="pAllignText4">
+                <label class="formText" for="passwordLogin">Password</label></p> <br>
+                <p class="pAllignText3">
+                    <input class="inputBox" type="password"
+                           id="passwordLogin" name="password">
+                </p>
+                <br>
+                <input type="submit"
+                       class="submitButton" value="Log in"> <br>
+
+                <input type="checkbox" class="checkboxButton"  id="checkboxLogin" name="checkboxLogin"
+                       value="remember">
+                <label for="checkboxLogin" class="checkboxLoginLabel"> Remember me? </label>
+            </form>
+            <div class="register"><a href="/register" class="registerButton"><b>You don't
+                have an account yet?</b></a></div>
+        </div>
+    </div>
+    <script src="/Assets/Scripts/loadPageOptions.js"></script>
+    <script src="/Assets/Scripts/login.js"></script>
+</main>
+</body>
+</html>
