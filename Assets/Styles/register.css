@@ -21,6 +21,7 @@
 
 body {
     margin: 0;
+    background-color: lightgray;
 }
 .errorText{
     margin-right: 6vw;
