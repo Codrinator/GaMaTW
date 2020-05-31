@@ -64,21 +64,36 @@ main {
 .grid-item1 {
     grid-column: 1;
     grid-row: 1/4;
-    background-color: lightslategrey;
+    background-color: aliceblue;
+    border-radius: 7px;
     border: 2px solid #2e3346;
 }
 
 .grid-item2 {
     grid-column: 1;
     grid-row: 4/6;
-    background-color: lightslategrey;
+    background-color: aliceblue;
+    border-radius: 7px;
     border: 2px solid #2e3346;
+}
+.topUserTitle{
+    margin-left: 2vw;
+    font-family:  "Arial Narrow", "Optima", "Geneva";
+    font-size: 1.5vw;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.topUser{
+    margin-left: 2vw;
+    font-family:  "Arial Narrow", "Optima", "Geneva";
+    font-size: 1.5vw;
 }
 
 .grid-item3 {
     grid-column: 2/4;
     grid-row: 1/6;
-    background-color: lightslategrey;
+    background-color: aliceblue;
+    border-radius: 7px;
     border: 2px solid #2e3346;
 }
 

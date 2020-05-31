@@ -66,6 +66,7 @@ main {
     grid-row: 1/6;
     background-color: lightslategrey;
     border: 2px solid #2e3346;
+    border-radius: 7px;
     text-align: center;
     font-size: 150px;
 }
