@@ -12,7 +12,7 @@ if (isLogged) {
     const username = document.createElement('li');
     const displayedName = (sessionStorage.getItem("user") !== null) ?
         sessionStorage.getItem("user") : localStorage.getItem("user");
-    username.textContent = "Logged in as "+displayedName;
+    username.textContent = "Logged in as " + displayedName;
     username.id = "userDisplay";
     username.classList.add("navbarNoHover");
     navMenu.appendChild(username);
