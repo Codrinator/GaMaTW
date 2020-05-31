@@ -95,10 +95,27 @@ main {
 }
 .nav-item {
     width: 100%;
+    position:relative;
+    display:inline-block;
     margin-left: 3rem;
     font-size: 16px;
     font-family: Impact;
     margin-top: 6rem;
+}
+
+.nav-subitem {
+  width: 100%;
+  position:relative;
+  display:inline-block;
+  margin-left: 3.5rem;
+  font-size: 16px;
+  font-family: Impact;
+  align-items: center;
+  color: var(--text-primary);
+  text-decoration: none;
+  filter: grayscale(100%) opacity(0.7);
+  transition: var(--transition-duration);
+  margin-top: 0.2rem;
 }
 
 .nav-link {
@@ -111,11 +128,19 @@ main {
     transition: var(--transition-duration);
 }
 
-
+#drop-content a{
+  display:block;
+}
 .nav-link:hover{
     filter: grayscale(0%) opacity(1);
     background: var(--bg-secondary);
     color: var(--text-secondary);
+}
+
+.nav-subitem:hover{
+  filter: grayscale(0%) opacity(1);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
 }
 
 .link-text{
@@ -165,7 +190,6 @@ main {
       margin: 0;
     }
   }
-  
   /* Ecrane mari */
   @media only screen and (min-width: 600px) {
     .navbar {
