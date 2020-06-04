@@ -48,14 +48,14 @@ body {
     text-decoration: none;
 }
 
-.navMenu a {
+.navbarHoverBlock , .navbarNoHover{
     color: aliceblue;
     display: block;
     padding: 20px 25px 20px 25px;
     text-decoration: none;
 }
 
-.navMenu a:hover {
+.navbarHoverBlock:hover , .active{
     color: darkblue;
     background-color: lightgrey;
 }
@@ -148,63 +148,41 @@ main {
     margin-left: 1rem;
 }
 
+/* Ecrane mari */
+@media only screen and (min-width: 600px) {
+    .navbar {
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+    }
 
-.navbarHoverBlock {
-    color: aliceblue;
-    display: block;
-    padding: 20px 25px 20px 25px;
-    text-decoration: none;
+    .navbar:hover {
+        width: 16rem;
+    }
+
+    .navbar:hover .link-text {
+        display: inline;
+    }
+
 }
 
-.navbarHoverBlock:hover {
-    color: darkblue;
-    background-color: lightgrey;
-}
-
-.navbarNoHover {
-    color: rgb(159, 159, 194);
-    display: block;
-    padding: 20px 25px 20px 25px;
-    font-style: italic;
-    text-decoration: none;
-}
-
-
-  /* Ecrane mici */
+/* Ecrane mici */
 @media only screen and (max-width: 600px) {
     .navbar {
-      bottom: 0;
-      width: 100vw;
-      height: 5rem;
-    }
-  
-    .navbar-nav {
-      flex-direction: row;
-    }
-  
-    .nav-link {
-      justify-content: center;
-    }
-  
-    main {
-      margin: 0;
-    }
-  }
-  /* Ecrane mari */
-  @media only screen and (min-width: 600px) {
-    .navbar {
-      top: 0;
-      width: 5rem;
-      height: 100vh;
-    }
-  
-    .navbar:hover {
-      width: 16rem;
-    }
-  
-    .navbar:hover .link-text {
-      display: inline;
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
     }
 
-  }
-  
+    .navbar-nav {
+        flex-direction: row;
+    }
+
+    .nav-link {
+        justify-content: center;
+    }
+
+    main {
+        margin: 0;
+    }
+}
