@@ -129,6 +129,8 @@ main {
 .topUserSpan{
     float: right;
     margin-right: 2vw;
+    font-style: italic;
+    font-size: 1.6vw;
 }
 .highlightName{
     font-weight: bold;
