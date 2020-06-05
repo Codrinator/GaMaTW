@@ -26,5 +26,5 @@ const countUsers = async function () {
     return query.exec();
 };
 
-module.exports = {User, findUserByUsername, countUsers,getTopUsers};
+module.exports = {User, findUserByUsername, countUsers, getTopUsers};
 
