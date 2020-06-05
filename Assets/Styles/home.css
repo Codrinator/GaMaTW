@@ -53,6 +53,14 @@ main {
     top: 75px;
 }
 
+.userFavouriteGames {
+    margin-left: 2vw;
+    font-family: "Arial Narrow", "Optima", "Geneva";
+    font-size: 2vw;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -101,7 +109,11 @@ main {
     font-family: "Arial Narrow", "Optima", "Geneva";
     font-size: 1.6vw;
 }
-
+.topGames{
+    margin-left: 2vw;
+    font-family: "Arial Narrow", "Optima", "Geneva";
+    font-size: 1.6vw;
+}
 .grid-item3 {
     grid-column: 2/4;
     grid-row: 1/6;
@@ -113,4 +125,11 @@ main {
 .userScoreSpan {
     float: right;
     margin-right: 2vw;
+}
+.topUserSpan{
+    float: right;
+    margin-right: 2vw;
+}
+.highlightName{
+    font-weight: bold;
 }
