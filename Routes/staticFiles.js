@@ -5,7 +5,8 @@ const Game = require('../Models/index').Game;
 const homePage = async function (req, res) {
     const topUsers = await User.getTopUsers();
     const topGames = await Game.getTopGames();
-    ejs.renderFile('./Views/homePage.ejs', {topUsers: topUsers, topGames: topGames}, function (err, str) {
+    const newGames = await Game.getNewGames();
+    ejs.renderFile('./Views/homePage.ejs', {topUsers: topUsers, topGames: topGames, newGames:newGames}, function (err, str) {
         if (err) {
             throw err;
         } else {
