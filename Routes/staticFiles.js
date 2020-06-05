@@ -1,8 +1,10 @@
 const ejs = require('ejs');
+const User= require('../Models/index').User;
 
+const homePage = async function (req, res) {
+    const topUsers = await User.getTopUsers();
 
-const homePage = async function (req,res) {
-    ejs.renderFile('./Views/homePage.ejs', function(err, str){
+    ejs.renderFile('./Views/homePage.ejs', {topUsers: topUsers}, function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -13,8 +15,8 @@ const homePage = async function (req,res) {
     });
 };
 
-const homePageStyle = async function (req,res) {
-    ejs.renderFile('./Assets/Styles/home.css', function(err, str){
+const homePageStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/home.css', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -26,8 +28,8 @@ const homePageStyle = async function (req,res) {
 };
 
 
-const gameCollection = async function (req,res) {
-    ejs.renderFile('./Views/gameCollection.ejs', function(err, str){
+const gameCollection = async function (req, res) {
+    ejs.renderFile('./Views/gameCollection.ejs', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -38,8 +40,8 @@ const gameCollection = async function (req,res) {
     });
 };
 
-const gameCollectionStyle = async function (req,res) {
-    ejs.renderFile('./Assets/Styles/gameCollection.css', function(err, str){
+const gameCollectionStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/gameCollection.css', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -50,8 +52,8 @@ const gameCollectionStyle = async function (req,res) {
     });
 };
 
-const tournaments = async function (req,res) {
-    ejs.renderFile('./Views/tournaments.ejs', function(err, str){
+const tournaments = async function (req, res) {
+    ejs.renderFile('./Views/tournaments.ejs', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -62,8 +64,8 @@ const tournaments = async function (req,res) {
     });
 };
 
-const tournamentsStyle = async function (req,res) {
-    ejs.renderFile('./Assets/Styles/tournaments.css', function(err, str){
+const tournamentsStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/tournaments.css', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -74,8 +76,8 @@ const tournamentsStyle = async function (req,res) {
     });
 };
 
-const login = async function (req,res) {
-    ejs.renderFile('./Views/login.ejs', function(err, str){
+const login = async function (req, res) {
+    ejs.renderFile('./Views/login.ejs', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -86,8 +88,8 @@ const login = async function (req,res) {
     });
 };
 
-const loginStyle = async function (req,res) {
-    ejs.renderFile('./Assets/Styles/login.css', function(err, str){
+const loginStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/login.css', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -98,8 +100,8 @@ const loginStyle = async function (req,res) {
     });
 };
 
-const register = async function (req,res) {
-    ejs.renderFile('./Views/register.ejs', function(err, str){
+const register = async function (req, res) {
+    ejs.renderFile('./Views/register.ejs', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -110,8 +112,8 @@ const register = async function (req,res) {
     });
 };
 
-const registerStyle = async function (req,res) {
-    ejs.renderFile('./Assets/Styles/register.css', function(err, str){
+const registerStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/register.css', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -123,7 +125,7 @@ const registerStyle = async function (req,res) {
 };
 
 
-
-
-module.exports = {homePage, homePageStyle, gameCollection, gameCollectionStyle, tournaments,
-                  tournamentsStyle, login, loginStyle, register, registerStyle};
+module.exports = {
+    homePage, homePageStyle, gameCollection, gameCollectionStyle, tournaments,
+    tournamentsStyle, login, loginStyle, register, registerStyle
+};

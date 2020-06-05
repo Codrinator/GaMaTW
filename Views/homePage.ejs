@@ -8,22 +8,25 @@
 </head>
 <body>
 
-    <nav>
-        <ul class="navMenu">
-            <li class="title"> The Gamma Project</li>
-            <li><a class="navbarHoverBlock" href="/">Home</a></li>
-            <li><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
-            <li><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
-        </ul>
-    </nav>
+<nav>
+    <ul class="navMenu">
+        <li class="title"> The Gamma Project</li>
+        <li><a class="navbarHoverBlock" href="/">Home</a></li>
+        <li><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
+        <li><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
+    </ul>
+</nav>
 
 <main>
     <div class="grid-container">
         <div class="grid-item1">Hot games right now</div>
-        <div class="grid-item2"> <p class="topUserTitle"> Top users</p>
-            <p class="topUser"> 1. Mock User</p>
-            <p class="topUser"> 2. Alt mock user</p>
-            <p class="topUser"> 3. Florinel </p>
+        <div class="grid-item2"><p class="topUserTitle"> Top users</p>
+
+            <% var index = 0; topUsers.forEach(function (item) { index = index + 1 %>
+            <p class="topUser">
+                <%= index + '. ' %>
+                <%= item.username %>  <span class="userScoreSpan"> <%= item.user_score%> points</span> </p>
+            <% }); %>
         </div>
         <div class="grid-item3">All time most popular games</div>
     </div>

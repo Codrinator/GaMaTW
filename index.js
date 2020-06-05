@@ -25,12 +25,13 @@ Tournament.Tournament({
 }); */
 /*
 Game.Game({
-    name: 'Uno',
-    release_date: '2002-12-09' ,
-    company: 'Activisionew',
+    name: 'Assassin Creed',
+    release_date: '2005-12-09' ,
+    company: 'Ubisoft',
     popularity: 30,
-    genre: ['FPS', 'RTS'], // fps, shooter, rts
-    category: 'Boardgame',
+    votes: 5,
+    genre: ['Adventure', 'RTS'], // fps, shooter, rts
+    category: 'Digital',
     platform: ['PC'],
     age_restriction: 'PG',  // G , PG , PG-13 , R , NC-17
     game_description: 'Interactiv totti'
