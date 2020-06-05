@@ -11,7 +11,7 @@ const api = Router();
 router.use('/api/',api);
 api.use(bodyParser.json());
 api.use('/auth',auth);
-
+//api.get('/gameController',?);
 router.get('/rssFeed', rss);
 
 router.get('/', statics.homePage);

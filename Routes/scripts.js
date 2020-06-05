@@ -36,4 +36,16 @@ const loadPageScript = async function (req, res) {
     });
 };
 
+const loadGameCollection = async function(req, res){
+    fs.readFile('./Assets/Scripts/loadGameCollection.js', function(err,str){
+        if(err){
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "application/javascript"});
+            res.write(str);
+            res.end();
+        }
+    });
+}
+
 module.exports = {loginScript,registerScript,loadPageScript};
