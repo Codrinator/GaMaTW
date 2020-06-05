@@ -21,10 +21,11 @@
     <div class="grid-container">
         <div class="grid-item1">Hot games right now</div>
         <div class="grid-item2"><p class="topUserTitle"> Top users</p>
+
             <% var index = 0; topUsers.forEach(function (item) { index = index + 1 %>
             <p class="topUser">
                 <%= index + '. ' %>
-                <%= item.username %> </p>
+                <%= item.username %>  <span class="userScoreSpan"> <%= item.user_score%> points</span> </p>
             <% }); %>
         </div>
         <div class="grid-item3">All time most popular games</div>

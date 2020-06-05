@@ -35,14 +35,14 @@ body {
     text-decoration: none;
 }
 
-.navbarHoverBlock , .navbarNoHover{
+.navbarHoverBlock, .navbarNoHover {
     color: aliceblue;
     display: block;
     padding: 20px 25px 20px 25px;
     text-decoration: none;
 }
 
-.navbarHoverBlock:hover , .active{
+.navbarHoverBlock:hover, .active {
     color: darkblue;
     background-color: lightgrey;
 }
@@ -86,17 +86,20 @@ main {
     border-radius: 7px;
     border: 2px solid #2e3346;
 }
-.topUserTitle{
+
+.topUserTitle {
     margin-left: 2vw;
-    font-family:  "Arial Narrow", "Optima", "Geneva";
-    font-size: 1.5vw;
+    font-family: "Arial Narrow", "Optima", "Geneva";
+    font-size: 2vw;
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+
 }
-.topUser{
+
+.topUser {
     margin-left: 2vw;
-    font-family:  "Arial Narrow", "Optima", "Geneva";
-    font-size: 1.5vw;
+    font-family: "Arial Narrow", "Optima", "Geneva";
+    font-size: 1.6vw;
 }
 
 .grid-item3 {
@@ -105,4 +108,9 @@ main {
     background-color: aliceblue;
     border-radius: 7px;
     border: 2px solid #2e3346;
+}
+
+.userScoreSpan {
+    float: right;
+    margin-right: 2vw;
 }
