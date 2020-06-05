@@ -14,7 +14,13 @@ const GameSchema = new mongoose.Schema({
     game_description: String
 });
 
+const getTopGames = async function () {
+    const query = Game.find();
+    query.sort({popularity: -1}).limit(10);
+    return query.exec();
+};
+
 const Game = mongoose.model('GameCollection', GameSchema);
 
 
-module.exports = {Game};
+module.exports = {Game,getTopGames};
