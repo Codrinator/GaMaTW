@@ -2,6 +2,7 @@ const Router = require('router');
 const statics = require('./staticFiles');
 const bodyParser = require('body-parser');
 const auth = require('./auth').auth;
+const rss = require('./rssFeed').rssFeed;
 const scripts = require('./scripts');
 const router = Router();
 const api = Router();
@@ -11,6 +12,7 @@ router.use('/api/',api);
 api.use(bodyParser.json());
 api.use('/auth',auth);
 
+router.get('/rssFeed', rss);
 
 router.get('/', statics.homePage);
 router.get('/Assets/Styles/home.css', statics.homePageStyle);
