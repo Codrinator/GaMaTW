@@ -48,7 +48,7 @@ body {
     text-decoration: none;
 }
 
-.navbarHoverBlock , .navbarNoHover{
+.navbarHoverBlock {
     color: aliceblue;
     display: block;
     padding: 20px 25px 20px 25px;
@@ -136,6 +136,15 @@ main {
     background: var(--bg-secondary);
     color: var(--text-secondary);
 }
+
+.navbarNoHover {
+  color: rgb(159, 159, 194);
+  display: block;
+  padding: 20px 25px 20px 25px;
+  font-style: italic;
+  text-decoration: none;
+}
+
 
 .nav-subitem:hover{
   filter: grayscale(0%) opacity(1);
