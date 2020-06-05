@@ -8,11 +8,16 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 
-const findUserByUsername = async function(username){
+const findUserByUsername = async function (username) {
     const query = User.find();
-    query.where({username : username});
+    query.where({username: username});
     return query.exec();
 };
 
-module.exports = {User,findUserByUsername};
+const countUsers = async function () {
+    const query = User.count();
+    return query.exec();
+};
+
+module.exports = {User, findUserByUsername, countUsers};
 
