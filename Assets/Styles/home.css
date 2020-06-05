@@ -114,6 +114,18 @@ main {
     font-family: "Arial Narrow", "Optima", "Geneva";
     font-size: 1.6vw;
 }
+.newGames{
+    margin-left: 2vw;
+    font-family: "Arial Narrow", "Optima", "Geneva";
+    font-size: 1.6vw;
+}
+.newGamesTitle{
+    margin-left: 2vw;
+    font-family: "Arial Narrow", "Optima", "Geneva";
+    font-size: 2vw;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 .grid-item3 {
     grid-column: 2/4;
     grid-row: 1/6;
@@ -126,12 +138,26 @@ main {
     float: right;
     margin-right: 2vw;
 }
+.newGamesSpan{
+    float: right;
+    font-size: 2.5vh ;
+    margin-right: 2vw;
+    font-style: italic;
+}
 .topUserSpan{
     float: right;
     margin-right: 2vw;
     font-style: italic;
-    font-size: 1.6vw;
+    font-size: 3.2vh;
 }
 .highlightName{
     font-weight: bold;
+}
+.madeBy{
+    font-size: 2.6vh;
+}
+.points{
+    float: right;
+    font-style: italic;
+    font-size: 3.2vh;
 }
