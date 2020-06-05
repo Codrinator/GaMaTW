@@ -20,7 +20,8 @@ const getTopGames = async function () {
     return query.exec();
 };
 
+
 const Game = mongoose.model('GameCollection', GameSchema);
 
 
-module.exports = {Game,getTopGames};
+module.exports = {Game, getTopGames};
