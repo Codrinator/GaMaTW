@@ -29,7 +29,7 @@ function downloadPDF() {
         if (request.response.success === true) {
             let doc = new jsPDF();
             doc.setFont('arial', 'bold');
-            doc.text('GAMMA statistics', 70, 10);
+            doc.text('GAMMA statistics', 80, 10);
             doc.setFont('arial', 'none');
             doc.text('Our collection contains ' + request.response.numberOfGames + ' games!', 10, 20);
             doc.text('We have ' + request.response.numberOfUsers + ' users registered!', 10, 30);
