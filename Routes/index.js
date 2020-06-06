@@ -5,12 +5,14 @@ const auth = require('./auth').auth;
 const collection = require('./collection').gameCollection;
 const rss = require('./rssFeed').rssFeed;
 const scripts = require('./scripts');
+const authorize = require('../Middlewares/authorizationMiddleware').checkAuthorization;
 const router = Router();
 const api = Router();
 
 
 router.use('/api/',api);
 api.use(bodyParser.json());
+api.use(authorize);
 api.use('/auth',auth);
 api.use('/gameCollection', collection); //din collection.js la export
 router.get('/rssFeed', rss);
