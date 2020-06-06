@@ -2,6 +2,7 @@ const Router = require('router');
 const statics = require('./staticFiles');
 const bodyParser = require('body-parser');
 const auth = require('./auth').auth;
+const collection = require('./collection').collection;
 const rss = require('./rssFeed').rssFeed;
 const scripts = require('./scripts');
 const router = Router();
@@ -11,7 +12,7 @@ const api = Router();
 router.use('/api/',api);
 api.use(bodyParser.json());
 api.use('/auth',auth);
-//api.get('/gameController',?);
+api.use('/gameCollection', collection); //din collection.js la export
 router.get('/rssFeed', rss);
 
 router.get('/', statics.homePage);

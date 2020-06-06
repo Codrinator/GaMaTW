@@ -36,7 +36,7 @@ const loadPageScript = async function (req, res) {
     });
 };
 
-const loadGameCollection = async function(req, res){
+const loadGameCollection = async function(req, res){ //codrin
     fs.readFile('./Assets/Scripts/loadGameCollection.js', function(err,str){
         if(err){
             throw err;
@@ -48,4 +48,4 @@ const loadGameCollection = async function(req, res){
     });
 }
 
-module.exports = {loginScript,registerScript,loadPageScript};
+module.exports = {loginScript,registerScript,loadPageScript, loadGameCollection};
