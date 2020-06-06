@@ -3,8 +3,8 @@ const User = require('../Models/index').User;
 
 const login = async function (req,res){
     try {
-        const username = req.body.username;
-        const password = req.body.password;
+        const username = req.body.usernameRegister;
+        const password = req.body.passwordRegister;
         const userByUsername = await User.findUserByUsername(username);
         if (!userByUsername.length){
             res.statusCode = 401;
