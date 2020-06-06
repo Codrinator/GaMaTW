@@ -33,7 +33,7 @@ const getGamesCollection = async function(noOfItems, category){
     return query.exec();
 };
 
-const getGamesCollectionSub = async function(noOfItems, category, genre){ //atentie poate crapa aici, vezi oleaca man
+const getGamesCollectionSub = async function(noOfItems, category, genre){ //atentie poate crapa aici
     const query = Game.find({genre: genre});
     query.where({category: category}).limit(noOfItems);
     return query.exec();

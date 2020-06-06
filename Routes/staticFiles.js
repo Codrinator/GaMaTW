@@ -31,7 +31,7 @@ const homePageStyle = async function (req, res) {
 
 
 const gameCollection = async function (req, res) {
-    ejs.renderFile('./Views/gameCollection.ejs', function (err, str) {
+    ejs.renderFile('./Views/gameCollection.ejs',{}, function (err, str) {
         if (err) {
             throw err;
         } else {
