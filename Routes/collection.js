@@ -3,6 +3,6 @@ const Router = require('router');
 
 const gameCollection = Router();
 
-gameCollection.get('/loadCollection', collection.loadCollection);
+gameCollection.post('/loadCollection', collection.collection);
 
-module.exports = {collection}
+module.exports = {gameCollection};

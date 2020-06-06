@@ -20,21 +20,21 @@ const getTopGames = async function () {
     return query.exec();
 };
 
-const loadGames = async function(no_of_items){
+const loadGames = async function(noOfItems){
     const query = Game.find();
-    query.sort({popularity: -1}).limit(no_of_items);
+    query.sort({popularity: -1}).limit(noOfItems);
     return query.exec();
 };
 
-const getGamesCollection = async function(no_of_items, category){
+const getGamesCollection = async function(noOfItems, category){
     const query = Game.find();
-    query.where({category: category}).limit(no_of_items);
+    query.where({category: category}).limit(noOfItems);
     return query.exec();
 };
 
-const getGamesCollectionSub = async function(no_of_items, category, genre){ //atentie poate crapa aici, vezi oleaca man
+const getGamesCollectionSub = async function(noOfItems, category, genre){ //atentie poate crapa aici, vezi oleaca man
     const query = Game.find({genre: genre});
-    query.where({category: category}).limit(no_of_items);
+    query.where({category: category}).limit(noOfItems);
     return query.exec();
 };
 

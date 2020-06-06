@@ -1,12 +1,11 @@
 const Game = require('../Models/index').Game;
 
 const loadCollection = async function loadCollection(req, res){
-    const no_of_items = req.body.no_of_items;
-  //  const criteria = req.body.criteria;
-    const gamesArray = await Game.loadGames(no_of_items); //wait for it
-
+    const noOfItems = req.body.noOfItems;
+    const gamesArray = await Game.loadGames(noOfItems); //wait for it
+    console.log(gamesArray);
     res.end(JSON.stringify({
-        succes: true,
+        success: true,
         games: gamesArray
     }));
 

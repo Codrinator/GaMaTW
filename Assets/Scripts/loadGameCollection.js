@@ -6,13 +6,16 @@ function loadCollection(){
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.responseType = 'json';
     request.onload = function(){
+       
         if(request.response.success === true){
-            alert(request.response.games);
+           // alert('E bine');
         }
     };
 
     request.send(JSON.stringify({
-        no_of_items: 10,
+        noOfItems: 10,
         criteria: 'popularity'
     }));
 };
+
+loadCollection();
