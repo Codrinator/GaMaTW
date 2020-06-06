@@ -20,6 +20,7 @@ const getTopGames = async function () {
     return query.exec();
 };
 
+
 const loadGames = async function(noOfItems){
     const query = Game.find();
     query.sort({popularity: -1}).limit(noOfItems);
@@ -38,8 +39,20 @@ const getGamesCollectionSub = async function(noOfItems, category, genre){ //aten
     return query.exec();
 };
 
+const getNewGames = async function(){
+    const query=Game.find();
+    query.sort({release_date: -1}).limit(5);
+    return query.exec();
+};
+
+const getNewGamesRssFeed=async function(){
+    const query=Game.find();
+    query.sort({release_date: -1}).limit(10);
+    return query.exec();
+};
+
 
 const Game = mongoose.model('GameCollection', GameSchema);
 
+module.exports = {Game, getTopGames, getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub};
 
-module.exports = {Game, getTopGames, loadGames, getGamesCollection, getGamesCollectionSub};

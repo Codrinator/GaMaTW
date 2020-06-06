@@ -19,26 +19,33 @@
 
 <main>
     <div class="grid-container">
-        <div class="grid-item1">Hot games right now</div>
-        <div class="grid-item2"><p class="topUserTitle"> Top users</p>
+        <div class="grid-item1"><p class="newGamesTitle">New Games</p>
+            <% var index = 0; newGames.forEach(function (item) { index = index + 1 %>
+            <p class="newGames">
+                <%= index + '. ' %>
+                <%= '"' + item.name + '"' %> <span
+                        class="newGamesSpan"> <%= 'Released: ' + item.release_date.toLocaleDateString() %> </span></p>
+            <% }); %>
+        </div>
+        <div class="grid-item2"><p class="topUserTitle"> Top Users</p>
 
-            <% var index = 0; topUsers.forEach(function (item) { index = index + 1 %>
+            <% index = 0; topUsers.forEach(function (item) { index = index + 1 %>
             <p class="topUser">
                 <%= index + '. ' %>
-                <%= item.username %> <span class="userScoreSpan"> <%= item.user_score %> points</span></p>
+                <%= item.username %> <span class="userScoreSpan"><span
+                            class="points"><%= item.user_score %> points</span> </span></p>
             <% }); %>
         </div>
         <div class="grid-item3"><p class="userFavouriteGames">Favourite Games</p>
             <% index = 0; topGames.forEach(function (item) { index = index + 1 %>
             <p class="topGames">
                 <%= index + '. ' %>
-                <span class="highlightName"><%= '"' + item.name + '"' %> </span> made
-                by <%= item.company + ' (' + item.age_restriction + ')' %> <span
+                <span class="highlightName"><%= '"' + item.name + '"' %> </span> <span class="madeBy">made
+                    by</span> <%= item.company + ' (' + item.age_restriction + ')' %> <span
                         class="topUserSpan"> <%= 'Rating = ' + item.popularity %></span>
-            <% }); %>
+                <% }); %>
             </p>
         </div>
-
     </div>
     <script src="/Assets/Scripts/loadPageOptions.js"></script>
 </main>

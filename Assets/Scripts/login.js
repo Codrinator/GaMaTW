@@ -30,8 +30,8 @@ function processRequest() {
         }
     };
     request.send(JSON.stringify({
-        username: formData.get("username"),
-        password: formData.get("password")
+        usernameRegister: formData.get("username"),
+        passwordRegister: formData.get("password")
     }));
 }
 
