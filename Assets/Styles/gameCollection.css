@@ -129,25 +129,24 @@ main {
   margin-top: 10px;
 }
 
-
 .nav-subitem2 {
     width: 100%;
     position:relative;
     display:inline-block;
-    font-size: 1.1vw;
+    font-size: 1.2vw;
     font-family: "Lucida Console", "Optima", "Geneva";
     text-decoration: underline;
+    align-items: center;
     color: var(--text-primary);
     filter: grayscale(100%) opacity(0.7);
     list-style-type: none;
     transition: 200ms;/*var(--transition-duration);*/
-    margin-top: 20px;
-    margin-left: 15px;
+    margin-top: 10px;
   }
+  
 
 
-
-.nav-subitem:hover, .nav-subsubitem:hover{
+.nav-subitem:hover,.nav-subitem2:hover, .nav-subsubitem:hover, .nav-stats-title:hover{
     filter: grayscale(0%) opacity(1);
     background: var(--bg-secondary);
     color: var(--text-secondary);
@@ -255,9 +254,16 @@ main {
     display: inline-block;
     font-size: 0.9vw;
     font-family: "Lucida Console", "Optima", "Geneva";
-    color: var(--text-primary);
-    filter: grayscale(100%) opacity(0.7);
-    transition: 200ms;/*var(--transition-duration);*/
+    filter: grayscale(100%) opacity(0.2);
     bottom: 10px;
     margin-left: 1rem;
   }
+
+.nav-stats-title{
+    filter: grayscale(20%) opacity(0.8);
+}
+
+.nav-stats-item {
+    font-style: italic;
+    color: white;
+}
