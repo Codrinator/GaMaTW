@@ -1,5 +1,5 @@
 const Router = require('router');
-const sanitize = require('../Middlewares/authMiddleware');
+const sanitize = require('../Middlewares/sanitizeMiddleware');
 const auth = Router();
 
 const controllers = require('../Controllers/index');
