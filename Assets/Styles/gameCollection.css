@@ -16,7 +16,7 @@
 :root{
     font-size: 16px;
     font-family: "Lucida Console", "Optima", "Geneva";
-    --transition-duration: 600ms;
+    --transition-duration: 1000ms;
     --text-primary: #b6b6b6;
     --text-secondary: rgb(221, 221, 138);
     --bg-primary: #333;
@@ -74,7 +74,7 @@ main {
 }
 
 .navbar {
-    width: 10rem;
+    width: 5rem;
     height: 100vh;
     position: fixed;
     background-color:  var(--bg-primary);
@@ -91,6 +91,9 @@ main {
   color: blue;
 }
 
+.nav-title{
+    font-size:larger;
+}
 .navbar-nav {
     list-style: none;
     padding: 0;
@@ -104,7 +107,7 @@ main {
     width: 100%;
     position:relative;
     display:inline-block;
-    margin-left: 3rem;
+    margin-left: 2.5rem;
     font-size: 1vw;
     font-family: "Lucida Console", "Optima", "Geneva";
     list-style-type: none;
@@ -115,24 +118,54 @@ main {
   width: 100%;
   position:relative;
   display:inline-block;
-  margin-left: 2.5rem;
-  font-size: 1vw;
+  font-size: 1.1vw;
   font-family: "Lucida Console", "Optima", "Geneva";
+  text-decoration: underline;
   align-items: center;
   color: var(--text-primary);
-  text-decoration: none;
   filter: grayscale(100%) opacity(0.7);
   list-style-type: none;
   transition: 200ms;/*var(--transition-duration);*/
-  margin-top: 0.2rem;
+  margin-top: 10px;
 }
 
-.nav-subitem:hover{
+
+.nav-subitem2 {
+    width: 100%;
+    position:relative;
+    display:inline-block;
+    font-size: 1.1vw;
+    font-family: "Lucida Console", "Optima", "Geneva";
+    text-decoration: underline;
+    color: var(--text-primary);
+    filter: grayscale(100%) opacity(0.7);
+    list-style-type: none;
+    transition: 200ms;/*var(--transition-duration);*/
+    margin-top: 20px;
+    margin-left: 15px;
+  }
+
+
+
+.nav-subitem:hover, .nav-subsubitem:hover{
     filter: grayscale(0%) opacity(1);
     background: var(--bg-secondary);
     color: var(--text-secondary);
+}
+
+.nav-subsubitem {
+    width: 100%;
+    position:relative;
+    display:inline-block;
+    margin-left: 1rem;
+    font-size: 1vw;
+    font-family: "Lucida Console", "Optima", "Geneva";
+    color: var(--text-primary);
+    filter: grayscale(100%) opacity(0.7);
+    list-style-type: none;
+    transition: 200ms;/*var(--transition-duration);*/
+    margin-top: 0.5rem;
   }
-  
 
 .nav-link {
     display: flex;
@@ -150,9 +183,9 @@ main {
     color: var(--text-secondary);
 }
 
-#drop-content a{
+/*#drop-content a{
   display:block;
-}
+}*/
 
 .navbarNoHover {
   color: rgb(159, 159, 194);
@@ -164,7 +197,8 @@ main {
 
 .link-text{
     display: none;
-    margin-left: 1rem;   
+    margin-left: 1rem;
+    position: relative;
 }
 
 
@@ -214,3 +248,16 @@ main {
         margin: 0;
     }
 }
+
+.nav-stats {
+    width: 100%;
+    position: absolute;
+    display: inline-block;
+    font-size: 0.9vw;
+    font-family: "Lucida Console", "Optima", "Geneva";
+    color: var(--text-primary);
+    filter: grayscale(100%) opacity(0.7);
+    transition: 200ms;/*var(--transition-duration);*/
+    bottom: 10px;
+    margin-left: 1rem;
+  }
