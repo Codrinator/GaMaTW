@@ -46,11 +46,7 @@ body {
     margin-left: -30vw;
     margin-right: 30vw;
     float: left;
-    font-size: 16px;
     text-decoration: none;
-}
-
-.logo{
     color:  rgb(221, 221, 138);
 }
 
@@ -69,8 +65,6 @@ body {
 main {
     position: relative;
     top: 75px;
-    margin-left: 5rem;
-    padding: 1rem;
 }
 
 .navbar {
@@ -146,7 +140,7 @@ main {
   
 
 
-.nav-subitem:hover,.nav-subitem2:hover, .nav-subsubitem:hover, .nav-stats-title:hover{
+.nav-subitem:hover,.nav-subitem2:hover, .nav-link:hover,.nav-subsubitem:hover, .nav-stats-title:hover, .nav-stats-item:hover{
     filter: grayscale(0%) opacity(1);
     background: var(--bg-secondary);
     color: var(--text-secondary);
@@ -176,15 +170,9 @@ main {
     transition: var(--transition-duration);
 }
 
-.nav-link:hover{
-    filter: grayscale(0%) opacity(1);
-    background: var(--bg-secondary);
-    color: var(--text-secondary);
-}
-
-/*#drop-content a{
+#drop-content a{
   display:block;
-}*/
+}
 
 .navbarNoHover {
   color: rgb(159, 159, 194);
