@@ -46,8 +46,12 @@ body {
     margin-left: -30vw;
     margin-right: 30vw;
     float: left;
-    font-size: larger;
+    font-size: 16px;
     text-decoration: none;
+}
+
+.logo{
+    color:  rgb(221, 221, 138);
 }
 
 .navbarHoverBlock {
@@ -70,7 +74,7 @@ main {
 }
 
 .navbar {
-    width: 5rem;
+    width: 10rem;
     height: 100vh;
     position: fixed;
     background-color:  var(--bg-primary);
@@ -104,22 +108,22 @@ main {
     font-size: 1vw;
     font-family: "Lucida Console", "Optima", "Geneva";
     list-style-type: none;
-    margin-top: 6rem;
+    margin-top: 4rem;
 }
 
 .nav-subitem {
   width: 100%;
   position:relative;
   display:inline-block;
-  margin-left: 3.5rem;
-  font-size: 0.8vw;
+  margin-left: 2.5rem;
+  font-size: 1vw;
   font-family: "Lucida Console", "Optima", "Geneva";
   align-items: center;
   color: var(--text-primary);
   text-decoration: none;
   filter: grayscale(100%) opacity(0.7);
   list-style-type: none;
-  transition: var(--transition-duration);
+  transition: 200ms;/*var(--transition-duration);*/
   margin-top: 0.2rem;
 }
 
@@ -160,9 +164,9 @@ main {
 
 .link-text{
     display: none;
-    margin-left: 1rem;
-    
+    margin-left: 1rem;   
 }
+
 
 .link-text:hover{
     display: none;
