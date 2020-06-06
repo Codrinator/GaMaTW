@@ -14,7 +14,7 @@
 
 :root{
     font-size: 16px;
-    font-family: 'Open Sans';
+    font-family: "Lucida Console", "Optima", "Geneva";
     --transition-duration: 600ms;
     --text-primary: #b6b6b6;
     --text-secondary: rgb(221, 221, 138);
@@ -98,8 +98,9 @@ main {
     position:relative;
     display:inline-block;
     margin-left: 3rem;
-    font-size: 16px;
-    font-family: Impact;
+    font-size: 1.3vw;
+    font-family: "Lucida Console", "Optima", "Geneva";
+    list-style-type: none;
     margin-top: 6rem;
 }
 
@@ -109,11 +110,12 @@ main {
   display:inline-block;
   margin-left: 3.5rem;
   font-size: 16px;
-  font-family: Impact;
+  font-family: "Lucida Console", "Optima", "Geneva";
   align-items: center;
   color: var(--text-primary);
   text-decoration: none;
   filter: grayscale(100%) opacity(0.7);
+  list-style-type: none;
   transition: var(--transition-duration);
   margin-top: 0.2rem;
 }
@@ -155,6 +157,15 @@ main {
 .link-text{
     display: none;
     margin-left: 1rem;
+    
+}
+
+.link-text:hover{
+    display: none;
+    margin-left: 1rem;
+    filter: grayscale(0%) opacity(1);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
 }
 
 /* Ecrane mari */

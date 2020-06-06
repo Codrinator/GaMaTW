@@ -107,23 +107,25 @@ main {
     font-size: 3.5vh;
 }
 
+
+
 .topUser {
     margin-left: 2vw;
     font-family: "Trebuchet MS","Arial Narrow", "Optima", "Geneva";
     color: lightgrey;
-    font-size: 2.8vh;
+    font-size: 1.3vw;
 }
 .topGames{
     margin-left: 2vw;
     font-family: "Trebuchet MS","Arial Narrow", "Optima", "Geneva";
     color: lightgrey;
-    font-size: 2.8vh;
+    font-size: 1.3vw;
 }
 .newGames{
     margin-left: 2vw;
     font-family: "Trebuchet MS","Arial Narrow", "Optima", "Geneva";
     color: lightgrey;
-    font-size: 2.8vh;
+    font-size: 1.3vw;
 }
 .newGamesTitle{
     font-family: "Lucida Console", "Optima", "Geneva";
@@ -131,7 +133,7 @@ main {
     font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
-    color: antiquewhite;
+    color: rgb(255, 246, 234);
     font-size: 3.5vh;
 }
 .grid-item3 {
