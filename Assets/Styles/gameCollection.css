@@ -7,8 +7,7 @@
     top: 0;
     width: 100%;
     overflow: hidden;
-    font-family: "Lucida Console", "Optima", "Geneva";
-    font-weight: bold;
+    font-family: Impact, "Arial Narrow", "Optima", "Geneva";
     background-color: #333;
     z-index: 2;
 }

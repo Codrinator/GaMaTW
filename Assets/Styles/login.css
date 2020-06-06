@@ -48,6 +48,7 @@ body {
     margin-right: 30vw;
     float: left;
     text-decoration: none;
+    color:  rgb(221, 221, 138);
 }
 
 .navbarHoverBlock , .navbarNoHover{
