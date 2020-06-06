@@ -7,9 +7,10 @@
     top: 0;
     width: 100%;
     overflow: hidden;
-    font-family: Impact, "Arial Narrow", "Optima", "Geneva";
+    font-family: "Lucida Console", "Optima", "Geneva";
+    font-weight: bold;
     background-color: #333;
-    z-index: 1;
+    z-index: 2;
 }
 
 :root{
@@ -45,6 +46,7 @@ body {
     margin-left: -30vw;
     margin-right: 30vw;
     float: left;
+    font-size: larger;
     text-decoration: none;
 }
 
@@ -73,7 +75,8 @@ main {
     position: fixed;
     background-color:  var(--bg-primary);
     transition: width 600ms ease;
-    overflow: scroll;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .navbar::-webkit-scrollbar{
@@ -98,7 +101,7 @@ main {
     position:relative;
     display:inline-block;
     margin-left: 3rem;
-    font-size: 1.3vw;
+    font-size: 1vw;
     font-family: "Lucida Console", "Optima", "Geneva";
     list-style-type: none;
     margin-top: 6rem;
@@ -109,7 +112,7 @@ main {
   position:relative;
   display:inline-block;
   margin-left: 3.5rem;
-  font-size: 16px;
+  font-size: 0.8vw;
   font-family: "Lucida Console", "Optima", "Geneva";
   align-items: center;
   color: var(--text-primary);
@@ -119,6 +122,13 @@ main {
   transition: var(--transition-duration);
   margin-top: 0.2rem;
 }
+
+.nav-subitem:hover{
+    filter: grayscale(0%) opacity(1);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+  }
+  
 
 .nav-link {
     display: flex;
@@ -130,13 +140,14 @@ main {
     transition: var(--transition-duration);
 }
 
-#drop-content a{
-  display:block;
-}
 .nav-link:hover{
     filter: grayscale(0%) opacity(1);
     background: var(--bg-secondary);
     color: var(--text-secondary);
+}
+
+#drop-content a{
+  display:block;
 }
 
 .navbarNoHover {
@@ -145,13 +156,6 @@ main {
   padding: 20px 25px 20px 25px;
   font-style: italic;
   text-decoration: none;
-}
-
-
-.nav-subitem:hover{
-  filter: grayscale(0%) opacity(1);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
 }
 
 .link-text{
