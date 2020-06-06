@@ -12,7 +12,7 @@
 
     <nav>
         <ul class="navMenu">
-            <li class="title"> The Gamma Project</li>
+            <li class="title">The GaMa Project</li>
             <li><a class="navbarHoverBlock" href="/">Home</a></li>
             <li><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
             <li><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
@@ -24,23 +24,39 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-gamepad"><g class="fa-color"></g></i>
-              <span class="link-text">Main Categories</span>
+              <span class="link-text"><div class="nav-title">Categories</div></span>
             </a>
-            <div id="drop-content">
-              <a class="nav-subitem" href="#">Digital</a>
-              <a class="nav-subitem"href="#">Board</a>
+            <div class="link-text">
+              <a class="nav-subitem">Digital</a>
+              <ul>
+                <li class="nav-subsubitem">Action</li>
+                <li class="nav-subsubitem">Adventure</li>
+                <li class="nav-subsubitem">Simulator</li>
+                <li class="nav-subsubitem">Sports</li>
+                <li class="nav-subsubitem">Platformer</li>
+                <li class="nav-subsubitem">Racing</li>
+              </ul>
+            </div>
+            <div class="link-text">
+              <a class="nav-subitem2">Board</a>
+              <ul>
+                <li class="nav-subsubitem">Role-Play</li>
+                <li class="nav-subsubitem">Strategy</li>
+                <li class="nav-subsubitem">War</li>
+                <li class="nav-subsubitem">Dynamic</li>
+              </ul>
             </div>
           </li>
-
+          <div class="nav-stats">
+            <a class="nav-stats-title">Statistics:</a>
+            <a class="nav-stats-item" href="#">.PDF</a>
+            <a class="nav-stats-item" href="#">.CSV</a>
+            <a class="nav-stats-item" href="#">Sheet</a>
+          </div>
       </ul>
     </nav>
   <main>
-    <div class="grid-games">Filter through our database!
-      <div class="grid-item">
-        <p class="grid-item-name"></p>
-       
-      </div>
-    </div>
+    
   </main>
     <script src="/Assets/Scripts/loadPageOptions.js"></script>
     <script src="/Assets/Scripts/loadGameCollection.js"></script>

@@ -33,6 +33,7 @@ body {
     margin-right: 30vw;
     float: left;
     text-decoration: none;
+    color:  rgb(221, 221, 138);
 }
 
 .navbarHoverBlock, .navbarNoHover {
@@ -107,6 +108,8 @@ main {
     font-size: 1.6vw;
 }
 
+
+
 .topUser {
     margin-left: 2vw;
     font-family: "Trebuchet MS","Arial Narrow", "Optima", "Geneva";
@@ -131,8 +134,8 @@ main {
     font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
-    color: antiquewhite;
-    font-size: 1.6vw;
+    color: rgb(255, 246, 234);
+    font-size: 3.5vh;
 }
 .grid-item3 {
     grid-column: 11/25;
