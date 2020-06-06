@@ -36,4 +36,16 @@ const loadPageScript = async function (req, res) {
     });
 };
 
-module.exports = {loginScript,registerScript,loadPageScript};
+const loadGameCollection = async function(req, res){ //codrin
+    fs.readFile('./Assets/Scripts/loadGameCollection.js', function(err,str){
+        if(err){
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "application/javascript"});
+            res.write(str);
+            res.end();
+        }
+    });
+}
+
+module.exports = {loginScript,registerScript,loadPageScript, loadGameCollection};
