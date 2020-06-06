@@ -20,6 +20,10 @@ const getTopGames = async function () {
     return query.exec();
 };
 
+const getNumberOfGames= async function(){
+    const query= Game.count();
+    return query.exec()
+};
 
 const loadGames = async function(noOfItems){
     const query = Game.find();
@@ -33,7 +37,7 @@ const getGamesCollection = async function(noOfItems, category){
     return query.exec();
 };
 
-const getGamesCollectionSub = async function(noOfItems, category, genre){ //atentie poate crapa aici, vezi oleaca man
+const getGamesCollectionSub = async function(noOfItems, category, genre){
     const query = Game.find({genre: genre});
     query.where({category: category}).limit(noOfItems);
     return query.exec();
@@ -54,5 +58,5 @@ const getNewGamesRssFeed=async function(){
 
 const Game = mongoose.model('GameCollection', GameSchema);
 
-module.exports = {Game, getTopGames, getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub};
+module.exports = {Game, getTopGames, getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub,getNumberOfGames};
 
