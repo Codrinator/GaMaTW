@@ -13,31 +13,18 @@ const index = http.createServer(function (req, res) {
     router(req, res, finalhandler(req, res));
 });
 
-/*
 Tournament.Tournament({
     name: 'test',
     owner: 'testOwner',
-    max_number_participants: 32,
+    max_number_participants: 4,
+    game: 'Worms',
     state: true,
-    participants: ['Andrei','Victor']
-}).save(function (err) {
-    if (err) throw err;
-}); */
-/*
-Game.Game({
-    name: 'Assassin Creed',
-    release_date: '2005-12-09' ,
-    company: 'Ubisoft',
-    popularity: 30,
-    votes: 5,
-    genre: ['Adventure', 'RTS'], // fps, shooter, rts
-    category: 'Digital',
-    platform: ['PC'],
-    age_restriction: 'PG',  // G , PG , PG-13 , R , NC-17
-    game_description: 'Interactiv totti'
+    participants: ['Andrei','Victor','Mihai' , 'Ghiul'],
+    active_participants: ['Andrei','Victor','Mihai' , 'Ghiul'],
+    matches: [{participantOne:'Andrei',participantTwo:'Victor'},{participantOne:'Mihai',participantTwo:'Ghiul'}]
 }).save(function (err) {
     if (err) throw err;
 });
-*/
+
 console.log("Server is listening on port: " + PORT);
 index.listen(PORT);
