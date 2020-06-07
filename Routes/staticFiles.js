@@ -150,8 +150,32 @@ const adminStyle = async function (req, res) {
     });
 };
 
+const deleteGame = async function (req, res) {
+    ejs.renderFile('./Views/deleteGame.ejs', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/html"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
+const deleteGameStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/deleteGame.css', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/css"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
 
 module.exports = {
     homePage, homePageStyle, gameCollection, gameCollectionStyle, tournaments,
-    tournamentsStyle, login, loginStyle, register, registerStyle, admin, adminStyle
+    tournamentsStyle, login, loginStyle, register, registerStyle, admin, adminStyle,deleteGameStyle,deleteGame
 };

@@ -6,5 +6,6 @@ const controllers = require('../Controllers/index');
 
 admin.use(sanitize.sanitizeMiddleware);
 admin.post('/registerGame',controllers.insertGame);
+admin.post('/deleteGame',controllers.deleteGame);
 
 module.exports={admin};

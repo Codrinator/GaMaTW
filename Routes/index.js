@@ -22,6 +22,9 @@ router.get('/rssFeed', rss);
 router.get('/', statics.homePage);
 router.get('/Assets/Styles/home.css', statics.homePageStyle);
 
+router.get('/deleteGame',statics.deleteGame);
+router.get('/Assets/Styles/deleteGame.css', statics.deleteGameStyle);
+
 router.get('/admin',statics.admin);
 router.get('/Assets/Styles/admin.css', statics.adminStyle);
 
@@ -44,4 +47,5 @@ router.get('/Assets/Scripts/login.js', scripts.loginScript);
 router.get('/Assets/Scripts/loadPageOptions.js', scripts.loadPageScript);
 router.get('/Assets/Scripts/loadGameCollection.js', scripts.loadGameCollection);
 router.get('/Assets/Scripts/admin.js',scripts.adminScript);
+router.get('/Assets/Scripts/deleteGame.js',scripts.deleteGameScript);
 module.exports = {router};
