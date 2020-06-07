@@ -75,10 +75,12 @@ function downloadCSV() {
             let info = 'name,company,popularity,category,age_restriction,price,release_date'+'\n';
         let date;
             request.response.allGames.forEach(function (item) {
-                if(item.release_date===undefined)
+
+                if(item.release_date=== 'undefined' || item.release_date===null)
                      date = 'Unknown';
                 else
                     date=item.release_date.toLocaleString();
+
                 info = info + (item.name + ',' + item.company+ ',' + item.popularity
                     + ',' + item.category+ ',' + item.age_restriction+ ',' + item.price
                     + ',' + date) + '\n';
@@ -87,7 +89,7 @@ function downloadCSV() {
             info = info + '\n';
             info = info + 'name,owner,number_participants,state,created_at'+'\n';
             request.response.allTournaments.forEach(function (item) {
-                if(item.created_at===undefined)
+                if(item.created_at===undefined || item.created_at===null)
                     date = 'Unknown';
                 else
                     date=item.created_at.toLocaleString();
