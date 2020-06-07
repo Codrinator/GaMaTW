@@ -49,9 +49,10 @@
           </li>
           <div class="nav-stats">
             <a class="nav-stats-title">Statistics:</a>
-            <a class="nav-stats-item" href="#">.PDF</a>
-            <a class="nav-stats-item" href="#">.CSV</a>
-            <a class="nav-stats-item" href="#">Sheet</a>
+            <a class="nav-stats-item" href="#" onclick="downloadPDF()">.PDF</a>
+            <a class="nav-stats-item" href="#" onclick="downloadCSV()">.CSV</a>
+            <a class="nav-stats-item" href="/admin">.Sheet</a>
+              <a class="nav-stats-item" href="/rssFeed">.RSS</a>
           </div>
       </ul>
     </nav>
@@ -70,5 +71,6 @@
   </main>
     <script src="/Assets/Scripts/loadPageOptions.js"></script>
     <script src="/Assets/Scripts/loadGameCollection.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 </body>
 </html>
