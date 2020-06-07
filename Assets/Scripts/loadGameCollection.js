@@ -53,12 +53,52 @@ function downloadPDF() {
                 doc.setFont('times', 'none');
                 doc.text(place + '. ' + item.name + ' made by ' + item.company, 10, index);
             });
-            doc.save('GAMMA_Statistics.pdf');
+            doc.save('GAMMA_Statistics_PDF.pdf');
 
         }
     };
 
     request.send();
 }
+
+function downloadCSV() {
+    const url = 'api/gameCollection/downloadCSV';
+    const request = new XMLHttpRequest();
+
+    request.open('GET', url);
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request.responseType = 'json';
+
+    request.onload = function () {
+        if (request.response.success === true) {
+            let info = 'name,company,popularity,category,age_restriction,price,release_date'+'\n';
+            request.response.allGames.forEach(function (item) {
+                info = info + (item.name + ',' + item.company+ ',' + item.popularity
+                    + ',' + item.category+ ',' + item.age_restriction+ ',' + item.price
+                    + ',' + item.release_date.toLocaleString()) + '\n';
+
+            });
+            info = info + '\n';
+            info = info + 'name,owner,number_participants,state,created_at'+'\n';
+            request.response.allTournaments.forEach(function (item) {
+                info = info + (item.name + ',' + item.company + ',' + item.max_number_participants +
+                        ',' + item.state + ',' + item.created_at.toLocaleString()) + '\n';
+            });
+
+            const blob = new Blob([info], {type: 'test/csv'});
+            const urlBlob = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', urlBlob);
+            a.setAttribute('download', 'GAMA_Statistics_CSV.csv');
+            document.body.appendChild(a);
+            a.click();
+            document.body.remove();
+            window.location.href = "/gameCollection";
+        }
+    };
+    request.send();
+}
+
 
 loadCollection();

@@ -31,6 +31,11 @@ const loadGames = async function(noOfItems){
     return query.exec();
 };
 
+const getAll=async function(){
+    const query=Game.find();
+    return query.exec();
+};
+
 const getGamesCollection = async function(noOfItems, category){
     const query = Game.find();
     query.where({category: category}).limit(noOfItems);
@@ -58,5 +63,5 @@ const getNewGamesRssFeed=async function(){
 
 const Game = mongoose.model('GameCollection', GameSchema);
 
-module.exports = {Game, getTopGames, getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub,getNumberOfGames};
+module.exports = {Game, getAll,getTopGames, getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub,getNumberOfGames};
 
