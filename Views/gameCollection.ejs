@@ -56,7 +56,16 @@
       </ul>
     </nav>
   <main>
-      
+      <div class="game-container">
+        <div class="game-item"><p class="game-item-title">Name:</p>
+          <% var index = 0; loadGames.forEach(function (item){ index = index + 1 %>
+          <p>
+            <%= index + '.' %>
+            <%= '"' + item.name + '"' %> 
+          </p>
+          <% }); %>
+        </div>
+      </div>
   </main>
     <script src="/Assets/Scripts/loadPageOptions.js"></script>
     <script src="/Assets/Scripts/loadGameCollection.js"></script>
