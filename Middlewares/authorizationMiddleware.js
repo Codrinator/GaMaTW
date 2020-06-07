@@ -1,7 +1,8 @@
 const tokenUtils = require("../Utils/authorizationTokenUtils");
 
 const pathsToAuthorize = [
-    "/admin/registerGame",   //de adaugat la request de pe front: request.setRequestHeader("Authorization", 'Bearer ' + sessionStorage.getItem("token")); --session sau local
+    "/admin/registerGame",
+    "/admin/deleteGame",//de adaugat la request de pe front: request.setRequestHeader("Authorization", 'Bearer ' + sessionStorage.getItem("token")); --session sau local
 ];
 
 const checkAuthorization = async function(req,res,next){
