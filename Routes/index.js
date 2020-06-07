@@ -15,8 +15,10 @@ router.use('/api/',api);
 api.use(bodyParser.json());
 api.use(authorize);
 api.use('/auth',auth);
+
+api.use('/gameCollection', collection);
 api.use('/admin',admin);
-api.use('/gameCollection', collection); //din collection.js la export
+
 router.get('/rssFeed', rss);
 
 router.get('/', statics.homePage);
