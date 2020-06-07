@@ -5,5 +5,6 @@ const gameCollection = Router();
 
 gameCollection.post('/loadCollection', collection.collection);
 gameCollection.get('/downloadStatistic', collection.getStatistic);
+gameCollection.get('/downloadCSV', collection.getCSV);
 
 module.exports = {gameCollection};
