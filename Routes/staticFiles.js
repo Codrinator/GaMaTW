@@ -126,8 +126,32 @@ const registerStyle = async function (req, res) {
     });
 };
 
+const admin = async function (req, res) {
+    ejs.renderFile('./Views/admin.ejs', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/html"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
+const adminStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/admin.css', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/css"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
 
 module.exports = {
     homePage, homePageStyle, gameCollection, gameCollectionStyle, tournaments,
-    tournamentsStyle, login, loginStyle, register, registerStyle
+    tournamentsStyle, login, loginStyle, register, registerStyle, admin, adminStyle
 };

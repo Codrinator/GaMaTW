@@ -2,6 +2,7 @@ const Router = require('router');
 const statics = require('./staticFiles');
 const bodyParser = require('body-parser');
 const auth = require('./auth').auth;
+const admin= require('./admin').admin;
 const collection = require('./collection').gameCollection;
 const rss = require('./rssFeed').rssFeed;
 const scripts = require('./scripts');
@@ -14,11 +15,15 @@ router.use('/api/',api);
 api.use(bodyParser.json());
 api.use(authorize);
 api.use('/auth',auth);
+api.use('/admin',admin);
 api.use('/gameCollection', collection); //din collection.js la export
 router.get('/rssFeed', rss);
 
 router.get('/', statics.homePage);
 router.get('/Assets/Styles/home.css', statics.homePageStyle);
+
+router.get('/admin',statics.admin);
+router.get('/Assets/Styles/admin.css', statics.adminStyle);
 
 router.get('/gameCollection', statics.gameCollection);
 router.get('/Assets/Styles/gameCollection.css', statics.gameCollectionStyle);
@@ -38,4 +43,5 @@ router.get('/Assets/Scripts/register.js', scripts.registerScript);
 router.get('/Assets/Scripts/login.js', scripts.loginScript);
 router.get('/Assets/Scripts/loadPageOptions.js', scripts.loadPageScript);
 router.get('/Assets/Scripts/loadGameCollection.js', scripts.loadGameCollection);
+router.get('/Assets/Scripts/admin.js',scripts.adminScript);
 module.exports = {router};

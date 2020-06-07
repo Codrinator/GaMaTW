@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register :: GaMa.TW</title>
+
+    <link rel="stylesheet" href="../Assets/Styles/admin.css">
+</head>
+<body>
+
+<nav>
+    <ul class="navMenu">
+        <li class="title">The GaMa Project</li>
+        <li><a class="navbarHoverBlock" href="/">Home</a></li>
+        <li><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
+        <li><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
+
+    </ul>
+</nav>
+<main>
+    <div class="formWrapper">
+        <div class="formAdmin">
+            <form class="registerForm" method="post" action="/api/admin/gameRegister">
+                <p class="formTextTitle"> Register a Game </p>
+
+                <p class="pInputBox1">
+                    <label class="formText" for="nameRegister">Game's name
+                    </label> </p><br>
+                <p class="pInputBox2">
+                    <input class="inputBox"
+                           type="text"
+                           id="nameRegister"
+                           name="nameRegister">
+                </p> <br>
+
+                <p class="pAllignText">
+                    <label class="formText" for="company">Company
+                    </label> </p><br>
+                <p class="pAllignText1">
+                    <input class="inputBox" type="text"
+                           id="company" name="company">
+                </p>
+                <br>
+
+                <p class="pAllignText">
+                    <label class="formText" for="releaseDate">Release date
+                    </label> </p><br>
+                <p class="pAllignText1">
+                    <input class="inputBox" type="text"
+                           id="releaseDate" name="releaseDate">
+                </p>
+                <br>
+
+                <p class="pAllignText">
+                    <label class="formText" for="genres">Genres (separate by comma)
+                    </label> </p><br>
+                <p class="pAllignText1">
+                    <input class="inputBox" type="text"
+                           id="genres" name="genres">
+                </p>
+                <br>
+                <p class="pAllignText">
+                    <label class="formText" for="price">Price
+                    </label> </p><br>
+                <p class="pAllignText1">
+                    <input class="inputBox" type="text"
+                           id="price" name="price">
+                </p>
+                <br>
+                <p class="pAllignText">
+                    <label class="formText" for="category">Category
+                    </label> </p><br>
+                <p class="pAllignText1">
+                    <input class="inputBox" type="text"
+                           id="category" name="category">
+                </p>
+                <br>
+
+                <p class="pAllignText">
+                    <label class="formText" for="age_restriction">Age restriction
+                    </label> </p><br>
+                <p class="pAllignText1">
+                    <input class="inputBox" type="text"
+                           id="age_restriction" name="age_restriction">
+                </p>
+                <br>
+
+                <p class="pAllignText">
+                    <label class="formText" for="platform">Platforms (separate by comma)
+                    </label> </p><br>
+                <p class="pAllignText1">
+                    <input class="inputBox" type="text"
+                           id="platform" name="platform">
+                </p>
+                <br>
+
+                <p class="pAllignText">
+                    <label class="formText" for="description">Description
+                    </label> </p><br>
+                <p class="pAllignText1">
+                    <textarea class="inputBoxDescription" rows="5" cols="30"
+                           id="description" name="description">Description
+                    </textarea>
+                </p>
+
+                <br>
+
+                <input type="submit" class="submitButton"
+                       value="Register"> <br>
+
+            </form>
+            <div class="login"><a href="/login" class="already"><b>You already have
+                        an account?</b></a></div>
+        </div>
+    </div>
+    <script src="/Assets/Scripts/loadPageOptions.js"></script>
+    <script src="./Assets/Scripts/admin.js"></script>
+</main>
+</body>
+</html>

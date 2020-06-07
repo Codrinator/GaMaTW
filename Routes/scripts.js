@@ -46,6 +46,18 @@ const loadGameCollection = async function(req, res){ //codrin
             res.end();
         }
     });
-}
+};
 
-module.exports = {loginScript,registerScript,loadPageScript, loadGameCollection};
+const adminScript = async function(req, res){
+    fs.readFile('./Assets/Scripts/admin.js', function(err,str){
+        if(err){
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "application/javascript"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
+module.exports = {loginScript,registerScript,loadPageScript, loadGameCollection,adminScript};
