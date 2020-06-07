@@ -70,19 +70,29 @@ function downloadCSV() {
     request.responseType = 'json';
 
     request.onload = function () {
+
         if (request.response.success === true) {
             let info = 'name,company,popularity,category,age_restriction,price,release_date'+'\n';
+        let date;
             request.response.allGames.forEach(function (item) {
+                if(item.release_date===undefined)
+                     date = 'Unknown';
+                else
+                    date=item.release_date.toLocaleString();
                 info = info + (item.name + ',' + item.company+ ',' + item.popularity
                     + ',' + item.category+ ',' + item.age_restriction+ ',' + item.price
-                    + ',' + item.release_date.toLocaleString()) + '\n';
+                    + ',' + date) + '\n';
 
             });
             info = info + '\n';
             info = info + 'name,owner,number_participants,state,created_at'+'\n';
             request.response.allTournaments.forEach(function (item) {
+                if(item.created_at===undefined)
+                    date = 'Unknown';
+                else
+                    date=item.created_at.toLocaleString();
                 info = info + (item.name + ',' + item.company + ',' + item.max_number_participants +
-                        ',' + item.state + ',' + item.created_at.toLocaleString()) + '\n';
+                        ',' + item.state + ',' + date) + '\n';
             });
 
             const blob = new Blob([info], {type: 'test/csv'});
@@ -90,7 +100,7 @@ function downloadCSV() {
             const a = document.createElement('a');
             a.setAttribute('hidden', '');
             a.setAttribute('href', urlBlob);
-            a.setAttribute('download', 'GAMA_Statistics_CSV.csv');
+            a.setAttribute('download', 'GAMMA_Statistics_CSV.csv');
             document.body.appendChild(a);
             a.click();
             document.body.remove();
