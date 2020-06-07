@@ -29,9 +29,9 @@
             <div class="link-text">
               <a class="nav-subitem">Digital</a>
               <ul>
-                <li class="nav-subsubitem">Action</li>
-                <li class="nav-subsubitem">Adventure</li>
-                <li class="nav-subsubitem">Simulator</li>
+                <li class="nav-subsubitem" onclick="getGamesCollectionSub(10, 'Digital', 'Action')">Action</li>
+                <li class="nav-subsubitem" onclick="getGamesCollectionSub(10, 'Digital', 'Adventure')">Adventure</li>
+                <li class="nav-subsubitem" onclick="getGamesCollectionSub(10, 'Digital', 'Simulator')">Simulator</li>
                 <li class="nav-subsubitem">Sports</li>
                 <li class="nav-subsubitem">Platformer</li>
                 <li class="nav-subsubitem">Racing</li>
@@ -57,7 +57,8 @@
     </nav>
   <main>
       <div class="game-container">
-        <div class="game-item"><p class="game-item-title">Name:</p>
+        <p class="game-item-title">Items sorted by:</p>
+        <div class="game-item">
           <% var index = 0; loadGames.forEach(function (item){ index = index + 1 %>
           <p>
             <%= index + '.' %>

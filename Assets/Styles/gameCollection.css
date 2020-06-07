@@ -63,7 +63,7 @@ body {
 
 main {
     position: relative;
-    top: 75px;
+    top: 62px;
 }
 
 .navbar {
@@ -253,4 +253,18 @@ main {
 .nav-stats-item {
     font-style: italic;
     color: white;
+}
+
+.game-container{
+    margin-left: 20vw;
+    margin-right: 12px;
+    padding-left: 10px;
+}
+
+.game-item {
+    grid-column: 2/10;
+    grid-row: 2/6;
+    background-color: slategray;
+    border-radius: 7px;
+    border: 2px solid #2e3346;
 }

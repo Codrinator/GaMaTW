@@ -31,9 +31,12 @@ const homePageStyle = async function (req, res) {
 
 
 const gameCollection = async function (req, res) {
-    const loadGames = await Game.loadGames(10);
-    const mainCollection = await Game.getGamesCollection(10, 'Digital');
-    const subCollection = await Game.getGamesCollectionSub(10, 'Digital', 'Action');
+    const categorie = 'Digital';
+    const genre = 'Action';
+    const noOfItems = 10;
+    const loadGames = await Game.loadGames(noOfItems);
+    const mainCollection = await Game.getGamesCollection(noOfItems, categorie);
+    const subCollection = await Game.getGamesCollectionSub(noOfItems, categorie, genre);
     ejs.renderFile('./Views/gameCollection.ejs', {loadGames: loadGames, mainCollection: mainCollection, subCollection: subCollection}, function (err, str) {
         if (err) {
             throw err;

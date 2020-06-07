@@ -11,7 +11,7 @@ const api = Router();
 
 
 router.use('/api/',api);
-api.use(bodyParser.json());
+router.use(bodyParser.json());
 api.use(authorize);
 api.use('/auth',auth);
 api.use('/gameCollection', collection); //din collection.js la export
