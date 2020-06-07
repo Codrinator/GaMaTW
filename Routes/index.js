@@ -17,7 +17,7 @@ api.use(authorize);
 api.use('/auth',auth);
 
 api.use('/gameCollection', collection);
-api.use('/admin',admin);
+api.use('/admin', admin);
 
 router.get('/rssFeed', rss);
 
