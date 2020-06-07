@@ -1,7 +1,7 @@
 const Game = require('../Models/index').Game;
 
 const insertGame = async function insertGame(req, res) {
-    
+
     const name= req.body.name;
     const company= req.body.company;
     const genres= req.body.genres;
