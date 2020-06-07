@@ -11,10 +11,10 @@ const api = Router();
 
 
 router.use('/api/',api);
-router.use(bodyParser.json());
+api.use(bodyParser.json());
 api.use(authorize);
 api.use('/auth',auth);
-api.use('/gameCollection', collection); //din collection.js la export
+api.use('/gameCollection', collection);
 router.get('/rssFeed', rss);
 
 router.get('/', statics.homePage);

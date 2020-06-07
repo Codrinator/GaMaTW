@@ -21,7 +21,7 @@ const getTopGames = async function () {
 };
 
 
-const loadGames = async function(noOfItems){
+const getGamesCollectionSub = async function(noOfItems){
     const query = Game.find();
     query.sort({popularity: -1}).limit(noOfItems);
     return query.exec();
@@ -33,10 +33,18 @@ const getGamesCollection = async function(noOfItems, category){
     return query.exec();
 };
 
-const getGamesCollectionSub = async function(noOfItems, category, genre){ //atentie poate crapa aici
-    const query = Game.find({genre: genre});
-    query.where({category: category}).limit(noOfItems);
+const loadGames = async function(noOfItems=20, categorie, genre, switcher = 0){
+    
+    if(switcher === 1){
+    const query = Game.find();
+    query.where({categorie: categorie, genre:genre}).limit(noOfItems);
     return query.exec();
+    }
+    else{
+    const query = Game.find();
+    query.sort({popularity: -1}).limit(noOfItems);
+    return query.exec();
+    }
 };
 
 const getNewGames = async function(){

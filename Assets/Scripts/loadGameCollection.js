@@ -1,20 +1,22 @@
-function loadCollection(noOfItems, categorie, genre){
+
+function loadCollection(noOfItems, categorie, genre, switcher = 0){
     const url = '/api/gameCollection/loadCollection';
     const request = new XMLHttpRequest();
 
     request.open('POST', url);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    request.responseType = 'json';
+    request.responseType = 'text';
+    DOMParser2 = new DOMParser();
     request.onload = function(){
-       
-        if(request.response.success === true){
-           // alert('E bine');
-        }
+
+        document = DOMParser2.parseFromString(request.response,'text/html');
+        document.write(request.response);
     };
-    //console.log(categorie);
+    
     request.send(JSON.stringify({
         noOfItems: noOfItems,
         categorie: categorie,
-        genre: genre
+        genre: genre,
+        switcher: switcher
     }));
 };
