@@ -58,7 +58,13 @@ body {
     padding: 20px 25px 20px 25px;
     text-decoration: none;
 }
-
+.navbarNoHover {
+    color: rgb(159, 159, 194);
+    display: block;
+    padding: 20px 25px 20px 25px;
+    font-style: italic;
+    text-decoration: none;
+}
 .navbarHoverBlock:hover, .active {
     color: darkblue;
     background-color: lightgrey;
