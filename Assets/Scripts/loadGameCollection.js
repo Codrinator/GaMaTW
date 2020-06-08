@@ -1,15 +1,85 @@
-function loadCollection(noOfItems, categorie, genre, switcher = 0){
+let page = 1;
+
+function loadCollection(noOfItems, categorie, genre, switcher){
     const url = '/api/gameCollection/loadCollection';
     const request = new XMLHttpRequest();
 
     request.open('POST', url);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    request.responseType = 'text';
-    DOMParser2 = new DOMParser();
+    request.responseType = 'json';
+    
     request.onload = function(){
+        //sessionStorage.setItem("numberOfGames", request.response.??);
+        //const games = request.response.loadGames
 
-        document = DOMParser2.parseFromString(request.response,'text/html');
-        document.write(request.response);
+        const container = document.getElementById("gamesMainContainer");
+        
+        const gamesList = document.createElement("div");
+        gamesList.classList.add("games-grid");
+        
+        const colNames = document.createElement("ul");
+        colNames.classList.add("column-names");
+        
+        const col1 = document.createElement("li");
+        col1.classList.add("column-names-li");
+        col1.textContent = "Name";
+        
+        const col2 = document.createElement("li");
+        col2.classList.add("column-names-li");
+        col2.textContent = "made by";
+        
+        const col3 = document.createElement("li");
+        col3.classList.add("column-names-li");
+        col3.textContent = "Popularity";
+
+        const col4 = document.createElement("li");
+        col4.classList.add("column-names-li");
+        col4.textContent = "Platform";
+
+        const col5 = document.createElement("li");
+        col5.classList.add("column-names-li");
+        col5.textContent = "Genre"
+
+        const col6 = document.createElement("li");
+        col6.classList.add("column-names-li");
+        col6.textContent = "Price"
+
+        colNames.appendChild(col1);
+        colNames.appendChild(col2);
+        colNames.appendChild(col3);
+        colNames.appendChild(col4);
+        colNames.appendChild(col5);
+        colNames.appendChild(col6);
+        gamesList.appendChild(colNames);
+        const games = request.response.games;
+        const displayedList = document.createElement("ul");
+        displayedList.classList.add("displayed-games");
+        // test alert(games[3].company);
+        games.forEach(function(itemGame){
+            const item = document.createElement("li");
+            item.classList.add("grid-item");
+            const gameTitle = document.createElement("span");
+            gameTitle.classList.add("grid-item-title");
+            gameTitle.textContext = itemGame.name;
+            const gameCompany = document.createElement("span");
+            gameTitle.classList.add("grid-item-title");
+            gameTitle.textContext = itemGame.company;
+            
+            const button = document.createElement("button");
+            button.classList.add("particular-button");
+            button.textContent = "View";
+            button.addEventListener("click",function(event){
+                event.preventDefault();
+                //revenim pentru view
+            });
+
+            item.appendChild(gameTitle);
+            item.appendChild(gameCompany);
+
+            gamesList.appendChild(item);
+        });
+        container.appendChild(gamesList);
+
     };
     
     request.send(JSON.stringify({
@@ -113,3 +183,10 @@ function downloadCSV() {
     };
     request.send();
 }
+
+const popularityButton = document.getElementById("popularityButton");
+popularityButton.addEventListener("click", function (event){
+    event.preventDefault();
+    loadCollection(10, 'Digital', 'Action', 1);
+})
+

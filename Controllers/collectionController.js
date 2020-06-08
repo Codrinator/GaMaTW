@@ -3,7 +3,7 @@ const User = require('../Models/index').User;
 const Tournament = require('../Models/index').Tournament;
 const ejs = require('ejs');
 
-const loadCollection = async function(req, res){
+/*const loadCollection = async function(req, res){
     const categorie = req.body.categorie;
     const genre = req.body.genre;
     const noOfItems = req.body.noOfItems;
@@ -17,7 +17,20 @@ const loadCollection = async function(req, res){
             res.end();
         }
     });
-}
+}*/
+
+const loadingCollection = async function loadingCollection(req, res){
+    const noOfItems = req.body.noOfItems;
+    const categorie = req.body.categorie;
+    const genre = req.body.genre;
+
+    const games = await Game.loadGames(noOfItems, categorie, genre, 0);
+    //console.log(games);
+    res.end(JSON.stringify({
+       success: true,
+       games: games
+    }))
+};
 
 const getStatistic = async function getStatistic(req, res) {
     const newGames = await Game.getNewGames();
@@ -43,4 +56,4 @@ const getCSV = async function getCSV(req, res) {
     }))
 };
 
-module.exports = {loadCollection, getStatistic, getCSV};
+module.exports = {loadingCollection, getStatistic, getCSV};

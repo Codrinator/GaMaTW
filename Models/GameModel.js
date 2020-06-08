@@ -48,7 +48,7 @@ const getGamesCollection = async function(noOfItems, category){
     return query.exec();
 };
 
-const loadGames = async function(noOfItems=20, categorie, genre, switcher = 0){
+const loadGames = async function(noOfItems, categorie, genre, switcher){
     if(switcher === 1){
     const query = Game.find();
     query.where({categorie: categorie, genre:genre}).limit(noOfItems);
