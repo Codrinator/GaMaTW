@@ -57,9 +57,9 @@ function addActiveClass(){
     const navBar = document.getElementsByClassName("navMenu");
     const navList = navBar[0].children;
     for (let i = 1 ; i <navList.length ; i++){
-        const tempString = navList[i].firstElementChild.toString().substring(22);
+        const tempString = navList[i].firstChild.toString().substring(22);
         if (tempString === loc){
-            navList[i].firstElementChild.classList.add("active");
+            navList[i].firstChild.classList.add("active");
         }
     }
 }

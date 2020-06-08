@@ -109,7 +109,7 @@ function joinTournament(tName){
     request.onload = function(){
         if (!request.response.success) alert(request.response.status);
         else location.reload();
-    }
+    };
     request.send(JSON.stringify({
         tournament: tName
     }));
@@ -127,7 +127,6 @@ function isInTournament(){
         request.onload = function(){
             if (request.response.success){
                 if (request.response.isInTour){
-                    alert("sanky");
                     if (request.response.numberOfPlayers === 8){
                         loadEightManTournament(request.response.tournament);
                     } else if (request.response.numberOfPlayers === 16){
