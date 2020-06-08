@@ -259,12 +259,36 @@ main {
     margin-left: 20vw;
     margin-right: 12px;
     padding-left: 10px;
-}
-
-.game-item {
-    grid-column: 2/10;
-    grid-row: 2/6;
     background-color: slategray;
     border-radius: 7px;
     border: 2px solid #2e3346;
+}
+
+.head-sorter{
+    text-align:center;
+    font-size: larger;
+    margin-top: 1rem;
+    margin-left: 7.3rem;
+    color:  darkblue;
+    font-family: Impact, "Arial Narrow", "Optima", "Geneva";
+}
+.buttons {
+    margin-left: 13.5rem;
+    margin-top: 1rem;
+}
+.titles-grid{
+    margin-top: 1rem;
+}
+
+.column-names li{
+    display:inline-block;
+    list-style-type: none;
+    font-size: larger;
+    text-decoration: underline;
+    margin-left: 4rem;
+    color:  darkblue;
+}
+
+.grid-item-title{
+    margin-left: 4rem;
 }

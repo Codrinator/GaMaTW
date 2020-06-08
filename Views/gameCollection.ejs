@@ -29,21 +29,21 @@
             <div class="link-text">
               <a class="nav-subitem">Digital</a>
               <ul>
-                <li class="nav-subsubitem"><a href="#" onclick="loadCollection(10, 'digital', 'action', 1, 1)">Action</a></li>
-                <li class="nav-subsubitem"><a href="#" onclick="loadCollection(10, 'digital', 'adventure', 1, 1)">Adventure</a></li>
-                <li class="nav-subsubitem"><a href="#" onclick="loadCollection(10, 'digital', 'simulator', 1, 1)">Simulator</a></li>
-                <li class="nav-subsubitem"><a href="#" onclick="loadCollection(10, 'digital', 'strategy', 1, 1)">Strategy</a></li>
-                <li class="nav-subsubitem"><a href="#" onclick="loadCollection(10, 'digital', 'fighting', 1, 1)">Fighting</a></li>
-                <li class="nav-subsubitem"><a href="#" onclick="loadCollection(10, 'digital', 'platformer', 1, 1)">Platformer</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'action', 1, 1)">Action</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'adventure', 1, 1)">Adventure</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'simulator', 1, 1)">Simulator</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'strategy', 1, 1)">Strategy</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'fighting', 1, 1)">Fighting</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'platformer', 1, 1)">Platformer</a></li>
               </ul>
             </div>
             <div class="link-text">
               <a class="nav-subitem2">Board</a>
               <ul>
-                <li class="nav-subsubitem"><a href="#" onclick="loadCollection(10, 'board', 'role-play', 1, 1)">Role-Play</a></li>
-                <li class="nav-subsubitem"><a href="#" onclick="loadCollection(10, 'board', 'strategy', 1, 1)">Strategy</a></li>
-                <li class="nav-subsubitem"><a href="#" onclick="loadCollection(10, 'board', 'war', 1, 1)">War</a></li>
-                <li class="nav-subsubitem"><a href="#" onclick="loadCollection(10, 'board', 'dynamic', 1, 1)">Dynamic</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'board', 'role-play', 1, 1)">Role-Play</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'board', 'strategy', 1, 1)">Strategy</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'board', 'war', 1, 1)">War</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'board', 'dynamic', 1, 1)">Dynamic</a></li>
               </ul>
             </div>
           </li>
@@ -57,7 +57,7 @@
       </ul>
     </nav>
   <main>
-      <head class="head-sorter">Items sorted by:</head>
+      <div class="head-sorter">Items sorted by:</div>
       <div class="game-container" id="gamesMainContainer">
         <div class="buttons" id="buttonsDiv">
           <button id="popularityButton">Popularity</button>
@@ -65,9 +65,10 @@
           <button id="dateButton">Release Date</button>
           <button >Age restriction</button>
           <button id="priceButton">Price</button>
-          <button >Up</button>
-          <button >Down</button>
         </div>
+      </div>
+      <div id="pageNav">
+
       </div>
   </main>
     <script src="/Assets/Scripts/loadPageOptions.js"></script>

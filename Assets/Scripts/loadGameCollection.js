@@ -40,7 +40,7 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
         
         const col2 = document.createElement("li");
         col2.classList.add("column-names-li");
-        col2.textContent = "made by";
+        col2.textContent = "Company";
         
         const col3 = document.createElement("li");
         col3.classList.add("column-names-li");
@@ -52,7 +52,7 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
 
         const col5 = document.createElement("li");
         col5.classList.add("column-names-li");
-        col5.textContent = "Main Genre"
+        col5.textContent = "Genre"
 
         const col6 = document.createElement("li");
         col6.classList.add("column-names-li");
@@ -122,9 +122,8 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
         //alegerea paginii, in partea de jos
         pageGlobal = page;
 
-        const pageNav = document.createElement("div");
+        const pageNav = document.getElementById("pageNav");
         pageNav.classList.add("page-nav");
-        pageNav.id = "pageNav";
         
         const labelNav = document.createElement("label");
         labelNav.textContent = "Page:";
@@ -262,7 +261,7 @@ function downloadCSV() {
 const popularityButton = document.getElementById("popularityButton");
 popularityButton.addEventListener("click", function (event){
     event.preventDefault();
-    loadCollection(10, 'digital', 'action', 0, 1); //default switcher 0 pentru popularity
+    loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 1, 1); //default switcher 0 pentru popularity
 })
 
 const alphabetButton = document.getElementById("alphabeticallyButton");
