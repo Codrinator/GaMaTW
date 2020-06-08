@@ -66,7 +66,7 @@ const addParticipant = async function(title,username){
         doc.save();
         return "joined";
     } else return "full";
-}
+};
 
 const Tournament = mongoose.model('Tournaments', TournamentSchema);
 
