@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     username: String,
     password: String,
+    inTournament: {type: Boolean, default: false},
+    tournament: {type: String, default:""},
     user_score: {type: Number, default: 0}
 });
 
@@ -26,5 +28,14 @@ const countUsers = async function () {
     return query.exec();
 };
 
-module.exports = {User, findUserByUsername, countUsers, getTopUsers};
+const modifyInTournamentValue = async function (newState,username,tournament){
+    const query = User.find();
+    query.where({username: username});
+    const doc = (await query.exec())[0];
+    doc.inTournament = newState;
+    doc.tournament = tournament;
+    doc.save();
+}
+
+module.exports = {User, findUserByUsername, countUsers, getTopUsers, modifyInTournamentValue};
 
