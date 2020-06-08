@@ -148,8 +148,7 @@ function isInTournament(){
 }
 
 function loadEightManTournament(tournament){
-   changeButtons();
-   const username = (sessionStorage.getItem("user")) ? sessionStorage.getItem("user") : localStorage.getItem("user");
+   changeButtons(tournament.owner);
    const bracketDiv = document.createElement("div");
    bracketDiv.classList.add("bracket-container");
    const table = document.createElement("table");
@@ -217,8 +216,7 @@ function loadEightManTournament(tournament){
 }
 
 function loadFourManTournament(tournament){
-    changeButtons();
-    const username = (sessionStorage.getItem("user")) ? sessionStorage.getItem("user") : localStorage.getItem("user");
+    changeButtons(tournament.owner);
     const bracketDiv = document.createElement("div");
     bracketDiv.classList.add("bracket-container");
     const table = document.createElement("table");
@@ -264,8 +262,7 @@ function loadFourManTournament(tournament){
 }
 
 function loadSixteenManTournament(tournament){
-    changeButtons();
-    const username = (sessionStorage.getItem("user")) ? sessionStorage.getItem("user") : localStorage.getItem("user");
+    changeButtons(tournament.owner);
     const bracketDiv = document.createElement("div");
     bracketDiv.classList.add("bracket-container");
     const table = document.createElement("table");
@@ -367,14 +364,26 @@ function loadSixteenManTournament(tournament){
     document.getElementById("mainContainer").appendChild(bracketDiv);
 }
 
-function changeButtons(){
+function changeButtons(owner){
+    const username = (sessionStorage.getItem("user")) ? sessionStorage.getItem("user") : localStorage.getItem("user");
     const buttonContainer = document.getElementById("buttonDiv");
     document.getElementById("Host").remove();
     document.getElementById("Join").remove();
-    const leaveButton = document.createElement("button");
-    leaveButton.textContent = "Leave";
-    leaveButton.id = "Leave";
-    buttonContainer.appendChild(leaveButton);
+    if (username !== owner) {
+        const leaveButton = document.createElement("button");
+        leaveButton.textContent = "Leave";
+        leaveButton.id = "Leave";
+        buttonContainer.appendChild(leaveButton);
+    } else {
+        const cancelButton = document.createElement("button");
+        cancelButton.textContent = "Cancel";
+        cancelButton.id = "Leave";
+        buttonContainer.appendChild(cancelButton);
+    }
+}
+
+function leaveTournament(){
+
 }
 
 
