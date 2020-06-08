@@ -22,9 +22,9 @@
     <nav class="navbar">
       <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/gameCollection" class="nav-link">
               <i class="fa fa-gamepad"><g class="fa-color"></g></i>
-              <span class="link-text"><div class="nav-title">Categories</div></span>
+              <span class="link-text" ><div class="nav-title">Categories</div></span>
             </a>
             <div class="link-text">
               <a class="nav-subitem">Digital</a>
@@ -57,15 +57,16 @@
       </ul>
     </nav>
   <main>
-      <div class="game-container">
-        <p class="game-item-title">Items sorted by:</p>
-        <div class="game-item">
-          <% var index = 0; loadGames.forEach(function (item){ index = index + 1 %>
-          <p>
-            <%= index + '.' %>
-            <%= '"' + item.name + '"' %> 
-          </p>
-          <% }); %>
+      <head class="head-sorter">Items sorted by:</head>
+      <div class="game-container" id="gameMainContainer">
+        <div class="buttons" id="buttonsDiv">
+          <button id="Popularity">Popularity</button>
+          <button id="Alphabetically">Alphabetically</button>
+          <button id="ReleaseDate">Release Date</button>
+          <button id="Age">Age restriction</button>
+          <button id="Price">Price</button>
+          <button id="up">Up</button>
+          <button id="down">Down</button>
         </div>
       </div>
   </main>
