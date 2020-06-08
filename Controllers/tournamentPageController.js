@@ -11,7 +11,7 @@ const getPage = async function(req, res){
             formattedData.push({
                 tournamentName: tournaments[i].name,
                 game: tournaments[i].game,
-                participants: tournaments[i].active_participants.length + '/' + tournaments[i].max_number_participants
+                participants: tournaments[i].participants.length + '/' + tournaments[i].max_number_participants
             });
         };
         res.statusCode = 200;
