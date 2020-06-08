@@ -32,6 +32,7 @@ const modifyInTournamentValue = async function (newState,username,tournament){
     const query = User.find();
     query.where({username: username});
     const doc = (await query.exec())[0];
+    if (newState) doc.user_score = doc.user_score + 50;
     doc.inTournament = newState;
     doc.tournament = tournament;
     doc.save();

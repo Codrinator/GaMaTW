@@ -9,7 +9,8 @@ const isInTournament = async function(req,res){
             res.end(JSON.stringify({
                 success : true,
                 isInTour : true,
-                tournament : tournament
+                tournament : tournament,
+                numberOfPlayers : tournament.max_number_participants
             }));
         }else{
             res.statusCode = 200;

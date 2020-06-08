@@ -28,9 +28,7 @@ if (isLogged) {
             localStorage.removeItem("user");
             localStorage.removeItem("token");
         }
-        username.remove();
-        signOut.remove();
-        appendLoginAndRegister();
+        location.reload();
     })
 } else {
     appendLoginAndRegister();

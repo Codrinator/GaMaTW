@@ -91,7 +91,16 @@ main {
     float:right;
     background-color: darkslateblue;
     color: lightgrey;
-    height: 5vh;
+    height: 2vw;
+    width: 12vw;
+    font-family: "Lucida Console", "Optima", "Geneva";
+}
+
+#Leave{
+    margin-left: 8vw;
+    background-color: darkslateblue;
+    color: lightgrey;
+    height: 2vw;
     width: 12vw;
     font-family: "Lucida Console", "Optima", "Geneva";
 }
@@ -100,7 +109,7 @@ main {
     float:left;
     background-color: darkslateblue;
     color: lightgrey;
-    height: 5vh;
+    height: 2vw;
     width: 12vw;
     font-family: "Lucida Console", "Optima", "Geneva";
 }
@@ -173,3 +182,58 @@ main {
     grid-row: 13;
 }
 
+
+/*-----------------------------------------------Brackets---------------------------------------------------------*/
+
+.bracket-container{
+    grid-column: 5/17;
+    grid-row: 3/12;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    background-color: #2e3346;
+    border: 2px solid black;
+    border-radius: 7px;
+}
+
+.brackets{
+    margin-left: 5vw;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    width: 50vw;
+}
+
+.cells{
+    border: 2px solid lightgray;
+    height: 3vh;
+    color: deepskyblue;
+}
+
+.cellsSecond{
+    height: 6vh;
+    border: 2px solid lightgray;
+    color: deepskyblue;
+}
+
+.cellsThird{
+    height: 12vh;
+    border: 2px solid lightgray;
+    color: deepskyblue;
+}
+.cellsFourth{
+    height: 24vh;
+    border: 2px solid lightgray;
+    color: deepskyblue;
+}
+.cellsFifth{
+    height: 48vh;
+    border: 2px solid lightgray;
+    color: deepskyblue;
+}
+
+#one{
+    color: lawngreen;
+}
+
+#two{
+    color: red;
+}
