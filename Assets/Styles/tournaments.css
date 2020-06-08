@@ -122,13 +122,15 @@ main {
 
 .column-names-li{
     display: inline;
-    margin-left: 3vh;
+    margin-left: 1vw;
     padding-right: 15vw;
     font-family: Impact;
     font-size: 1.3vw;
     color: #2e3346;
 }
-
+#last{
+    padding-right: 0;
+}
 .displayed-tournaments{
     grid-column: 1/20;
     list-style-type: none;

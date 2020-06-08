@@ -17,87 +17,14 @@
     </ul>
 </nav>
 <main>
-    <div class="grid-container">
-        <div class="buttons">
-            <button id="Join">Join Tournament</button>
-            <button id="Host">Host Tournament</button>
-        </div>
-        <div class="tournament-list">
-            <ol class="column-names">
-                <li class="column-names-li">Tournament Name</li>
-                <li class="column-names-li">Game</li>
-                <li class="column-names-li">Nr. of players</li>
-            </ol>
-            <ol class="displayed-tournaments">
-                <li class="tournament-item">
-                    <span class="tournament-title">Mare turneu</span>
-                    <span class="tournament-game">League of Legends</span>
-                    <span class="tournament-players">3/8</span>
-                    <button class="join-button">JOIN</button>
-                </li>
-                <li class="tournament-item">
-                    <span class="tournament-title">Mare turneu</span>
-                    <span class="tournament-game">League of Legends</span>
-                    <span class="tournament-players">3/8</span>
-                    <button class="join-button">JOIN</button>
-                </li>
-                <li class="tournament-item">
-                    <span class="tournament-title">Mare turneu</span>
-                    <span class="tournament-game">League of Legends</span>
-                    <span class="tournament-players">3/8</span>
-                    <button class="join-button">JOIN</button>
-                </li>
-                <li class="tournament-item">
-                    <span class="tournament-title">Mare turneu</span>
-                    <span class="tournament-game">League of Legends</span>
-                    <span class="tournament-players">3/8</span>
-                    <button class="join-button">JOIN</button>
-                </li>
-                <li class="tournament-item">
-                    <span class="tournament-title">Mare turneu</span>
-                    <span class="tournament-game">League of Legends</span>
-                    <span class="tournament-players">3/8</span>
-                    <button class="join-button">JOIN</button>
-                </li>
-                <li class="tournament-item">
-                    <span class="tournament-title">Mare turneu</span>
-                    <span class="tournament-game">League of Legends</span>
-                    <span class="tournament-players">3/8</span>
-                    <button class="join-button">JOIN</button>
-                </li>
-                <li class="tournament-item">
-                    <span class="tournament-title">Mare turneu</span>
-                    <span class="tournament-game">League of Legends</span>
-                    <span class="tournament-players">3/8</span>
-                    <button class="join-button">JOIN</button>
-                </li>
-                <li class="tournament-item">
-                    <span class="tournament-title">Mare turneu</span>
-                    <span class="tournament-game">League of Legends</span>
-                    <span class="tournament-players">3/8</span>
-                    <button class="join-button">JOIN</button>
-                </li><li class="tournament-item">
-                    <span class="tournament-title">Mare turneu</span>
-                    <span class="tournament-game">League of Legends</span>
-                    <span class="tournament-players">3/8</span>
-                    <button class="join-button">JOIN</button>
-                </li>
-                <li class="tournament-item">
-                    <span class="tournament-title">Mare turneu</span>
-                    <span class="tournament-game">League of Legends</span>
-                    <span class="tournament-players">3/8</span>
-                    <button class="join-button">JOIN</button>
-                </li>
-            </ol>
-            <div class="page-nav">
-                <label>Page:</label>
-                <button>Prev</button>
-                <label> 1 </label>
-                <button>Next</button>
-            </div>
+    <div class="grid-container" id="mainContainer">
+        <div class="buttons" id="buttonDiv">
+            <button id="Join" onclick="getTournamentPage(1,10)">Join</button>
+            <button id="Host">Host</button>
         </div>
     </div>
 </main>
 <script src="/Assets/Scripts/loadPageOptions.js"></script>
+<script src="/Assets/Scripts/loadTournaments.js"></script>
 </body>
 </html>

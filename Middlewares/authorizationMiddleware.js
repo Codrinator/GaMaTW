@@ -1,7 +1,9 @@
 const tokenUtils = require("../Utils/authorizationTokenUtils");
 
 const pathsToAuthorize = [
-    "/admin/registerGame",
+    "/admin/registerGame", //de adaugat la request de pe front: request.setRequestHeader("Authorization", 'Bearer ' + sessionStorage.getItem("token")); --session sau local
+    "/tournaments/join",
+    "/tournaments/isInTournament",
     "/admin/deleteGame",//de adaugat la request de pe front: request.setRequestHeader("Authorization", 'Bearer ' + sessionStorage.getItem("token")); --session sau local
 ];
 

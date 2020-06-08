@@ -14,14 +14,15 @@ const index = http.createServer(function (req, res) {
 });
 
 Tournament.Tournament({
-    name: 'test',
+    name: 'Test2',
     owner: 'testOwner',
-    max_number_participants: 4,
+    max_number_participants: 8,
     game: 'Worms',
     state: true,
+    joinable: true,
     participants: ['Andrei','Victor','Mihai' , 'Ghiul'],
     active_participants: ['Andrei','Victor','Mihai' , 'Ghiul'],
-    matches: [{participantOne:'Andrei',participantTwo:'Victor'},{participantOne:'Mihai',participantTwo:'Ghiul'}]
+    matches: []
 }).save(function (err) {
     if (err) throw err;
 });
