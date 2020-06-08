@@ -8,6 +8,7 @@ const insertGame = require('./adminController').insertGame;
 const getTournamentPage = require('./tournamentPageController').getPage;
 const joinTournament = require('./tournamentJoinController').joinTournament;
 const isInTournament = require('./isInTournamentController').isInTournament;
+const deleteGame = require('./adminController').deleteGame;
 
 module.exports = {
     login,
@@ -19,6 +20,7 @@ module.exports = {
     getCSV,
     getTournamentPage,
     joinTournament,
-    isInTournament
+    isInTournament,
+    deleteGame
 };
 

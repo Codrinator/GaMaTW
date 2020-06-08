@@ -20,12 +20,18 @@ const getTopGames = async function () {
     return query.exec();
 };
 
+const getByName=async function(name){
+    const query=Game.find();
+    query.where({name: name});
+    return query.exec();
+};
+
 const getNumberOfGames= async function(){
     const query= Game.count();
     return query.exec()
 };
 
-const loadGames = async function(noOfItems){
+const getGamesCollectionSub = async function(noOfItems){
     const query = Game.find();
     query.sort({popularity: -1}).limit(noOfItems);
     return query.exec();
@@ -42,10 +48,17 @@ const getGamesCollection = async function(noOfItems, category){
     return query.exec();
 };
 
-const getGamesCollectionSub = async function(noOfItems, category, genre){
-    const query = Game.find({genre: genre});
-    query.where({category: category}).limit(noOfItems);
+const loadGames = async function(noOfItems=20, categorie, genre, switcher = 0){
+    if(switcher === 1){
+    const query = Game.find();
+    query.where({categorie: categorie, genre:genre}).limit(noOfItems);
     return query.exec();
+    }
+    else{
+    const query = Game.find();
+    query.sort({popularity: -1}).limit(noOfItems);
+    return query.exec();
+    }
 };
 
 const getNewGames = async function(){
@@ -60,8 +73,14 @@ const getNewGamesRssFeed=async function(){
     return query.exec();
 };
 
+const removeByName=async function(name){
+    const query=Game.find();
+    query.where({ name:name }).deleteOne();
+    query.exec();
+};
+
 
 const Game = mongoose.model('GameCollection', GameSchema);
 
-module.exports = {Game, getAll,getTopGames, getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub,getNumberOfGames};
+module.exports = {Game, removeByName,getAll,getTopGames,getByName,getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub,getNumberOfGames};
 

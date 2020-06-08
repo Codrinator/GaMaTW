@@ -72,4 +72,15 @@ const adminScript = async function(req, res){
     });
 };
 
-module.exports = {loginScript,registerScript,loadPageScript,loadGameCollection,adminScript,loadTournamentsScript};
+const deleteGameScript = async function(req, res){
+    fs.readFile('./Assets/Scripts/deleteGame.js', function(err,str){
+        if(err){
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "application/javascript"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+module.exports = {loginScript,registerScript,loadPageScript, loadGameCollection,adminScript,deleteGameScript,loadTournamentsScript};

@@ -16,13 +16,18 @@ router.use('/api/',api);
 api.use(bodyParser.json());
 api.use(authorize);
 api.use('/auth',auth);
+
+api.use('/gameCollection', collection);
 api.use('/admin',admin);
-api.use('/gameCollection', collection); //din collection.js la export
 api.use('/tournaments', tournaments);
+
 router.get('/rssFeed', rss);
 
 router.get('/', statics.homePage);
 router.get('/Assets/Styles/home.css', statics.homePageStyle);
+
+router.get('/deleteGame',statics.deleteGame);
+router.get('/Assets/Styles/deleteGame.css', statics.deleteGameStyle);
 
 router.get('/admin',statics.admin);
 router.get('/Assets/Styles/admin.css', statics.adminStyle);
@@ -47,4 +52,5 @@ router.get('/Assets/Scripts/loadPageOptions.js', scripts.loadPageScript);
 router.get('/Assets/Scripts/loadTournaments.js', scripts.loadTournamentsScript);
 router.get('/Assets/Scripts/loadGameCollection.js', scripts.loadGameCollection);
 router.get('/Assets/Scripts/admin.js',scripts.adminScript);
+router.get('/Assets/Scripts/deleteGame.js',scripts.deleteGameScript);
 module.exports = {router};
