@@ -26,6 +26,6 @@ const joinTournament = async function(req,res){
             status : "Server Error"
         }));
     }
-}
+};
 
 module.exports = {joinTournament};
