@@ -4,6 +4,7 @@ const pathsToAuthorize = [
     "/admin/registerGame", //de adaugat la request de pe front: request.setRequestHeader("Authorization", 'Bearer ' + sessionStorage.getItem("token")); --session sau local
     "/tournaments/join",
     "/tournaments/isInTournament",
+    "/tournaments/createTournament",
     "/admin/deleteGame",//de adaugat la request de pe front: request.setRequestHeader("Authorization", 'Bearer ' + sessionStorage.getItem("token")); --session sau local
 ];
 

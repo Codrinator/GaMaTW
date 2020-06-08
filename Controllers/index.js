@@ -9,6 +9,7 @@ const getTournamentPage = require('./tournamentPageController').getPage;
 const joinTournament = require('./tournamentJoinController').joinTournament;
 const isInTournament = require('./isInTournamentController').isInTournament;
 const deleteGame = require('./adminController').deleteGame;
+const createTournament = require('./tournamentCreateController').createTournament;
 
 module.exports = {
     login,
@@ -21,6 +22,7 @@ module.exports = {
     getTournamentPage,
     joinTournament,
     isInTournament,
-    deleteGame
+    deleteGame,
+    createTournament
 };
 
