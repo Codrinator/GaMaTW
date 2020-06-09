@@ -69,10 +69,10 @@ const insertGame = async function insertGame(req, res) {
                 success: false,
                 status: 'Genres cannot contain special characters or be null'
             }));
-        } else if (category.toLocaleString()!=='Board' && category.toLocaleString() !=='Digital') {
+        } else if (category.toLocaleString()!=='board' && category.toLocaleString() !=='digital') {
             res.end(JSON.stringify({
                 success: false,
-                status: 'Categories: Board / Digital'
+                status: 'Categories: board / digital'
             }));
         } else if (arrayRegex.test(requestPlatform) === false) {
             res.end(JSON.stringify({
