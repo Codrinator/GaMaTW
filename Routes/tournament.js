@@ -7,5 +7,6 @@ tournament.post('/getPage',controllers.getTournamentPage);
 tournament.post('/join',controllers.joinTournament);
 tournament.get('/isInTournament',controllers.isInTournament);
 tournament.post('/createTournament',controllers.createTournament);
+tournament.post('/leaveTournament',controllers.leaveTournament);
 
 module.exports = {tournament};

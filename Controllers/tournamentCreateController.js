@@ -1,13 +1,14 @@
 const Tournament = require('../Models/index').Tournament;
 const Game = require('../Models/index').Game;
-
+const setUserState = require('../Models/UserModel').modifyInTournamentValue;
 const createTournament = async function (req, res) {
     try {
-        const username = req.body.payload;
+        const username = req.user.payload;
         const name = req.body.name;
         const max_number_participants = req.body.max_number_participants;
         const game = req.body.game;
         const matches = [];
+        const match_winners = [];
 
         const arrayRegex = /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/;
 
@@ -16,16 +17,17 @@ const createTournament = async function (req, res) {
                 success: false,
                 status: 'Name cannot contain special characters'
             }));
-        } else if (await Game.getByName(game).length === 0) {
+        } else if ((await Game.getByName(game)).length === 0) {
             res.end(JSON.stringify({
                 success: false,
                 status: 'Game not existent in our database'
             }));
         } else {
-            for (let i = 0; i < max_number_participants; i++) {
+            for (let i = 0; i < max_number_participants-1; i++) {
                 matches.push({participantOne: "TBD", participantTwo: "TBD"});
+                match_winners.push("");
             }
-
+            await setUserState(true,username,name);
             Tournament.Tournament({
                 name: name,
                 owner: username,
