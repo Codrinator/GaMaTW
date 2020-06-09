@@ -280,15 +280,27 @@ main {
     margin-top: 1rem;
 }
 
+.column-names{
+   margin-right: 4rem;
+}
+
 .column-names li{
     display:inline-block;
     list-style-type: none;
     font-size: larger;
     text-decoration: underline;
-    margin-left: 4rem;
+    margin-left: 6rem;
     color:  darkblue;
+}
+
+.grid-item{
+    list-style-type: none;
 }
 
 .grid-item-title{
     margin-left: 4rem;
+}
+
+.page-nav{
+    margin-left: 24.5rem;
 }

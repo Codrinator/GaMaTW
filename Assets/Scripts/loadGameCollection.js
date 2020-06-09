@@ -101,7 +101,7 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
             gamePrice.textContent = games[i].price;
             
             const button = document.createElement("button");
-            button.classList.add("particular-button");
+            button.classList.add("view-button");
             button.textContent = "View";
             button.addEventListener("click",function(event){
                 event.preventDefault();
@@ -122,8 +122,9 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
         //alegerea paginii, in partea de jos
         pageGlobal = page;
 
-        const pageNav = document.getElementById("pageNav");
+        const pageNav = document.createElement("div");
         pageNav.classList.add("page-nav");
+        pageNav.id = "pageNav";
         
         const labelNav = document.createElement("label");
         labelNav.textContent = "Page:";
