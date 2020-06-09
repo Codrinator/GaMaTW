@@ -1,6 +1,6 @@
-const Tournament = require('../Models/index').Tournament;
-const Game = require('../Models/index').Game;
-const setUserState = require('../Models/UserModel').modifyInTournamentValue;
+const Tournament = require('../../Models').Tournament;
+const Game = require('../../Models').Game;
+const setUserState = require('../../Models/UserModel').modifyInTournamentValue;
 const createTournament = async function (req, res) {
     try {
         const username = req.user.payload;
@@ -25,7 +25,7 @@ const createTournament = async function (req, res) {
         } else {
             for (let i = 0; i < max_number_participants-1; i++) {
                 matches.push({participantOne: "TBD", participantTwo: "TBD"});
-                match_winners.push("");
+                match_winners.push("ND");
             }
             await setUserState(true,username,name);
             Tournament.Tournament({
@@ -33,10 +33,10 @@ const createTournament = async function (req, res) {
                 owner: username,
                 max_number_participants: max_number_participants,
                 game: game,
-                state: true,
+                state: false,
                 joinable: true,
                 participants: [],
-                match_winner: [],
+                match_winner: match_winners,
                 matches: matches
             }).save(function (err) {
                 if (err) throw err;

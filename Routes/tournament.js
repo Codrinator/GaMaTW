@@ -8,5 +8,6 @@ tournament.post('/join',controllers.joinTournament);
 tournament.get('/isInTournament',controllers.isInTournament);
 tournament.post('/createTournament',controllers.createTournament);
 tournament.post('/leaveTournament',controllers.leaveTournament);
+tournament.post('/declareMatchWinner',controllers.declareWinner);
 
 module.exports = {tournament};

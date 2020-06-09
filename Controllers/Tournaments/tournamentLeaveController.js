@@ -1,7 +1,7 @@
-const setUserState = require('../Models/UserModel').modifyInTournamentValue;
-const getUser = require('../Models/UserModel').findUserByUsername;
-const removeParticipant = require('../Models/TournamentsModel').removeParticipant;
-const changeTournamentState = require('../Models/TournamentsModel').makeNotJoinable;
+const setUserState = require('../../Models/UserModel').modifyInTournamentValue;
+const getUser = require('../../Models/UserModel').findUserByUsername;
+const removeParticipant = require('../../Models/TournamentsModel').removeParticipant;
+const changeTournamentState = require('../../Models/TournamentsModel').makeNotJoinable;
 
 const leaveTournament = async function(req,res){
     try{

@@ -1,5 +1,5 @@
-const tournament = require('../Models/TournamentsModel').addParticipant;
-const setUserState = require('../Models/UserModel').modifyInTournamentValue;
+const tournament = require('../../Models/TournamentsModel').addParticipant;
+const setUserState = require('../../Models/UserModel').modifyInTournamentValue;
 const joinTournament = async function(req,res){
     try{
         const username = req.user.payload;
