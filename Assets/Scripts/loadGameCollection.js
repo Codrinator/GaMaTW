@@ -67,18 +67,18 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
         titlesList.appendChild(col6);
         gameTable.appendChild(titlesList);
         const games = request.response.games;
-        
-        //const displayedList = document.createElement("table");
-       //displayedList.id="displayedList";
-        //displayedList.classList.add("displayed-games");
     
-       for(let i = 0; i < games.length; i++){
+        for(let i = 0; i < games.length; i++){
             const item = document.createElement("tr");
             item.classList.add("grid-item");
             
             const gameName = document.createElement("td");
+            const gameNameAnchor = document.createElement("button");
+            gameNameAnchor.id = "gameNameAnchor";
             gameName.classList.add("grid-item-title");
-            gameName.textContent = games[i].name;
+            gameNameAnchor.classList.add("game-name-anchor");
+            gameNameAnchor.textContent = games[i].name;
+            gameName.appendChild(gameNameAnchor);
             
             const gameCompany = document.createElement("td");
             gameCompany.classList.add("grid-item-title");
@@ -268,7 +268,7 @@ function downloadCSV() {
 const popularityButton = document.getElementById("popularityButton");
 popularityButton.addEventListener("click", function (event){
     event.preventDefault();
-    loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 1, 1); //default switcher 0 pentru popularity
+    loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 0, 1); //default switcher 0 pentru popularity
 })
 
 const alphabetButton = document.getElementById("alphabeticallyButton");
@@ -283,17 +283,10 @@ dateButton.addEventListener("click", function(event){
     loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 3, 1); //switcher 3 pentru date
 });
 
-/* const ageButton = document.getElementById("ageButton");
-ageButton.addEventListener("click", function(event){
-    event.preventDefault();
-    loadCollection(10, 'digital', 'action', 4, 1); //switcher 4 pentru age
-}); */
-
 const priceButton = document.getElementById("priceButton");
 priceButton.addEventListener("click", function(event){
     event.preventDefault();
     loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 5, 1); //switcher 5 pentru price
 });
 
-
-loadCollection(10, 'digital', 'action', 0, 1);
+loadCollection(10, '', '', 0, 1);

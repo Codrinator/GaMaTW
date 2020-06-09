@@ -27,7 +27,7 @@
               <span class="link-text" ><div class="nav-title">Categories</div></span>
             </a>
             <div class="link-text">
-              <a class="nav-subitem" href="#" onclick="loadCollection(10, 'digital', 'action', 0, 1)">Digital</a>
+              <a class="nav-subitem" id="digitalButton" href="#" onclick="loadCollection(10, 'digital', '', 0, 1)">Digital</a>
               <ul>
                 <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'action', 1, 1)">Action</a></li>
                 <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'adventure', 1, 1)">Adventure</a></li>
@@ -38,7 +38,7 @@
               </ul>
             </div>
             <div class="link-text">
-              <a class="nav-subitem2" href="#" onclick="loadCollection(10, 'board', 'strategy', 0, 1)">Board</a>
+              <a class="nav-subitem2" href="#" onclick="loadCollection(10, 'board', '', 0, 1)">Board</a>
               <ul>
                 <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'board', 'role-play', 1, 1)">Role-Play</a></li>
                 <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'board', 'strategy', 1, 1)">Strategy</a></li>
@@ -63,7 +63,6 @@
         <button id="popularityButton">Popularity</button>
         <button id="alphabeticallyButton">Alphabetically</button>
         <button id="dateButton">Release Date</button>
-        <button >Age restriction</button>
         <button id="priceButton">Price</button>
       </div>
       <div class="game-container" id="gamesMainContainer">
