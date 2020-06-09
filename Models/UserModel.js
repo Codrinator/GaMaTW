@@ -38,5 +38,13 @@ const modifyInTournamentValue = async function (newState,username,tournament){
     doc.save();
 }
 
-module.exports = {User, findUserByUsername, countUsers, getTopUsers, modifyInTournamentValue};
+const addPoints = async function (score,username) {
+    const query = User.find();
+    query.where({username: username});
+    const doc = (await query.exec())[0];
+    doc.user_score = doc.user_score + score;
+    doc.save();
+}
+
+module.exports = {User, findUserByUsername, countUsers, getTopUsers, modifyInTournamentValue,addPoints};
 

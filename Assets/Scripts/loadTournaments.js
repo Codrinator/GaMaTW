@@ -148,25 +148,41 @@ function isInTournament(){
 
 function loadEightManTournament(tournament){
    changeButtons(tournament.owner,tournament.name);
+   const username = (sessionStorage.getItem("user")) ? sessionStorage.getItem("user") : localStorage.getItem("user");
    const bracketDiv = document.createElement("div");
    bracketDiv.classList.add("bracket-container");
    const table = document.createElement("table");
    table.classList.add("brackets");
+   let index1 = 0;
+   let index2 = 4;
    for (let i=0;i < 8; i++){
        const tr = document.createElement("tr");
        const th1 = document.createElement("th");
        th1.classList.add("cells");
        th1.rowSpan=1;th1.colSpan=1;
        if (i%2 == 0){
+           index1++;
            th1.textContent = tournament.matches[Math.floor(i/2)].participantOne;
        } else {
            th1.textContent = tournament.matches[Math.floor(i/2)].participantTwo;
+       }
+       th1.classList.add("match"+index1);
+       if (tournament.state  && tournament.owner === username){
+           th1.addEventListener("click" ,function () {
+               cellClick(this,tournament);
+           });
        }
        tr.appendChild(th1);
        if (i==0 || i==2 || i==4 || i==6){
            const th2 = document.createElement("th");
            th2.classList.add("cellsSecond");
            th2.rowSpan=2;th2.colSpan=1;
+           if (tournament.state  && tournament.owner === username){
+               th2.addEventListener("click" ,function () {
+                   cellClick(this,tournament);
+               });
+           }
+           if (i%4 == 0) index2++;
            switch(i) {
                case 0:
                    th2.textContent = tournament.matches[4].participantOne;
@@ -183,10 +199,17 @@ function loadEightManTournament(tournament){
                default:
                    break;
            }
+           th2.classList.add("match"+index2);
            tr.appendChild(th2);
            if (i==0 || i==4){
                const th3 = document.createElement("th");
                th3.classList.add("cellsThird");
+               th3.classList.add("match7");
+               if (tournament.state  && tournament.owner === username){
+                   th3.addEventListener("click" ,function () {
+                       cellClick(this,tournament);
+                   });
+               }
                th3.rowSpan=4;th3.colSpan=1;
                switch(i) {
                    case 0:
@@ -203,8 +226,10 @@ function loadEightManTournament(tournament){
                    const th4 = document.createElement("th");
                    th4.classList.add("cellsFourth");
                    th4.rowSpan=8;th4.colSpan=1;
-                   th4.textContent = (tournament.matches.winner) ? tournament.matches.winner : "TBD";
-                   tr.appendChild(th4);
+                   th4.textContent = tournament.winner;
+                   if (tournament.winner !== "TBD"){
+                       th4.classList.add("winner");
+                   }
                }
            }
        }
@@ -212,28 +237,44 @@ function loadEightManTournament(tournament){
    }
    bracketDiv.appendChild(table);
    document.getElementById("mainContainer").appendChild(bracketDiv);
+   addColors(tournament);
 }
 
 function loadFourManTournament(tournament){
     changeButtons(tournament.owner,tournament.name);
+    const username = (sessionStorage.getItem("user")) ? sessionStorage.getItem("user") : localStorage.getItem("user");
     const bracketDiv = document.createElement("div");
     bracketDiv.classList.add("bracket-container");
     const table = document.createElement("table");
     table.classList.add("brackets");
+    let index1 = 0;
     for (let i=0;i < 4; i++){
         const tr = document.createElement("tr");
         const th1 = document.createElement("th");
         th1.classList.add("cells");
         th1.rowSpan=1;th1.colSpan=1;
+        if (tournament.state && tournament.owner === username){
+            th1.addEventListener("click" ,function () {
+                cellClick(this,tournament);
+            });
+        }
         if (i%2 == 0){
+            index1++;
             th1.textContent = tournament.matches[Math.floor(i/2)].participantOne;
         } else {
-            th1.textContent = tournament.matches[Math.floor(i/2)].participantTwo;
+            th1.textContent = tournament.matches[Math.floor(i / 2)].participantTwo;
         }
+        th1.classList.add("match"+index1);
         tr.appendChild(th1);
         if (i==0 || i==2 ){
             const th2 = document.createElement("th");
             th2.classList.add("cellsSecond");
+            th2.classList.add("match3");
+            if (tournament.state  && tournament.owner === username){
+                th2.addEventListener("click" ,function () {
+                    cellClick(this,tournament);
+                });
+            }
             th2.rowSpan=2;th2.colSpan=1;
             switch(i) {
                 case 0:
@@ -250,7 +291,10 @@ function loadFourManTournament(tournament){
                 const th3 = document.createElement("th");
                 th3.classList.add("cellsThird");
                 th3.rowSpan=4;th3.colSpan=1;
-                th3.textContent = (tournament.matches.winner) ? tournament.matches.winner : "TBD";
+                th3.textContent = tournament.winner;
+                if (tournament.winner !== "TBD"){
+                    th3.classList.add("winner");
+                }
                 tr.appendChild(th3);
             }
         }
@@ -258,30 +302,49 @@ function loadFourManTournament(tournament){
     }
     bracketDiv.appendChild(table);
     document.getElementById("mainContainer").appendChild(bracketDiv);
+    addColors(tournament);
 }
 
 function loadSixteenManTournament(tournament){
+    const username = (sessionStorage.getItem("user")) ? sessionStorage.getItem("user") : localStorage.getItem("user");
     changeButtons(tournament.owner,tournament.name);
     const bracketDiv = document.createElement("div");
     bracketDiv.classList.add("bracket-container");
     const table = document.createElement("table");
     table.classList.add("brackets");
+    let index1 = 0;
+    let index2 = 8;
+    let index3 = 12;
     for (let i=0;i < 16; i++){
         const tr = document.createElement("tr");
         const th1 = document.createElement("th");
         th1.classList.add("cells");
         th1.rowSpan=1;th1.colSpan=1;
+        if (tournament.state && tournament.owner === username){
+            th1.addEventListener("click" ,function () {
+                cellClick(this,tournament);
+            });
+        }
         if (i%2 == 0){
+            index1++;
             th1.textContent = tournament.matches[Math.floor(i/2)].participantOne;
         } else {
             th1.textContent = tournament.matches[Math.floor(i/2)].participantTwo;
         }
+        th1.classList.add("match"+index1);
         tr.appendChild(th1);
         if (i==0 || i==2 || i==4 || i==6 ||
             i==8 || i==10 || i==12 || i==14){
+            if (i%4 == 0) index2++;
             const th2 = document.createElement("th");
             th2.classList.add("cellsSecond");
+            th2.classList.add("match"+index2);
             th2.rowSpan=2;th2.colSpan=1;
+            if (tournament.state && tournament.owner === username){
+                th2.addEventListener("click" ,function () {
+                    cellClick(this,tournament);
+                });
+            }
             switch(i) {
                 case 0:
                     th2.textContent = tournament.matches[8].participantOne;
@@ -315,6 +378,13 @@ function loadSixteenManTournament(tournament){
                 const th3 = document.createElement("th");
                 th3.classList.add("cellsThird");
                 th3.rowSpan=4;th3.colSpan=1;
+                if (i%8 == 0) index3++;
+                th3.classList.add("match"+index3);
+                if (tournament.state && tournament.owner === username){
+                    th3.addEventListener("click" ,function () {
+                        cellClick(this,tournament);
+                    });
+                }
                 switch(i) {
                     case 0:
                         th3.textContent = tournament.matches[12].participantOne;
@@ -336,6 +406,12 @@ function loadSixteenManTournament(tournament){
                     const th4 = document.createElement("th");
                     th4.classList.add("cellsFourth");
                     th4.rowSpan=8;th4.colSpan=1;
+                    th4.classList.add("match15");
+                    if (tournament.state && tournament.owner === username){
+                        th4.addEventListener("click" ,function () {
+                            cellClick(this,tournament);
+                        });
+                    }
                     switch (i) {
                         case 0:
                             th4.textContent = tournament.matches[14].participantOne;
@@ -351,7 +427,10 @@ function loadSixteenManTournament(tournament){
                         const th5 = document.createElement("th");
                         th5.classList.add("cellsFifth");
                         th5.rowSpan=16;th5.colSpan=1;
-                        th5.textContent = (tournament.matches.winner) ? tournament.matches.winner : "TBD";
+                        th5.textContent = tournament.winner;
+                        if (tournament.winner !== "TBD"){
+                            th5.classList.add("winner");
+                        }
                         tr.appendChild(th5);
                     }
                 }
@@ -361,6 +440,7 @@ function loadSixteenManTournament(tournament){
     }
     bracketDiv.appendChild(table);
     document.getElementById("mainContainer").appendChild(bracketDiv);
+    addColors(tournament);
 }
 
 function changeButtons(owner,name){
@@ -566,6 +646,68 @@ function createTournament(){
         max_number_participants: radioButtonInput,
         game: formData.get("gameRegister")
     }));
+}
+
+function cellClick(cell,tournament){
+    const match = cell.classList[1].split("match")[1]-1;
+    const matchPair = document.getElementsByClassName(cell.classList[1]);
+    const nextMatch = getNextMatch(match+1,tournament.max_number_participants)-1;
+    if (matchPair[0].textContent !== "TBD" && matchPair[1].textContent !== "TBD"){
+        const participant = (match%2 == 0) ? "one" : "two";
+        const url = '/api/tournaments/declareMatchWinner';
+        const request = new XMLHttpRequest();
+        request.open('POST', url);
+        const token = (sessionStorage.getItem("token")) ? sessionStorage.getItem("token") : localStorage.getItem("token");
+        request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        request.setRequestHeader("Authorization", "Bearer "+token);
+        request.responseType = 'json';
+        request.onload = function (){
+            if (!request.response.success) alert(request.response.status);
+            else location.reload();
+        }
+        request.send(JSON.stringify({
+            tournament: tournament.name,
+            currentMatch: match,
+            participant: participant,
+            username: cell.textContent,
+            nextMatch: nextMatch
+        }));
+    }
+}
+
+function addColors(tournament){
+    for (let i = 0; i < tournament.match_winner.length; i++){
+        const matchString = "match"+(i+1);
+        const matchPair = document.getElementsByClassName(matchString);
+        if (matchPair[0].textContent === tournament.match_winner[i]){
+            matchPair[0].classList.add("winner");
+            matchPair[1].classList.add("loser");
+        } else if (matchPair[1].textContent === tournament.match_winner[i]){
+            matchPair[1].classList.add("winner");
+            matchPair[0].classList.add("loser");
+        }
+    }
+}
+
+function getNextMatch(match,nrOfPlayer) {
+    if(nrOfPlayer === 4){
+        if (match === 1 || match === 2) return 3;
+        return 0;
+    } else if (nrOfPlayer === 8){
+        if (match === 1 || match === 2) return 5;
+        if (match === 3 || match === 4) return 6;
+        if (match === 5 || match === 6) return 7;
+        return 0;
+    } else if (nrOfPlayer === 16){
+        if (match === 1 || match === 2) return 9;
+        if (match === 3 || match === 4) return 10;
+        if (match === 5 || match === 6) return 11;
+        if (match === 7 || match === 8) return 12;
+        if (match === 9 || match === 10) return 13;
+        if (match === 11 || match === 12) return 14;
+        if (match === 13 || match === 14) return 15;
+        return 0;
+    }
 }
 
 isInTournament();

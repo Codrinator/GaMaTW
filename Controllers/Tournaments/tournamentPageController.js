@@ -1,5 +1,5 @@
-const tournament = require('../Models/TournamentsModel').getTournamentPage;
-const tournamentCount = require('../Models/TournamentsModel').getTournamentCount;
+const tournament = require('../../Models/TournamentsModel').getTournamentPage;
+const tournamentCount = require('../../Models/TournamentsModel').getTournamentCount;
 const getPage = async function(req, res){
     try{
         const take = req.body.pageSize;

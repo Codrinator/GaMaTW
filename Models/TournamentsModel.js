@@ -43,6 +43,26 @@ const makeNotJoinable = async function(title){
     doc.save();
 };
 
+const updateMatches = async function(title,match,participant,username,nextMatch){
+    const query = Tournament.findOne({name: title});
+    const doc = await query.exec();
+    doc.match_winner.set(match,username);
+    if (nextMatch === -1 || match === doc.max_number_participants-2){
+        if (doc.winner !== "TBD"){
+            const removePoints = require("./UserModel").addPoints;
+            await removePoints(-500,doc.winner);
+        }
+        doc.winner = username;
+    } else {
+      if (participant === "one"){
+          doc.matches[nextMatch].participantOne = username;
+      } else {
+          doc.matches[nextMatch].participantTwo = username;
+      }
+    }
+    doc.save();
+}
+
 const addParticipant = async function(title,username){
     const query = Tournament.findOne({name: title});
     const doc = await query.exec();
@@ -60,6 +80,7 @@ const addParticipant = async function(title,username){
             } else i++;
         }
         if (doc.participants.length === doc.max_number_participants) {
+            doc.state = true;
             doc.joinable = false;
             const participants = doc.participants;
             doc.matches=[];
@@ -97,5 +118,6 @@ const removeParticipant = async function(title,username){
 
 const Tournament = mongoose.model('Tournaments', TournamentSchema);
 
-module.exports = {Tournament,getAll,getTournamentPage,getTournamentCount,addParticipant,getTournamentByName,removeParticipant,makeNotJoinable};
+module.exports = {Tournament,getAll,getTournamentPage,getTournamentCount,addParticipant,getTournamentByName,removeParticipant,
+    makeNotJoinable,updateMatches};
 

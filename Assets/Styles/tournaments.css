@@ -324,3 +324,11 @@ main {
     margin-bottom: 0.5vw;
     color: whitesmoke;
 }
+
+.winner{
+    color: lawngreen;
+}
+
+.loser{
+    color: red;
+}
