@@ -1,5 +1,5 @@
-const getUser = require('../Models/UserModel').findUserByUsername;
-const getTournament = require('../Models/TournamentsModel').getTournamentByName;
+const getUser = require('../../Models/UserModel').findUserByUsername;
+const getTournament = require('../../Models/TournamentsModel').getTournamentByName;
 const isInTournament = async function(req,res){
     try{
         const user = (await getUser(req.user.payload))[0];
