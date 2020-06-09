@@ -20,7 +20,8 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
         sessionStorage.setItem("numberOfGames", request.response.totalNoOfGames);
         sessionStorage.setItem("lastGenrePressed", genre);
         sessionStorage.setItem("lastCategoriePressed", categorie);
-        
+        const categoryChosen = document.getElementById("categoryChosen");
+        categoryChosen.textContent = categorie;
         const container = document.getElementById("gamesMainContainer");
         const gameTable = document.createElement("table");
         gameTable.id = "gameTable"

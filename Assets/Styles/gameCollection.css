@@ -29,7 +29,6 @@ body {
     background-color: lightgray;
 }
 
-
 .navMenu li {
     display: inline;
     float: left;
@@ -262,6 +261,17 @@ main {
     margin-left: 7.3rem;
     color:  darkblue;
     font-family: Impact, "Arial Narrow", "Optima", "Geneva";
+}
+
+.category-chosen{
+    text-align:center;
+    font-size: larger;
+    margin-top: 0.3rem;
+    margin-left: 7.3rem;
+    color:  rgb(121, 61, 199);
+    font-style: italic;
+    font-variant-caps: titling-caps;
+    font-family: "Lucida Console", "Optima", "Geneva";
 }
 
 .buttons {
