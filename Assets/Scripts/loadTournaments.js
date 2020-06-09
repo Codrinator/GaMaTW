@@ -250,7 +250,7 @@ function loadFourManTournament(tournament){
                 const th3 = document.createElement("th");
                 th3.classList.add("cellsThird");
                 th3.rowSpan=4;th3.colSpan=1;
-                th3.textContent = (tournament.matches.winner) ? tournament.matches.winner : "TBD";
+                th3.textContent = tournament.matches.winner;
                 tr.appendChild(th3);
             }
         }

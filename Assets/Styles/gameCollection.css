@@ -255,15 +255,6 @@ main {
     color: white;
 }
 
-.game-container{
-    margin-left: 20vw;
-    margin-right: 12px;
-    padding-left: 10px;
-    background-color: slategray;
-    border-radius: 7px;
-    border: 2px solid #2e3346;
-}
-
 .head-sorter{
     text-align:center;
     font-size: larger;
@@ -272,35 +263,66 @@ main {
     color:  darkblue;
     font-family: Impact, "Arial Narrow", "Optima", "Geneva";
 }
+
 .buttons {
-    margin-left: 13.5rem;
+    margin: 0 auto;
     margin-top: 1rem;
-}
-.titles-grid{
-    margin-top: 1rem;
+    width: max-content;
 }
 
-.column-names{
-   margin-right: 4rem;
+.buttons button , .page-nav-button {
+    font-family: "Lucida Console", "Optima", "Geneva";
+    color: rgb(221, 221, 138);
+    font-weight: bold;
+    background-color: slategray;
+    margin-bottom: 10px;
+    margin-left: 1vw;
 }
 
-.column-names li{
-    display:inline-block;
-    list-style-type: none;
-    font-size: larger;
-    text-decoration: underline;
-    margin-left: 6rem;
-    color:  darkblue;
+.game-container{
+    margin: 0px;
+    margin-left: 20%;
+    border-collapse: collapse;
 }
 
-.grid-item{
-    list-style-type: none;
+.game-table{
+    table-layout: fixed;
+    width: 80%;
+}
+th{
+    height: 50px;
+    background-color:  rgb(221, 221, 138);
+    border: 1px solid black;
+    
 }
 
-.grid-item-title{
-    margin-left: 4rem;
+tr{
+    height: 50px;
+}
+
+td{
+    border: 1px solid darkgray;
+    text-align: center;
+    color: darkblue;
 }
 
 .page-nav{
-    margin-left: 24.5rem;
+    color: darkblue;
+    font-weight: bold;
+}
+
+.current-page-nav{
+    margin-left: 1vw;
+}
+
+
+.column-name{
+    color: darkblue;
+}
+
+.page-nav-container{
+    margin-top: 2vh;
+    width: 30%;
+    margin-left: 32%;
+    margin-bottom: 1vh;
 }

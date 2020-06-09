@@ -9,16 +9,12 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
     request.responseType = 'json';
     
     request.onload = function(){
-        if(document.getElementById("displayedList")){
-            document.getElementById("displayedList").remove();
+        if(document.getElementById("gameTable")){
+            document.getElementById("gameTable").remove();
         }
 
-        if(document.getElementById("titlesList")){
-            document.getElementById("titlesList").remove();
-        }
-
-        if(document.getElementById("pageNav")){
-            document.getElementById("pageNav").remove();
+        if(document.getElementById("pageNavContainer")){
+            document.getElementById("pageNavContainer").remove();
         }
 
         sessionStorage.setItem("numberOfGames", request.response.totalNoOfGames);
@@ -26,77 +22,80 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
         sessionStorage.setItem("lastCategoriePressed", categorie);
         
         const container = document.getElementById("gamesMainContainer");
+        const gameTable = document.createElement("table");
+        gameTable.id = "gameTable"
+        gameTable.classList.add("game-table");
+        const pageNavContainer = document.createElement("div");
+        pageNavContainer.classList.add("page-nav-container");
+        pageNavContainer.id = "pageNavContainer";
         
-        const titlesList = document.createElement("div");
+        
+        const titlesList = document.createElement("tr");
         titlesList.id = "titlesList";
         titlesList.classList.add("titles-grid");
         
-        const colNames = document.createElement("ul");
-        colNames.classList.add("column-names");
-        
-        const col1 = document.createElement("li");
-        col1.classList.add("column-names-li");
+        const col1 = document.createElement("th");
+        col1.classList.add("column-name");
         col1.textContent = "Name";
         
-        const col2 = document.createElement("li");
-        col2.classList.add("column-names-li");
+        const col2 = document.createElement("th");
+        col2.classList.add("column-name");
         col2.textContent = "Company";
         
-        const col3 = document.createElement("li");
-        col3.classList.add("column-names-li");
+        const col3 = document.createElement("th");
+        col3.classList.add("column-name");
         col3.textContent = "Popularity";
 
-        const col4 = document.createElement("li");
-        col4.classList.add("column-names-li");
+        const col4 = document.createElement("th");
+        col4.classList.add("column-name");
         col4.textContent = "Platform";
 
-        const col5 = document.createElement("li");
-        col5.classList.add("column-names-li");
+        const col5 = document.createElement("th");
+        col5.classList.add("column-name");
         col5.textContent = "Genre"
 
-        const col6 = document.createElement("li");
-        col6.classList.add("column-names-li");
+        const col6 = document.createElement("th");
+        col6.classList.add("column-name");
         col6.textContent = "Price"
 
-        colNames.appendChild(col1);
-        colNames.appendChild(col2);
-        colNames.appendChild(col3);
-        colNames.appendChild(col4);
-        colNames.appendChild(col5);
-        colNames.appendChild(col6);
-        titlesList.appendChild(colNames);
-
+        titlesList.appendChild(col1);
+        titlesList.appendChild(col2);
+        titlesList.appendChild(col3);
+        titlesList.appendChild(col4);
+        titlesList.appendChild(col5);
+        titlesList.appendChild(col6);
+        gameTable.appendChild(titlesList);
         const games = request.response.games;
         
-        const displayedList = document.createElement("ul");
-        displayedList.id="displayedList";
-        displayedList.classList.add("displayed-games");
+        //const displayedList = document.createElement("table");
+       //displayedList.id="displayedList";
+        //displayedList.classList.add("displayed-games");
     
        for(let i = 0; i < games.length; i++){
-            const item = document.createElement("li");
+            const item = document.createElement("tr");
             item.classList.add("grid-item");
             
-            const gameName = document.createElement("span");
+            const gameName = document.createElement("td");
             gameName.classList.add("grid-item-title");
             gameName.textContent = games[i].name;
             
-            const gameCompany = document.createElement("span");
+            const gameCompany = document.createElement("td");
             gameCompany.classList.add("grid-item-title");
             gameCompany.textContent = games[i].company;
 
-            const gamePopularity = document.createElement("span");
+            const gamePopularity = document.createElement("td");
             gamePopularity.classList.add("grid-item-title");
             gamePopularity.textContent = games[i].popularity;
 
-            const gamePlatform = document.createElement("span");
+            const gamePlatform = document.createElement("td");
             gamePlatform.classList.add("grid-item-title");
             gamePlatform.textContent = games[i].platform;
 
-            const gameGenre = document.createElement("span");
+            const gameGenre = document.createElement("td");
             gameGenre.classList.add("grid-item-title");
             gameGenre.textContent = games[i].genre;
 
-            const gamePrice = document.createElement("span");
+            const gamePrice = document.createElement("td");
             gamePrice.classList.add("grid-item-title");
             gamePrice.textContent = games[i].price;
             
@@ -115,10 +114,12 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
             item.appendChild(gameGenre);
             item.appendChild(gamePrice);
 
-            displayedList.appendChild(item);
+            gameTable.appendChild(item);
         }
-        container.appendChild(titlesList);
-        container.appendChild(displayedList);
+    
+        container.appendChild(gameTable);
+
+
         //alegerea paginii, in partea de jos
         pageGlobal = page;
 
@@ -134,6 +135,7 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
         if(page > 1){
             const buttonPrev = document.createElement("button");
             buttonPrev.textContent = "Prev";
+            buttonPrev.classList.add("page-nav-button");
             buttonPrev.addEventListener("click", function(){
                loadCollection(noOfItems, categorie, genre, switcher, page-1);
             });
@@ -142,17 +144,20 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
 
         const currentPageLabel = document.createElement("label");
         currentPageLabel.textContent = page;
+        currentPageLabel.classList.add("current-page-nav");
         pageNav.appendChild(currentPageLabel);
 
         if(page * noOfItems < sessionStorage.getItem("numberOfGames")){
             const buttonNext = document.createElement("button");
             buttonNext.textContent = "Next";
+            buttonNext.classList.add("page-nav-button");
             buttonNext.addEventListener("click", function(){
                 loadCollection(noOfItems,categorie,genre,switcher,page+1);
             });
             pageNav.appendChild(buttonNext);
         } 
-        container.appendChild(pageNav);
+        pageNavContainer.appendChild(pageNav);
+        container.appendChild(pageNavContainer);
     };
     
     request.send(JSON.stringify({
