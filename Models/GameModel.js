@@ -26,7 +26,7 @@ const getByName=async function(name){
     return query.exec();
 };
 
-const getNumberOfGames= async function(){
+const getNumberOfGames = async function(){
     const query= Game.count();
     return query.exec()
 };
@@ -37,7 +37,7 @@ const getGamesCollectionSub = async function(noOfItems){
     return query.exec();
 };
 
-const getAll=async function(){
+const getAll = async function(){
     const query=Game.find();
     return query.exec();
 };
@@ -48,17 +48,60 @@ const getGamesCollection = async function(noOfItems, category){
     return query.exec();
 };
 
-const loadGames = async function(noOfItems=20, categorie, genre, switcher = 0){
+const loadGames = async function(noOfItems, categorie, genre, switcher, page){
+    if(switcher === 1){ // cand alegem din nav-bar
+    const query = Game.find();
+    query.where({category: categorie, genre: genre}).skip((page-1)*noOfItems).limit(noOfItems);
+    const temp = await query.exec();
+    return temp;
+    }
+    if(switcher === 0 ){ //default cand incarcam pagina --> popularity
+    const query = Game.find();
+    query.sort({popularity: -1}).skip((page-1)*noOfItems).limit(noOfItems);
+    const temp = await query.exec();
+    return temp;
+    }
+    if(switcher === 2 ){ //alphabetically
+        const query = Game.find();
+        query.where({category: categorie, genre: genre}).sort({name: 1}).skip((page-1)*noOfItems).limit(noOfItems);
+        const temp = await query.exec();
+        return temp;
+    }
+    if(switcher === 3 ){ //release_Date
+        const query = Game.find();
+        query.where({category: categorie, genre: genre}).sort({release_date: -1}).skip((page-1)*noOfItems).limit(noOfItems);
+        const temp = await query.exec();
+        return temp;
+    }
+
+   /* if(switcher === 4 ){ //age
+        const query = Game.find();
+        query.where({age_restriction: age_restriction}).skip((page-1)*noOfItems).limit(noOfItems);
+        const temp = await query.exec();
+        return temp;
+    } */
+
+    if(switcher === 5 ){ //price
+        const query = Game.find();
+        query.where({category: categorie, genre: genre}).sort({price: 1}).skip((page-1)*noOfItems).limit(noOfItems);
+        const temp = await query.exec();
+        return temp;
+    }
+};
+
+const getNumberOfGamesWithParameters = async function(noOfItems, categorie, genre, switcher, page){
     if(switcher === 1){
-    const query = Game.find();
-    query.where({categorie: categorie, genre:genre}).limit(noOfItems);
-    return query.exec();
-    }
-    else{
-    const query = Game.find();
-    query.sort({popularity: -1}).limit(noOfItems);
-    return query.exec();
-    }
+        const query = Game.count();
+        query.where({category: categorie, genre: genre});
+        const temp = await query.exec();
+        return temp;
+        }
+        else{
+        const query = Game.count();
+        query.sort({popularity: -1});
+        const temp = await query.exec();
+        return temp;
+        }
 };
 
 const getNewGames = async function(){
@@ -82,5 +125,5 @@ const removeByName=async function(name){
 
 const Game = mongoose.model('GameCollection', GameSchema);
 
-module.exports = {Game, removeByName,getAll,getTopGames,getByName,getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub,getNumberOfGames};
+module.exports = {Game, removeByName, getAll, getTopGames, getByName, getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub, getNumberOfGames, getNumberOfGamesWithParameters};
 

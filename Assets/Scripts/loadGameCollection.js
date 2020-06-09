@@ -1,24 +1,169 @@
-function loadCollection(noOfItems, categorie, genre, switcher = 0){
+let pageGlobal = 1;
+
+function loadCollection(noOfItems, categorie, genre, switcher, page){
     const url = '/api/gameCollection/loadCollection';
     const request = new XMLHttpRequest();
 
     request.open('POST', url);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    request.responseType = 'text';
-    DOMParser2 = new DOMParser();
+    request.responseType = 'json';
+    
     request.onload = function(){
+        if(document.getElementById("displayedList")){
+            document.getElementById("displayedList").remove();
+        }
 
-        document = DOMParser2.parseFromString(request.response,'text/html');
-        document.write(request.response);
+        if(document.getElementById("titlesList")){
+            document.getElementById("titlesList").remove();
+        }
+
+        if(document.getElementById("pageNav")){
+            document.getElementById("pageNav").remove();
+        }
+
+        sessionStorage.setItem("numberOfGames", request.response.totalNoOfGames);
+        sessionStorage.setItem("lastGenrePressed", genre);
+        sessionStorage.setItem("lastCategoriePressed", categorie);
+        
+        const container = document.getElementById("gamesMainContainer");
+        
+        const titlesList = document.createElement("div");
+        titlesList.id = "titlesList";
+        titlesList.classList.add("titles-grid");
+        
+        const colNames = document.createElement("ul");
+        colNames.classList.add("column-names");
+        
+        const col1 = document.createElement("li");
+        col1.classList.add("column-names-li");
+        col1.textContent = "Name";
+        
+        const col2 = document.createElement("li");
+        col2.classList.add("column-names-li");
+        col2.textContent = "Company";
+        
+        const col3 = document.createElement("li");
+        col3.classList.add("column-names-li");
+        col3.textContent = "Popularity";
+
+        const col4 = document.createElement("li");
+        col4.classList.add("column-names-li");
+        col4.textContent = "Platform";
+
+        const col5 = document.createElement("li");
+        col5.classList.add("column-names-li");
+        col5.textContent = "Genre"
+
+        const col6 = document.createElement("li");
+        col6.classList.add("column-names-li");
+        col6.textContent = "Price"
+
+        colNames.appendChild(col1);
+        colNames.appendChild(col2);
+        colNames.appendChild(col3);
+        colNames.appendChild(col4);
+        colNames.appendChild(col5);
+        colNames.appendChild(col6);
+        titlesList.appendChild(colNames);
+
+        const games = request.response.games;
+        
+        const displayedList = document.createElement("ul");
+        displayedList.id="displayedList";
+        displayedList.classList.add("displayed-games");
+    
+       for(let i = 0; i < games.length; i++){
+            const item = document.createElement("li");
+            item.classList.add("grid-item");
+            
+            const gameName = document.createElement("span");
+            gameName.classList.add("grid-item-title");
+            gameName.textContent = games[i].name;
+            
+            const gameCompany = document.createElement("span");
+            gameCompany.classList.add("grid-item-title");
+            gameCompany.textContent = games[i].company;
+
+            const gamePopularity = document.createElement("span");
+            gamePopularity.classList.add("grid-item-title");
+            gamePopularity.textContent = games[i].popularity;
+
+            const gamePlatform = document.createElement("span");
+            gamePlatform.classList.add("grid-item-title");
+            gamePlatform.textContent = games[i].platform;
+
+            const gameGenre = document.createElement("span");
+            gameGenre.classList.add("grid-item-title");
+            gameGenre.textContent = games[i].genre;
+
+            const gamePrice = document.createElement("span");
+            gamePrice.classList.add("grid-item-title");
+            gamePrice.textContent = games[i].price;
+            
+            const button = document.createElement("button");
+            button.classList.add("view-button");
+            button.textContent = "View";
+            button.addEventListener("click",function(event){
+                event.preventDefault();
+                //revenim pentru view
+            });
+
+            item.appendChild(gameName);
+            item.appendChild(gameCompany);
+            item.appendChild(gamePopularity);
+            item.appendChild(gamePlatform);
+            item.appendChild(gameGenre);
+            item.appendChild(gamePrice);
+
+            displayedList.appendChild(item);
+        }
+        container.appendChild(titlesList);
+        container.appendChild(displayedList);
+        //alegerea paginii, in partea de jos
+        pageGlobal = page;
+
+        const pageNav = document.createElement("div");
+        pageNav.classList.add("page-nav");
+        pageNav.id = "pageNav";
+        
+        const labelNav = document.createElement("label");
+        labelNav.textContent = "Page:";
+
+        pageNav.appendChild(labelNav);
+        
+        if(page > 1){
+            const buttonPrev = document.createElement("button");
+            buttonPrev.textContent = "Prev";
+            buttonPrev.addEventListener("click", function(){
+               loadCollection(noOfItems, categorie, genre, switcher, page-1);
+            });
+            pageNav.appendChild(buttonPrev);
+        }
+
+        const currentPageLabel = document.createElement("label");
+        currentPageLabel.textContent = page;
+        pageNav.appendChild(currentPageLabel);
+
+        if(page * noOfItems < sessionStorage.getItem("numberOfGames")){
+            const buttonNext = document.createElement("button");
+            buttonNext.textContent = "Next";
+            buttonNext.addEventListener("click", function(){
+                loadCollection(noOfItems,categorie,genre,switcher,page+1);
+            });
+            pageNav.appendChild(buttonNext);
+        } 
+        container.appendChild(pageNav);
     };
     
     request.send(JSON.stringify({
         noOfItems: noOfItems,
         categorie: categorie,
         genre: genre,
-        switcher: switcher
+        switcher: switcher,
+        page: page
     }));
-};
+}
+
 
 function downloadPDF() {
     const url = 'api/gameCollection/downloadStatistic';
@@ -113,3 +258,36 @@ function downloadCSV() {
     };
     request.send();
 }
+
+const popularityButton = document.getElementById("popularityButton");
+popularityButton.addEventListener("click", function (event){
+    event.preventDefault();
+    loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 1, 1); //default switcher 0 pentru popularity
+})
+
+const alphabetButton = document.getElementById("alphabeticallyButton");
+alphabetButton.addEventListener("click", function(event){
+    event.preventDefault();
+    loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 2, 1); //switcher 2 pentru alphabetically
+});
+
+const dateButton = document.getElementById("dateButton");
+dateButton.addEventListener("click", function(event){
+    event.preventDefault();
+    loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 3, 1); //switcher 3 pentru date
+});
+
+/* const ageButton = document.getElementById("ageButton");
+ageButton.addEventListener("click", function(event){
+    event.preventDefault();
+    loadCollection(10, 'digital', 'action', 4, 1); //switcher 4 pentru age
+}); */
+
+const priceButton = document.getElementById("priceButton");
+priceButton.addEventListener("click", function(event){
+    event.preventDefault();
+    loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 5, 1); //switcher 5 pentru price
+});
+
+
+loadCollection(10, 'digital', 'action', 0, 1);
