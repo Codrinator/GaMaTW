@@ -341,3 +341,7 @@ td{
     margin-left: 32%;
     margin-bottom: 1vh;
 }
+
+.hide-stuff{
+    display:none;
+}

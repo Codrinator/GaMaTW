@@ -1,6 +1,11 @@
 let pageGlobal = 1;
 
 function loadCollection(noOfItems, categorie, genre, switcher, page){
+
+    document.getElementById("buttonsDiv").classList.remove("hide-stuff");
+    document.getElementById("headSorter").classList.remove("hide-stuff");
+    document.getElementById("gamesMainContainer").classList.remove("hide-stuff");
+
     const url = '/api/gameCollection/loadCollection';
     const request = new XMLHttpRequest();
 
@@ -16,6 +21,8 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
         if(document.getElementById("pageNavContainer")){
             document.getElementById("pageNavContainer").remove();
         }
+
+
 
         sessionStorage.setItem("numberOfGames", request.response.totalNoOfGames);
         sessionStorage.setItem("lastGenrePressed", genre);
@@ -74,6 +81,9 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
             
             const gameName = document.createElement("td");
             const gameNameAnchor = document.createElement("button");
+            gameNameAnchor.addEventListener("click",function(){
+                viewGame(games[i]);
+            });
             gameNameAnchor.id = "gameNameAnchor";
             gameName.classList.add("grid-item-title");
             gameNameAnchor.classList.add("game-name-anchor");
@@ -99,14 +109,6 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
             const gamePrice = document.createElement("td");
             gamePrice.classList.add("grid-item-title");
             gamePrice.textContent = games[i].price;
-            
-            const button = document.createElement("button");
-            button.classList.add("view-button");
-            button.textContent = "View";
-            button.addEventListener("click",function(event){
-                event.preventDefault();
-                //revenim pentru view
-            });
 
             item.appendChild(gameName);
             item.appendChild(gameCompany);
@@ -288,5 +290,27 @@ priceButton.addEventListener("click", function(event){
     event.preventDefault();
     loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 5, 1); //switcher 5 pentru price
 });
+
+function viewGame(games, container){
+    document.getElementById("gamesMainContainer").classList.add("hide-stuff");
+    document.getElementById("buttonsDiv").classList.add("hide-stuff");
+    document.getElementById("headSorter").classList.add("hide-stuff");
+
+    const gameContainer = document.createElement("div");
+    gameContainer.classList.add("game-view-container");
+
+
+    const gameName = document.createElement("div");
+    gameName.classList.add("game-view-name");
+    gameName.textContent = games.name;
+
+    const gameDescription = document.createElement("p");
+    gameDescription.classList.add("game-view-description");
+    gameDescription.textContent = games.gameDescription;
+
+    gameContainer.appendChild(gameName);
+    gameContainer.appendChild(gameDescription);
+
+}
 
 loadCollection(10, '', '', 0, 1);
