@@ -105,19 +105,15 @@ const addParticipant = async function(title,username){
 const removeParticipant = async function(title,username){
     const query = Tournament.findOne({name: title});
     const doc = await query.exec();
-    console.log(title);
     if (doc.participants.length < doc.max_number_participants){
         doc.participants = doc.participants.filter(s => s !== username);
-        let foundSpot = false;
-        let i = 0;
-        while (!foundSpot && i < doc.max_number_participants/2){
+        for (let i=0; i < doc.max_number_participants/2; i++){
             if (doc.matches[i].participantOne === username){
                 doc.matches[i].participantOne = "TBD";
-                foundSpot = true;
-            } else if (doc.matches[i].participantTwo === username) {
+            }
+            if (doc.matches[i].participantTwo === username) {
                 doc.matches[i].participantTwo = "TBD";
-                foundSpot = true;
-            } else i++;
+            }
         }
     }
     doc.save();

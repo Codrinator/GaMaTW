@@ -461,7 +461,7 @@ function changeButtons(owner,name){
         leaveButton.textContent = "Leave";
         leaveButton.id = "Leave";
         leaveButton.addEventListener("click" , function () {
-            leaveTournament(false);
+            leaveTournament(false,name);
         });
         buttonContainer.appendChild(leaveButton);
     } else {
@@ -469,13 +469,13 @@ function changeButtons(owner,name){
         cancelButton.textContent = "Cancel";
         cancelButton.id = "Leave";
         cancelButton.addEventListener("click" , function () {
-            leaveTournament(true);
+            leaveTournament(true,name);
         });
         buttonContainer.appendChild(cancelButton);
     }
 }
 
-function leaveTournament(isOwner){
+function leaveTournament(isOwner,tournamentName){
     const url = '/api/tournaments/leaveTournament';
     const request = new XMLHttpRequest();
     request.open('POST', url);
@@ -488,7 +488,8 @@ function leaveTournament(isOwner){
         else location.reload();
     };
     request.send(JSON.stringify({
-        isOwner: isOwner
+        isOwner: isOwner,
+        tournamentName: tournamentName
     }));
 }
 

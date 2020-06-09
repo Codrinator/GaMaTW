@@ -6,18 +6,17 @@ const changeTournamentState = require('../../Models/TournamentsModel').makeNotJo
 const leaveTournament = async function(req,res){
     try{
         const username = req.user.payload;
+        const tour = req.body.tournamentName;
         if (req.body.isOwner){
+            await changeTournamentState(tour);
             await setUserState(false,username,"");
-            const user = (await getUser(username))[0];
-            await changeTournamentState(user.tournament);
             res.statusCode = 200;
             res.end(JSON.stringify({
                 success : true,
             }));
         } else {
+            await removeParticipant(tour,username);
             await setUserState(false,username,"");
-            const user = (await getUser(username))[0];
-            await removeParticipant(user.tournament,username);
             res.statusCode = 200;
             res.end(JSON.stringify({
                 success : true,
