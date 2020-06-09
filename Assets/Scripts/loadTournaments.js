@@ -147,7 +147,7 @@ function isInTournament(){
 }
 
 function loadEightManTournament(tournament){
-   changeButtons(tournament.owner);
+   changeButtons(tournament.owner,tournament.name);
    const bracketDiv = document.createElement("div");
    bracketDiv.classList.add("bracket-container");
    const table = document.createElement("table");
@@ -215,7 +215,7 @@ function loadEightManTournament(tournament){
 }
 
 function loadFourManTournament(tournament){
-    changeButtons(tournament.owner);
+    changeButtons(tournament.owner,tournament.name);
     const bracketDiv = document.createElement("div");
     bracketDiv.classList.add("bracket-container");
     const table = document.createElement("table");
@@ -261,7 +261,7 @@ function loadFourManTournament(tournament){
 }
 
 function loadSixteenManTournament(tournament){
-    changeButtons(tournament.owner);
+    changeButtons(tournament.owner,tournament.name);
     const bracketDiv = document.createElement("div");
     bracketDiv.classList.add("bracket-container");
     const table = document.createElement("table");
@@ -363,27 +363,209 @@ function loadSixteenManTournament(tournament){
     document.getElementById("mainContainer").appendChild(bracketDiv);
 }
 
-function changeButtons(owner){
+function changeButtons(owner,name){
     const username = (sessionStorage.getItem("user")) ? sessionStorage.getItem("user") : localStorage.getItem("user");
     const buttonContainer = document.getElementById("buttonDiv");
     document.getElementById("Host").remove();
     document.getElementById("Join").remove();
+    const titleLabel = document.createElement("p");
+    titleLabel.textContent = name.toUpperCase();
+    titleLabel.classList.add("titleLabel");
+    const ownerLabel = document.createElement("p");
+    ownerLabel.textContent = "Hosted By "+owner;
+    ownerLabel.classList.add("ownerLabel");
+    buttonContainer.appendChild(titleLabel);
+    buttonContainer.appendChild(ownerLabel);
     if (username !== owner) {
         const leaveButton = document.createElement("button");
         leaveButton.textContent = "Leave";
         leaveButton.id = "Leave";
+        leaveButton.addEventListener("click" , function () {
+            leaveTournament(false);
+        });
         buttonContainer.appendChild(leaveButton);
     } else {
         const cancelButton = document.createElement("button");
         cancelButton.textContent = "Cancel";
         cancelButton.id = "Leave";
+        cancelButton.addEventListener("click" , function () {
+            leaveTournament(true);
+        });
         buttonContainer.appendChild(cancelButton);
     }
 }
 
-function leaveTournament(){
-
+function leaveTournament(isOwner){
+    const url = '/api/tournaments/leaveTournament';
+    const request = new XMLHttpRequest();
+    request.open('POST', url);
+    const token = (sessionStorage.getItem("token")) ? sessionStorage.getItem("token") : localStorage.getItem("token");
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request.setRequestHeader("Authorization", "Bearer "+token);
+    request.responseType = 'json';
+    request.onload = function(){
+        if (!request.response.success) alert(request.response.status);
+        else location.reload();
+    };
+    request.send(JSON.stringify({
+        isOwner: isOwner
+    }));
 }
 
+function loadHostForm(){
+    if (sessionStorage.getItem("isLogged") === "true" || localStorage.getItem("isLogged") === "true"){
+        const buttonsDiv = document.getElementById("buttonDiv");
+        while(buttonsDiv.nextSibling){
+            buttonsDiv.nextSibling.remove();
+        }
+        const formWrap = document.createElement("div");
+        formWrap.classList.add("formWrapper");
+        const formDiv = document.createElement("div");
+        formDiv.classList.add("form");
+        const form = document.createElement("form");
+        form.classList.add("registerForm");
+        form.id = "createTournamentForm";
+        const p1 = document.createElement("p");
+        p1.classList.add("formTextTitle");
+        p1.textContent = "Create a Tournament";
+        form.appendChild(p1);
+
+        const p2 = document.createElement("p");
+        p2.classList.add("pInputBox1");
+        const label1 = document.createElement("label");
+        label1.classList.add("formText");
+        label1.setAttribute("for","nameRegister");
+        label1.textContent = "Tournament's name";
+        p2.appendChild(label1);
+        const br1 = document.createElement("br");
+        form.appendChild(p2);form.appendChild(br1);
+
+        const p3 = document.createElement("p");
+        p3.classList.add("pInputBox2");
+        const input1 = document.createElement("input");
+        input1.classList.add("inputBox");
+        input1.type="text";input1.id="nameRegister";input1.name="nameRegister";
+        p3.appendChild(input1);
+        const br2 = document.createElement("br");
+        form.appendChild(p3);
+        form.appendChild(br2);
+
+        const p4 = document.createElement("p");
+        p4.classList.add("pInputBox1");
+        const label2 = document.createElement("label");
+        label2.classList.add("formText");
+        label2.setAttribute("for","gameRegister");
+        label2.textContent = "Game's name";
+        p4.appendChild(label2);
+        const br3 = document.createElement("br");
+        form.appendChild(p4);form.appendChild(br3);
+
+        const p5 = document.createElement("p");
+        p5.classList.add("pInputBox2");
+        const input2 = document.createElement("input");
+        input2.classList.add("inputBox");
+        input2.type="text";input2.id="gameRegister";input2.name="gameRegister";
+        p5.appendChild(input2);
+        const br4 = document.createElement("br");
+        form.appendChild(p5);
+        form.appendChild(br4);
+
+        const p6 = document.createElement("p");
+        p6.classList.add("pInputBox1");
+        const label3 = document.createElement("label");
+        label3.classList.add("formText");
+        label3.setAttribute("for","gameRegister");
+        label3.textContent = "Choose number of participants";
+        p6.appendChild(label3);
+        const br5 = document.createElement("br");
+        form.appendChild(p6);form.appendChild(br5);
+
+        const div1 = document.createElement("div");
+        const radioLabel1 = document.createElement("label");
+        radioLabel1.classList.add("radio-inline");
+        const radioInput1 = document.createElement("input");
+        radioInput1.classList.add("radioButton");
+        radioInput1.type = "radio";radioInput1.name = "optradio"; radioInput1.checked=true;
+        radioLabel1.textContent = "16";
+        radioInput1.id = "radio1";
+        radioLabel1.appendChild(radioInput1);
+
+        const radioLabel2 = document.createElement("label");
+        radioLabel2.classList.add("radio-inline");
+        const radioInput2 = document.createElement("input");
+        radioInput2.classList.add("radioButton");
+        radioInput2.type = "radio";radioInput2.name = "optradio"; radioInput2.checked=false;
+        radioLabel2.textContent = "8";
+        radioInput2.id = "radio2";
+        radioLabel2.appendChild(radioInput2);
+
+        const radioLabel3 = document.createElement("label");
+        radioLabel3.classList.add("radio-inline");
+        const radioInput3 = document.createElement("input");
+        radioInput3.classList.add("radioButton");
+        radioInput3.type = "radio";radioInput3.name = "optradio"; radioInput3.checked=false;
+        radioLabel3.textContent = "4";
+        radioInput3.id = "radio3";
+        radioLabel3.appendChild(radioInput3);
+
+        div1.appendChild(radioLabel1);
+        div1.appendChild(radioLabel2);
+        div1.appendChild(radioLabel3);
+        form.appendChild(div1);
+        const br7 = document.createElement("br");
+        form.appendChild(br7);
+
+        const inputSubmit = document.createElement("input");
+        inputSubmit.type = "submit";
+        inputSubmit.value = "Create";
+        inputSubmit.classList.add("submitButton");
+
+        form.appendChild(inputSubmit);
+        const br6 = document.createElement("br");
+        form.appendChild(br6);
+
+        form.addEventListener("submit",function (event) {
+            event.preventDefault();
+            createTournament();
+        });
+        formDiv.appendChild(form);
+        const div2 = document.createElement("div");
+        div2.classList.add("create");
+        const anchor = document.createElement("a");
+        anchor.classList.add("already");
+        const b = document.createElement("b");
+        anchor.appendChild(b);
+        div2.appendChild(anchor);
+        formDiv.appendChild(div2);
+        formWrap.appendChild(formDiv);
+        document.getElementById("mainContainer").appendChild(formWrap);
+    } else {
+        alert("Login or Register to use this feature");
+    }
+}
+
+function createTournament(){
+    const form = document.getElementById("createTournamentForm");
+    const formData = new FormData(form);
+
+    const url = '/api/tournaments/createTournament';
+    const request = new XMLHttpRequest();
+    request.open('POST', url);
+    const token = (sessionStorage.getItem("token")) ? sessionStorage.getItem("token") : localStorage.getItem("token");
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request.setRequestHeader("Authorization", "Bearer "+token);
+    request.responseType = 'json';
+    request.onload = function (){
+        if (!request.response.success) alert(request.response.status);
+        else location.reload();
+    }
+    const radioButtonInput = (document.getElementById("radio1").checked) ? 16 :
+        ((document.getElementById("radio2").checked) ? 8 : 4);
+    request.send(JSON.stringify({
+        name: formData.get("nameRegister"),
+        max_number_participants: radioButtonInput,
+        game: formData.get("gameRegister")
+    }));
+}
 
 isInTournament();

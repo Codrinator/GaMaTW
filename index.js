@@ -12,7 +12,7 @@ const PORT = 11100;
 const index = http.createServer(function (req, res) {
     router(req, res, finalhandler(req, res));
 });
-
+/*
 Tournament.Tournament({
     name: 'TestHAIDA',
     owner: 'testOwner',
@@ -25,6 +25,6 @@ Tournament.Tournament({
 }).save(function (err) {
     if (err) throw err;
 });
-
+*/
 console.log("Server is listening on port: " + PORT);
 index.listen(PORT);
