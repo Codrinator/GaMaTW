@@ -31,6 +31,6 @@ const leaveTournament = async function(req,res){
             status : "Server Error"
         }));
     }
-}
+};
 
 module.exports = {leaveTournament};
