@@ -1,12 +1,15 @@
 const setUserState = require('../Models/UserModel').modifyInTournamentValue;
 const getUser = require('../Models/UserModel').findUserByUsername;
 const removeParticipant = require('../Models/TournamentsModel').removeParticipant;
+const changeTournamentState = require('../Models/TournamentsModel').makeNotJoinable;
 
 const leaveTournament = async function(req,res){
     try{
         const username = req.user.payload;
         if (req.body.isOwner){
             await setUserState(false,username,"");
+            const user = (await getUser(username))[0];
+            await changeTournamentState(user.tournament);
             res.statusCode = 200;
             res.end(JSON.stringify({
                 success : true,

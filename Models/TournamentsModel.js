@@ -36,6 +36,13 @@ const getTournamentCount = async function(){
     return query.exec();
 };
 
+const makeNotJoinable = async function(title){
+    const query = Tournament.findOne({name: title});
+    const doc = await query.exec();
+    doc.joinable = false;
+    doc.save();
+};
+
 const addParticipant = async function(title,username){
     const query = Tournament.findOne({name: title});
     const doc = await query.exec();
@@ -90,5 +97,5 @@ const removeParticipant = async function(title,username){
 
 const Tournament = mongoose.model('Tournaments', TournamentSchema);
 
-module.exports = {Tournament,getAll,getTournamentPage,getTournamentCount,addParticipant,getTournamentByName,removeParticipant};
+module.exports = {Tournament,getAll,getTournamentPage,getTournamentCount,addParticipant,getTournamentByName,removeParticipant,makeNotJoinable};
 
