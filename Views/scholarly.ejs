@@ -5,17 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scholarly.css">
-    <title>Raport Scholarly</title>
+    <title>Scholarly :: GaMa.TW</title>
 </head>
 
 <body prefix="schema: https://schema.org/">
     <header>
-        <h1>RUnDa Scholarly HTML</h1>
+        <h1>The GaMa Project - Scholarly HTML</h1>
     </header>
     <section typeof="sa:Abstract" role="doc-abstract" id="abstract">
         <h2>1. Abstract</h2>
-        <p>Acest document descrie utilizarea proiectului nostru, RUnDa si atat etapele de dezvoltare descrise in amanunt, cat si specificatii legate de cum am conceput arhitectura acestuia, respectand normele formatului Scholarly HTML. Informatiile prezentate
-            constituie, totodata, un ghid de utilizare a aplicatiei noastre.
+        <p>Acest document descrie în amănunt detalii legate de implementarea tuturor funcționalităților din proiect, specificații asupra conceptului arhitectural abordat și ponderea dezvoltării acestei aplicații WEB de către fiecare membru din echipă în parte.
         </p>
     </section>
 
@@ -23,109 +22,88 @@
         <h2>2. Introducere</h2>
         <section>
             <h3>2.1 Cerinta proiectului</h3>
-            <p>Cerinta proiectului este sa se realizeze un instrument Web de vizualizare si comparare de tip multi-criterial a <a href="https://data.gov.ro/dataset?q=somaj&sort=metadata_modified+desc">datelor
-                publice</a> despre somajul din Romania pe ultimele 12 luni. Se va realiza acest obiectiv folosind un <a href="https://github.com/SVlado1270/TW/blob/master/RUnDa-API-AZURE.v1.yaml">REST API propriu</a> si compararea pe judete va putea fi
-                realizata pe mai multe nivele: pe judete, pe nivel de educatie, pe grupe de varsta etc.
-            </p>
-            <p>De asemenea, statisticile vor fi generate in minim 3 maniere, folosind serviciile Web specializate; chart-urile vor putea fi exportate in cel putin formatul CSV. Se aloca <a href="https://profs.info.uaic.ro/~busaco/teach/courses/cliw/web-film.html#week4.">resurse</a>                suplimentare despre vizualizarea datelor.
+            <p>Sa se conceapa o aplicatie Web care inventariaza (colectii de) jocuri clasice (fizice) si digitale (electronice), inclusiv realizeaza managementul 
+                (meta-)datelor aferente: categorie, dimensiuni, imagini, destinatari – copii mici, (pre)scolari, adolescenti, 
+                adulti, persoane cu nevoi speciale –, reguli, restrictii (e.g., necesita platforma P, se bazeaza exclusiv pe interactiune vocala) si altele.
+                 Sistemul va oferi suport pentru activitati de organizare de campionate vizand diverse jocuri, plus administrarea utilizatorilor.
+                 Se vor genera statistici diverse ce pot fi exportate in formate deschise – minimal, CSV, DocBook si PDF.
+                 Se va realiza, de asemenea, un clasament al celor mai populare jocuri si grupuri de jucatori, disponibil si ca flux de date RSS.
             </p>
         </section>
 
         <section>
-            <h3>2.2. Functionalitatile principale</h3>
+            <h3>2.2. Funcționalitățile principale</h3>
             <ul>
-                <h3>Functionalitatile esentiale implementate in acest proiect sunt:</h3>
+                <h3>Funcționalitatile implementate în acest proiect sunt:</h3>
                 <li>
-                    <p>Vizualizarea unor grafice create dinamic in functie de criteriile si tabelele alese,</p>
+                    <p>Stocarea unor jocuri într-o baza de date;</p>
                 </li>
                 <li>
-                    <p>Accesarea datelor din client si incarcarea contentului potrivit in interfata, modificand URL-ul in mod corespunzator (totodata, si implementarea si folosirea API-ului care sa suporte aceasta actiune si sa trimita in mod corect query-urile),</p>
+                    <p>Clasificarea jocurilor după popularitate, data lansării, preț, în ordine alfabetică, după gen ș.a; </p>
                 </li>
                 <li>
-                    <p>Exportarea datelor din oricare dintre graficele disponibile in format CSV,</p>
+                    <p>Înregistrarea și logarea unor useri;</p>
                 </li>
                 <li>
-                    <p>Tool de comparare intre judete cu pagina dedicata si cu posibilitatea alegerii tipului de grafic si al criteriilor dorite,</p>
+                    <p>Vizionarea de informații extinse asupra oricărui joc din baza de date;</p>
                 </li>
                 <li>
-                    <p>Tool de comparare intre regiuni,cu posibiltatea alegerii tipului de grafic si a perioadei de timp,</p>
+                    <p>Crearea și înscrierea userilor în turnee de 4, 8 sau 16 jucători;</p>
                 </li>
                 <li>
-                    <p>Harta interactiva a Romaniei ce duce catre pagina dinamic incarcata a fiecarui judet,</p>
+                    <p>Managementul unui astfel de turneu de către user-ul care l-a creat;</p>
                 </li>
                 <li>
-                    <p>Impartirea pe regiuni si judete, regiunile fiind legate la si compuse din judetele corespunzatoare in mod real,</p>
+                    <p>Stabilarea unui învingător în competițiile sub formă de turneu, pe baza jocurilor din baza de date;</p>
                 </li>
                 <li>
-                    <p>Posibiltatea selectarii lunilor de interes pentru care se vor afisa datele din judete,</p>
+                    <p>Afișarea unor top-uri ale userilor cu cele mai mari punctaje, ale jocurilor cele mai noi și cele mai populare;</p>
                 </li>
                 <li>
-                    <p>Modificarea URL-ului astfel incat sa se poata accesa criterii si luni diferite in grafice pe pagina de judet (de exemplu: /judet/IASI?varste&coloane=Sub_25_ani&luni=1,2,3, adica /judet/nume_judet?tabel&criteriu=criteriul1,criteriul2&luni=luna1,
-                        luna2; luna se va da in format numeric).</p>
+                    <p>Existența unui admin care poate adăuga și șterge jocuri din baza de date;</p>
                 </li>
                 <li>
-                    <p><a href="https://github.com/SVlado1270/TW/blob/master/Prezentare%20RUnDa.mkv">Ghidul de utilizare</a></p>
+                    <p>Exportul de statistici diverse ce pot fi exportate în formate deschise: .CSS, .PDF și feed RSS;</p>
                 </li>
             </ul>
         </section>
 
         <section>
             <h3>2.3. Interactiunea cu utilizatorul</h3>
-            <p>Interfata utilizatorului este intuitiva, destinata in special utilizatorilor vorbitori de limba romana, cu butoane functionale pentru fiecare criteriu de filtrare a graficelor si o tematica ce adopta culori sugestive (de exemplu: culorile
-                ce arata pe harta principala rata de somaj per judet, pornind de la galben si ajungand la un rosu aprins, punand rapid utilizatorul in tema si oferind o alternativa vizuala procentelor). Utilizatorul poate accesa patru pagini: pagina principala
-                de pe care are acces direct la toate celelalte pagini, pagina de comparare a judetelor, pagina judetelor si pagina regiunilor. Paginile sunt legate intre ele intr-un mod user-friendly, astfel incat navigarea sa fie una placuta. Portabilitatea
-                aplicatiei pe rezolutii diferite, este, de asemenea, un avantaj si un feature dezvoltat exclusiv pentru user.
+            <p> La accesul site-ului, pe pagina de Home, orice vizitator poate observa un top al celor mai noi jocuri, al celor mai prolifici useri, precum și al jocurilor cele mai populare all-time. În partea de sus a paginii este meniul principal, de unde orice vizitator poate naviga
+                către celelalte pagini puse la dispozitie: „Game Collection”, „Tournaments”, „Login” sau „Register”. Oricine poate avea acces la colecția de jocuri din baza de date, dând click pe „Game Collection”, și oricine poate vedea lista cu turneele active și cu locuri disponibile, accesând
+                pagina „Tournaments”. Însă pentru a putea participa la un astfel de turneu, vizitatorul este atenționat să se autentifice, folosind pagina de „Login”. Dacă nu are cont, acesta se poate înregistra mai întâi prin pagina „Register”. 
             </p>
-        </section>
-
-        <section>
-            <h3>2.4. Stadiile de dezvoltare a proiectului</h3>
-            <div>
-                <dl>
-                    <dt>Progresul:</dt>
-                    <dd role="presentation">
-                        <p>1. Prima incercare de asezare in pagina a obiectelor si sectiunilor paginii de judet.</p>
-                        <p><img alt="project" src="./progressPics/1st.png"></p>
-                        <p>2. Folosirea gridului si organizarea mai atenta a obiectelor in pagina.
-                            <p>
-                                <p><img alt="infoiasi" src="./progressPics/2nd.png"></p>
-                                <p>3. Adaugarea paginii pentru regiuni si linkarea in dropdown catre judete.
-                                    <p>
-                                        <p><img alt="web" src="./progressPics/3rd.png"></p>
-                                        <p>4. Adaugarea butoanelor de download si de filtrare, chart-urile populate cu date reale din baza noastra de date si linkarile functionale catre celelalte pagini (si prelucrarea URL-ului corespunzator).
-                                            <p>
-                                                <p><img alt="infoiasi" src="./progressPics/4th.png"></p>
-                                                <p>5. Forma finala a paginii de judet, complet functionala si din punct de vedere al API-ului, full responsive pe toate dimensiunile si cu content creat dinamic; pozele pentru judet au, de asemenea, un aspect
-                                                    uniform (filtru, scris, culori).
-                                                    <p>
-                                                        <p><img alt="project" src="./progressPics/final.png"></p>
-                    </dd>
-                </dl>
-            </div>
+            <p>
+                Din pagina „Game Collection”, utilizatorul poate vedea imediat toate jocurile din baza de date, sortate implicit după popularitate, cu ajutorul butoanelor din partea de jos „Next” și „Prev”. La trecerea cursorului pe chenarul neagru din stânga, cu icoană de game controller,
+                un meniu de selecție este prezentat, iar acesta conține: categoriile principale - „Digital” și „Board” - cu subcategorii reprezentate de genul jocurilor respective: acțiune, simulare, RPG etc. În orice moment, vizitatorul poate face click pe numele unui joc pentru a vedea informații
+                extinse despre acesta.
+            </p>
+            <p>
+                Dacă user-ul este autentificat, acesta poate găzdui un tournament, cu 4, 8 sau 16 jucători. El va reprezenta host-ul acestei competiții și va face decizii de management asupra acesteia: poate selecta câștigătorii, poate anula turneul. Dacă în schimb, un user dorește să participe la un turneu
+                găzduit de alt user, poate alege „JOIN” pe turneul respectiv și participa la competiție.
+            </p>
         </section>
     </section>
 
     <section>
         <h2>3. Ideile de design si responsiveness</h2>
-        <p>Am abordat o schema a culorilor cat mai atractiva, consultand atat sfaturile gasite pe site-urile de referinta, cat si rapoartele si articolele online despre culorile cel mai des alese in preferintele utilizatorilor. Am pastrat aceeasi tema pe
-            fiecare pagina a site-ului, incercand pe cat posibil sa ne folosim de teoria culorilor pentru a ajunge la un rezultat vizual placut, ce nu distrage atentia utilizatorului de la functionalitatile principale ale site-ului si care scoate in evidenta
-            chart-urile si informatiile relevante. Impreuna, am creat o interfata user-friendly, usor de folosit si intuitiva, astfel incat sa nu dea batai de cap nici pe rezolutii mai mici (telefoane, tablete). Ne-am folosit exclusiv de procente si viewport
-            height/width pentru a putea amplasa obiectele in grid si pentru a asigura resizing-ul. Folosirea gridului, totodata, a fost o alegere ce a facut responsiveness-ul sa nu fie o problema pentru noi, mutand containerele in functie de rezolutie
-            si optimizand interfata.</p>
+        <p>Am ales să concepem o interfață facilă, intuitivă pentru orice tip de utilizator. Design-ul e minimalist, cu butoane și opțiuni precise, și este adaptat și pentru rezoluții mai mici (în cazul smartphone-urilor și al tabletelor).
+
+        </p>
     </section>
     <section role="doc-conclusion">
         <h2>Concluzii</h2>
-        <p>Proiectul ofera modalitati de vizualizare a datelor despre somajul din Romania pentru anul 2019, folosind un <a href="https://github.com/SVlado1270/TW/blob/master/RUnDa-API-AZURE.v1.yaml">REST API</a> dezvoltat de noi si prezentand o interfata
-            structurata si armonios construita.
+        <p>Proiectul ofera modalități de management (sortare, viziualizare) a unor jocuri dintr-o bază de date, și interacțiunea între useri la nivelul unor competiții, folosind propriul nostru REST API, modelat printr-o interfață facilă.
         </p>
     </section>
     <div role="contentinfo">
         <dl>
             <dt id="authors">Autorii:</dt>
             <dd typeof="schema:Person">
-                <h4>Luchian Vlad-Ilie</h4>
-                <h4>Serban Vlad-Andrei</h4>
-                <h4>Chioaru Otilia-Cristiana</h4>
+                <h4>Dominte Florin-Iulian: login (view + style), register (view + style + controller), admin (create/delete game), statistic exports (PDF CSV), homepage (view + style + controller), tournament (create), gameModel, userModel, tournamentModel, responsiveness formulare (login, register, createGame, deleteGame)</h4>
+                <h4>Donciu Mihai-Codrin: game collection (view + style + controller), gameModel, popularea bazei de date (mockaroo), scholarlyHTML, style navmenu</h4>
+                <h4>Pristavu Dragos-Dumitru: nucleul MVC general (routes main pages), middlewares (sanitize data + authorize), login (controller), RSS feed, tournament page (view + style + mare parte din controller), nav-menu pentru toate paginile, responsiveness (homepage + tournaments page), tournamentsModel, userModel, gameModel</h4>
             </dd>
         </dl>
     </div>
