@@ -6,7 +6,8 @@ const pathsToAuthorize = [
     "/tournaments/isInTournament",
     "/tournaments/createTournament",
     "/tournaments/leaveTournament",
-    "/admin/deleteGame",//de adaugat la request de pe front: request.setRequestHeader("Authorization", 'Bearer ' + sessionStorage.getItem("token")); --session sau local
+    "/admin/deleteGame",
+    "/tournaments/declareMatchWinner",
 ];
 
 const checkAuthorization = async function(req,res,next){

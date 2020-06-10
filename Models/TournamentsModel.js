@@ -30,6 +30,12 @@ const getTournamentByName = async function(tournamentName){
     return query.exec();
 };
 
+const verifyTournamentName= async function(name){
+  const query=Tournament.find();
+  query.where({name:name});
+  return query.exec();
+};
+
 const getTournamentCount = async function(){
     const query = Tournament.find();
     query.count({joinable: true});
@@ -42,6 +48,26 @@ const makeNotJoinable = async function(title){
     doc.joinable = false;
     doc.save();
 };
+
+const updateMatches = async function(title,match,participant,username,nextMatch){
+    const query = Tournament.findOne({name: title});
+    const doc = await query.exec();
+    doc.match_winner.set(match,username);
+    if (nextMatch === -1 || match === doc.max_number_participants-2){
+        if (doc.winner !== "TBD"){
+            const removePoints = require("./UserModel").addPoints;
+            await removePoints(-500,doc.winner);
+        }
+        doc.winner = username;
+    } else {
+      if (participant === "one"){
+          doc.matches[nextMatch].participantOne = username;
+      } else {
+          doc.matches[nextMatch].participantTwo = username;
+      }
+    }
+    doc.save();
+}
 
 const addParticipant = async function(title,username){
     const query = Tournament.findOne({name: title});
@@ -60,6 +86,7 @@ const addParticipant = async function(title,username){
             } else i++;
         }
         if (doc.participants.length === doc.max_number_participants) {
+            doc.state = true;
             doc.joinable = false;
             const participants = doc.participants;
             doc.matches=[];
@@ -80,16 +107,13 @@ const removeParticipant = async function(title,username){
     const doc = await query.exec();
     if (doc.participants.length < doc.max_number_participants){
         doc.participants = doc.participants.filter(s => s !== username);
-        let foundSpot = false;
-        let i = 0;
-        while (!foundSpot && i < doc.max_number_participants/2){
+        for (let i=0; i < doc.max_number_participants/2; i++){
             if (doc.matches[i].participantOne === username){
                 doc.matches[i].participantOne = "TBD";
-                foundSpot = true;
-            } else if (doc.matches[i].participantTwo === username) {
+            }
+            if (doc.matches[i].participantTwo === username) {
                 doc.matches[i].participantTwo = "TBD";
-                foundSpot = true;
-            } else i++;
+            }
         }
     }
     doc.save();
@@ -97,5 +121,6 @@ const removeParticipant = async function(title,username){
 
 const Tournament = mongoose.model('Tournaments', TournamentSchema);
 
-module.exports = {Tournament,getAll,getTournamentPage,getTournamentCount,addParticipant,getTournamentByName,removeParticipant,makeNotJoinable};
+module.exports = {Tournament,getAll,getTournamentPage,getTournamentCount,addParticipant,getTournamentByName,removeParticipant,
+    makeNotJoinable,verifyTournamentName,updateMatches};
 
