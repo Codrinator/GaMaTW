@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scholarly.css">
+    <title>Raport Scholarly</title>
+</head>
+
+<body prefix="schema: https://schema.org/">
+    <header>
+        <h1>RUnDa Scholarly HTML</h1>
+    </header>
+    <section typeof="sa:Abstract" role="doc-abstract" id="abstract">
+        <h2>1. Abstract</h2>
+        <p>Acest document descrie utilizarea proiectului nostru, RUnDa si atat etapele de dezvoltare descrise in amanunt, cat si specificatii legate de cum am conceput arhitectura acestuia, respectand normele formatului Scholarly HTML. Informatiile prezentate
+            constituie, totodata, un ghid de utilizare a aplicatiei noastre.
+        </p>
+    </section>
+
+    <section role="doc-introduction">
+        <h2>2. Introducere</h2>
+        <section>
+            <h3>2.1 Cerinta proiectului</h3>
+            <p>Cerinta proiectului este sa se realizeze un instrument Web de vizualizare si comparare de tip multi-criterial a <a href="https://data.gov.ro/dataset?q=somaj&sort=metadata_modified+desc">datelor
+                publice</a> despre somajul din Romania pe ultimele 12 luni. Se va realiza acest obiectiv folosind un <a href="https://github.com/SVlado1270/TW/blob/master/RUnDa-API-AZURE.v1.yaml">REST API propriu</a> si compararea pe judete va putea fi
+                realizata pe mai multe nivele: pe judete, pe nivel de educatie, pe grupe de varsta etc.
+            </p>
+            <p>De asemenea, statisticile vor fi generate in minim 3 maniere, folosind serviciile Web specializate; chart-urile vor putea fi exportate in cel putin formatul CSV. Se aloca <a href="https://profs.info.uaic.ro/~busaco/teach/courses/cliw/web-film.html#week4.">resurse</a>                suplimentare despre vizualizarea datelor.
+            </p>
+        </section>
+
+        <section>
+            <h3>2.2. Functionalitatile principale</h3>
+            <ul>
+                <h3>Functionalitatile esentiale implementate in acest proiect sunt:</h3>
+                <li>
+                    <p>Vizualizarea unor grafice create dinamic in functie de criteriile si tabelele alese,</p>
+                </li>
+                <li>
+                    <p>Accesarea datelor din client si incarcarea contentului potrivit in interfata, modificand URL-ul in mod corespunzator (totodata, si implementarea si folosirea API-ului care sa suporte aceasta actiune si sa trimita in mod corect query-urile),</p>
+                </li>
+                <li>
+                    <p>Exportarea datelor din oricare dintre graficele disponibile in format CSV,</p>
+                </li>
+                <li>
+                    <p>Tool de comparare intre judete cu pagina dedicata si cu posibilitatea alegerii tipului de grafic si al criteriilor dorite,</p>
+                </li>
+                <li>
+                    <p>Tool de comparare intre regiuni,cu posibiltatea alegerii tipului de grafic si a perioadei de timp,</p>
+                </li>
+                <li>
+                    <p>Harta interactiva a Romaniei ce duce catre pagina dinamic incarcata a fiecarui judet,</p>
+                </li>
+                <li>
+                    <p>Impartirea pe regiuni si judete, regiunile fiind legate la si compuse din judetele corespunzatoare in mod real,</p>
+                </li>
+                <li>
+                    <p>Posibiltatea selectarii lunilor de interes pentru care se vor afisa datele din judete,</p>
+                </li>
+                <li>
+                    <p>Modificarea URL-ului astfel incat sa se poata accesa criterii si luni diferite in grafice pe pagina de judet (de exemplu: /judet/IASI?varste&coloane=Sub_25_ani&luni=1,2,3, adica /judet/nume_judet?tabel&criteriu=criteriul1,criteriul2&luni=luna1,
+                        luna2; luna se va da in format numeric).</p>
+                </li>
+                <li>
+                    <p><a href="https://github.com/SVlado1270/TW/blob/master/Prezentare%20RUnDa.mkv">Ghidul de utilizare</a></p>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>2.3. Interactiunea cu utilizatorul</h3>
+            <p>Interfata utilizatorului este intuitiva, destinata in special utilizatorilor vorbitori de limba romana, cu butoane functionale pentru fiecare criteriu de filtrare a graficelor si o tematica ce adopta culori sugestive (de exemplu: culorile
+                ce arata pe harta principala rata de somaj per judet, pornind de la galben si ajungand la un rosu aprins, punand rapid utilizatorul in tema si oferind o alternativa vizuala procentelor). Utilizatorul poate accesa patru pagini: pagina principala
+                de pe care are acces direct la toate celelalte pagini, pagina de comparare a judetelor, pagina judetelor si pagina regiunilor. Paginile sunt legate intre ele intr-un mod user-friendly, astfel incat navigarea sa fie una placuta. Portabilitatea
+                aplicatiei pe rezolutii diferite, este, de asemenea, un avantaj si un feature dezvoltat exclusiv pentru user.
+            </p>
+        </section>
+
+        <section>
+            <h3>2.4. Stadiile de dezvoltare a proiectului</h3>
+            <div>
+                <dl>
+                    <dt>Progresul:</dt>
+                    <dd role="presentation">
+                        <p>1. Prima incercare de asezare in pagina a obiectelor si sectiunilor paginii de judet.</p>
+                        <p><img alt="project" src="./progressPics/1st.png"></p>
+                        <p>2. Folosirea gridului si organizarea mai atenta a obiectelor in pagina.
+                            <p>
+                                <p><img alt="infoiasi" src="./progressPics/2nd.png"></p>
+                                <p>3. Adaugarea paginii pentru regiuni si linkarea in dropdown catre judete.
+                                    <p>
+                                        <p><img alt="web" src="./progressPics/3rd.png"></p>
+                                        <p>4. Adaugarea butoanelor de download si de filtrare, chart-urile populate cu date reale din baza noastra de date si linkarile functionale catre celelalte pagini (si prelucrarea URL-ului corespunzator).
+                                            <p>
+                                                <p><img alt="infoiasi" src="./progressPics/4th.png"></p>
+                                                <p>5. Forma finala a paginii de judet, complet functionala si din punct de vedere al API-ului, full responsive pe toate dimensiunile si cu content creat dinamic; pozele pentru judet au, de asemenea, un aspect
+                                                    uniform (filtru, scris, culori).
+                                                    <p>
+                                                        <p><img alt="project" src="./progressPics/final.png"></p>
+                    </dd>
+                </dl>
+            </div>
+        </section>
+    </section>
+
+    <section>
+        <h2>3. Ideile de design si responsiveness</h2>
+        <p>Am abordat o schema a culorilor cat mai atractiva, consultand atat sfaturile gasite pe site-urile de referinta, cat si rapoartele si articolele online despre culorile cel mai des alese in preferintele utilizatorilor. Am pastrat aceeasi tema pe
+            fiecare pagina a site-ului, incercand pe cat posibil sa ne folosim de teoria culorilor pentru a ajunge la un rezultat vizual placut, ce nu distrage atentia utilizatorului de la functionalitatile principale ale site-ului si care scoate in evidenta
+            chart-urile si informatiile relevante. Impreuna, am creat o interfata user-friendly, usor de folosit si intuitiva, astfel incat sa nu dea batai de cap nici pe rezolutii mai mici (telefoane, tablete). Ne-am folosit exclusiv de procente si viewport
+            height/width pentru a putea amplasa obiectele in grid si pentru a asigura resizing-ul. Folosirea gridului, totodata, a fost o alegere ce a facut responsiveness-ul sa nu fie o problema pentru noi, mutand containerele in functie de rezolutie
+            si optimizand interfata.</p>
+    </section>
+    <section role="doc-conclusion">
+        <h2>Concluzii</h2>
+        <p>Proiectul ofera modalitati de vizualizare a datelor despre somajul din Romania pentru anul 2019, folosind un <a href="https://github.com/SVlado1270/TW/blob/master/RUnDa-API-AZURE.v1.yaml">REST API</a> dezvoltat de noi si prezentand o interfata
+            structurata si armonios construita.
+        </p>
+    </section>
+    <div role="contentinfo">
+        <dl>
+            <dt id="authors">Autorii:</dt>
+            <dd typeof="schema:Person">
+                <h4>Luchian Vlad-Ilie</h4>
+                <h4>Serban Vlad-Andrei</h4>
+                <h4>Chioaru Otilia-Cristiana</h4>
+            </dd>
+        </dl>
+    </div>
+</body>
+
+</html>

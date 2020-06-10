@@ -176,7 +176,31 @@ const deleteGameStyle = async function (req, res) {
 };
 
 
+const scholarlyHTML = async function (req, res) {
+    ejs.renderFile('./Views/scholarly.ejs', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/html"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
+const scholarlyCSS = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/scholarl.css', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/css"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
 module.exports = {
-    homePage, homePageStyle, gameCollection, gameCollectionStyle, tournaments,
+    homePage, homePageStyle,scholarlyHTML, scholarlyCSS, gameCollection, gameCollectionStyle, tournaments,
     tournamentsStyle, login, loginStyle, register, registerStyle, admin, adminStyle,deleteGameStyle,deleteGame
 };
