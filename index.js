@@ -12,19 +12,8 @@ const PORT = 11100;
 const index = http.createServer(function (req, res) {
     router(req, res, finalhandler(req, res));
 });
-/*
-Tournament.Tournament({
-    name: 'TestHAIDA',
-    owner: 'testOwner',
-    max_number_participants: 4,
-    game: 'Worms',
-    state: true,
-    joinable: true,
-    participants: [],
-    matches: [{participantOne: "TBD" , participantTwo: "TBD"},{participantOne: "TBD" , participantTwo: "TBD"},{participantOne: "TBD" , participantTwo: "TBD"}]
-}).save(function (err) {
-    if (err) throw err;
-});
-*/
+
+Game.clearPlatformForBoard();
+
 console.log("Server is listening on port: " + PORT);
 index.listen(PORT);

@@ -5,6 +5,7 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
     document.getElementById("buttonsDiv").classList.remove("hide-stuff");
     document.getElementById("headSorter").classList.remove("hide-stuff");
     document.getElementById("gamesMainContainer").classList.remove("hide-stuff");
+    document.getElementById("categoryChosen").classList.remove("hide-stuff");
 
     const url = '/api/gameCollection/loadCollection';
     const request = new XMLHttpRequest();
@@ -14,6 +15,11 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
     request.responseType = 'json';
     
     request.onload = function(){
+
+        if(document.getElementById("gameViewerID")){
+            document.getElementById("gameViewerID").remove();
+        }
+
         if(document.getElementById("gameTable")){
             document.getElementById("gameTable").remove();
         }
@@ -291,26 +297,131 @@ priceButton.addEventListener("click", function(event){
     loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 5, 1); //switcher 5 pentru price
 });
 
-function viewGame(games, container){
+function viewGame(games){
+    document.getElementById("categoryChosen").classList.add("hide-stuff");
     document.getElementById("gamesMainContainer").classList.add("hide-stuff");
     document.getElementById("buttonsDiv").classList.add("hide-stuff");
     document.getElementById("headSorter").classList.add("hide-stuff");
-
-    const gameContainer = document.createElement("div");
+    const myMain = document.getElementsByTagName("main")[0];
+    const container = document.createElement("div");
+    container.id = "gameViewerID"
+    const gameContainer = document.createElement("ul");
     gameContainer.classList.add("game-view-container");
 
 
-    const gameName = document.createElement("div");
-    gameName.classList.add("game-view-name");
+    const nameLi = document.createElement("li");
+    const gameNameTitle = document.createElement("div");
+    gameNameTitle.textContent = "Name: "
+    gameNameTitle.classList.add("game-info-title");
+    const gameName = document.createElement("p");
+    gameName.classList.add("game-info");
     gameName.textContent = games.name;
+    nameLi.appendChild(gameNameTitle);
+    nameLi.appendChild(gameName);
 
+    const dateLi = document.createElement("li");
+    const gameDateTitle = document.createElement("div");
+    gameDateTitle.textContent = "Release date: "
+    gameDateTitle.classList.add("game-info-title");
+    const gameDate = document.createElement("p");
+    gameDate.classList.add("game-info");
+    gameDate.textContent = games.release_date.split("T")[0];
+    dateLi.appendChild(gameDateTitle);
+    dateLi.appendChild(gameDate);
+
+    const companyLi = document.createElement("li");
+    const gameCompanyTitle = document.createElement("div");
+    gameCompanyTitle.textContent = "Company: "
+    gameCompanyTitle.classList.add("game-info-title");
+    const gameCompany = document.createElement("p");
+    gameCompany.classList.add("game-info");
+    gameCompany.textContent = games.company;
+    companyLi.appendChild(gameCompanyTitle);
+    companyLi.appendChild(gameCompany);
+
+    const popularityLi = document.createElement("li");
+    const gamePopularityTitle = document.createElement("div");
+    gamePopularityTitle.textContent = "Poplarity: "
+    gamePopularityTitle.classList.add("game-info-title");
+    const gamePopularity = document.createElement("p");
+    gamePopularity.classList.add("game-info");
+    gamePopularity.textContent = games.popularity;
+    popularityLi.appendChild(gamePopularityTitle);
+    popularityLi.appendChild(gamePopularity);
+
+    const genreLi = document.createElement("li");
+    const gameGenreTitle = document.createElement("div");
+    gameGenreTitle.textContent = "Genre: "
+    gameGenreTitle.classList.add("game-info-title");
+    const gameGenre = document.createElement("p");
+    gameGenre.classList.add("game-info");
+    gameGenre.textContent = games.genre;
+    genreLi.appendChild(gameGenreTitle);
+    genreLi.appendChild(gameGenre);
+
+    const categoryLi = document.createElement("li");
+    const gameCategoryTitle = document.createElement("div");
+    gameCategoryTitle.textContent = "Main category: "
+    gameCategoryTitle.classList.add("game-info-title");
+    const gameCategory = document.createElement("p");
+    gameCategory.classList.add("game-info");
+    gameCategory.textContent = games.category;
+    categoryLi.appendChild(gameCategoryTitle);
+    categoryLi.appendChild(gameCategory);
+
+    const ageRestrictionLi = document.createElement("li");
+    const gameAgeRestrictionTitle = document.createElement("div");
+    gameAgeRestrictionTitle.textContent = "Age restriction: "
+    gameAgeRestrictionTitle.classList.add("game-info-title");
+    const gameAgeRestriction = document.createElement("p");
+    gameAgeRestriction.classList.add("game-info");
+    gameAgeRestriction.textContent = games.age_restriction;
+    ageRestrictionLi.appendChild(gameAgeRestrictionTitle);
+    ageRestrictionLi.appendChild(gameAgeRestriction);
+
+    const platformsLi = document.createElement("li");
+    const gamePlatformsTitle = document.createElement("div");
+    gamePlatformsTitle.textContent = "Available on: "
+    gamePlatformsTitle.classList.add("game-info-title");
+    const gamePlatforms = document.createElement("p");
+    gamePlatforms.classList.add("game-info");
+    gamePlatforms.textContent = games.platform;
+    platformsLi.appendChild(gamePlatformsTitle);
+    platformsLi.appendChild(gamePlatforms);
+
+    const priceLi = document.createElement("li");
+    const gamePriceTitle = document.createElement("div");
+    gamePriceTitle.textContent = "Price (in $): "
+    gamePriceTitle.classList.add("game-info-title");
+    const gamePrice = document.createElement("p");
+    gamePrice.classList.add("game-info");
+    gamePrice.textContent = games.price;
+    priceLi.appendChild(gamePriceTitle);
+    priceLi.appendChild(gamePrice);
+
+    const descriptionLi = document.createElement("li");
+    const gameDescriptionTitle = document.createElement("div");
+    gameDescriptionTitle.textContent = "Description: "
+    gameDescriptionTitle.classList.add("game-info-title");
     const gameDescription = document.createElement("p");
-    gameDescription.classList.add("game-view-description");
-    gameDescription.textContent = games.gameDescription;
+    gameDescription.classList.add("game-info");
+    gameDescription.textContent = games.game_description;
+    descriptionLi.appendChild(gameDescriptionTitle);
+    descriptionLi.appendChild(gameDescription);
 
-    gameContainer.appendChild(gameName);
-    gameContainer.appendChild(gameDescription);
+    gameContainer.appendChild(nameLi);
+    gameContainer.appendChild(dateLi);
+    gameContainer.appendChild(companyLi);
+    gameContainer.appendChild(popularityLi);
+    gameContainer.appendChild(genreLi);
+    gameContainer.appendChild(categoryLi);
+    gameContainer.appendChild(ageRestrictionLi);
+    gameContainer.appendChild(platformsLi);
+    gameContainer.appendChild(priceLi);
+    gameContainer.appendChild(descriptionLi);
 
+    container.appendChild(gameContainer);
+    myMain.appendChild(container);
 }
 
 loadCollection(10, '', '', 0, 1);

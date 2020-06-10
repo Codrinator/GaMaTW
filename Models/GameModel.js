@@ -13,6 +13,16 @@ const GameSchema = new mongoose.Schema({
     game_description: String
 });
 
+
+const clearPlatformForBoard = async function () {
+    const query = Game.find();
+    const myQuery = await query.where({category: 'board'}).exec();
+    for(let i = 0; i<myQuery.length; i = i+1){
+        myQuery[i].platform = ['-'];
+        myQuery[i].save();
+    }
+};
+
 const getTopGames = async function () {
     const query = Game.find();
     query.sort({popularity: -1}).limit(10);
@@ -247,5 +257,5 @@ const removeByName=async function(name){
 
 const Game = mongoose.model('GameCollection', GameSchema);
 
-module.exports = {Game, removeByName, getAll, getTopGames, getByName, getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub, getNumberOfGames, getNumberOfGamesWithParameters};
+module.exports = {Game, removeByName, clearPlatformForBoard, getAll, getTopGames, getByName, getNewGamesRssFeed, getNewGames, loadGames, getGamesCollection, getGamesCollectionSub, getNumberOfGames, getNumberOfGamesWithParameters};
 

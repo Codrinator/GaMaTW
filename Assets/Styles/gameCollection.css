@@ -345,3 +345,24 @@ td{
 .hide-stuff{
     display:none;
 }
+
+.game-view-container{
+    margin-left: 14%;
+    display: block;
+    list-style-type: none;
+}
+
+.game-view-container li{
+    font-size: x-large;
+    margin-top: 20px;
+}
+
+.game-info{
+    display: inline;
+    color: black;
+}
+
+.game-info-title{
+    color: darkorange;
+    display: inline;
+}
