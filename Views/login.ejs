@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gamma</title>
+    <title>Login :: GaMa.TW</title>
     <link rel="stylesheet" href="../Assets/Styles/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
 <nav>
     <ul class="navMenu">
-        <li class="title"> The Gamma Project</li>
-        <li><a class="navbarHoverBlock" href="/">Home</a></li>
-        <li><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
-        <li><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
+        <li class="title">The GaMa Project</li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/">Home</a></li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
     </ul>
 </nav>
 <main>
@@ -41,6 +42,7 @@
                 <input type="checkbox" class="checkboxButton"  id="checkboxLogin" name="checkboxLogin"
                        value="remember">
                 <label for="checkboxLogin" class="checkboxLoginLabel"> Remember me? </label>
+                <p class="errorText" id="errorHTML">  </p>
             </form>
             <div class="register"><a href="/register" class="registerButton"><b>You don't
                 have an account yet?</b></a></div>

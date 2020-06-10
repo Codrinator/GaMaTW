@@ -2,27 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Collection :: GaMa.tw</title>
+    <title>Collection :: GaMa.TW</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Assets/Styles/gameCollection.css">
+    <script src="https://kit.fontawesome.com/22961e3652.js" crossorigin="anonymous"></script>
     <meta name="Description" content="Check out all these awesome games!">
 </head>
 <body>
 
     <nav>
         <ul class="navMenu">
-            <li class="title"> The Gamma Project</li>
-            <li><a class="navbarHoverBlock" href="/">Home</a></li>
-            <li><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
-            <li><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
+            <li class="title">The GaMa Project</li>
+            <li class="navbarButton"><a class="navbarHoverBlock" href="/">Home</a></li>
+            <li class="navbarButton"><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
+            <li class="navbarButton"><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
         </ul>
     </nav>
 
-    <div class="blended_grid">
-        <div class="pageHeader"> Sort through our amazing collection!</div>
-        <div class="pageLeftMenu">Categories</div>
-        <div class="pageContent"> Items Shown: </div>
-        <div class="pageFooter"> footer asupra caruia ne punem de acord </div>
-    </div>
+    <nav class="navbar">
+      <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="/gameCollection" class="nav-link">
+              <i class="fa fa-gamepad"><g class="fa-color"></g></i>
+              <span class="link-text" ><div class="nav-title">Categories</div></span>
+            </a>
+            <div class="link-text">
+              <a class="nav-subitem" id="digitalButton" href="#" onclick="loadCollection(10, 'digital', '', 0, 1)">Digital</a>
+              <ul>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'action', 1, 1)">Action</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'adventure', 1, 1)">Adventure</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'simulator', 1, 1)">Simulator</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'strategy', 1, 1)">Strategy</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'fighting', 1, 1)">Fighting</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'digital', 'platformer', 1, 1)">Platformer</a></li>
+              </ul>
+            </div>
+            <div class="link-text">
+              <a class="nav-subitem2" href="#" onclick="loadCollection(10, 'board', '', 0, 1)">Board</a>
+              <ul>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'board', 'role-play', 1, 1)">Role-Play</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'board', 'strategy', 1, 1)">Strategy</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'board', 'war', 1, 1)">War</a></li>
+                <li><a class="nav-subsubitem" href="#" onclick="loadCollection(10, 'board', 'dynamic', 1, 1)">Dynamic</a></li>
+              </ul>
+            </div>
+          </li>
+          <div class="nav-stats">
+            <a class="nav-stats-title">Statistics:</a>
+            <a class="nav-stats-item" href="#" onclick="downloadPDF()">.PDF</a>
+            <a class="nav-stats-item" href="#" onclick="downloadCSV()">.CSV</a>
+              <a class="nav-stats-item" href="/rssFeed">.RSS</a>
+          </div>
+      </ul>
+    </nav>
+  <main>
+      <div class="head-sorter" id="headSorter">Category chosen:</div>
+      <div class="category-chosen" id="categoryChosen"></div>
+      <div class="buttons" id="buttonsDiv">
+        <button id="popularityButton">Popularity</button>
+        <button id="alphabeticallyButton">Alphabetically</button>
+        <button id="dateButton">Release Date</button>
+        <button id="priceButton">Price</button>
+      </div>
+      <div class="game-container" id="gamesMainContainer">
+      </div>
+  </main>
     <script src="/Assets/Scripts/loadPageOptions.js"></script>
+    <script src="/Assets/Scripts/loadGameCollection.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 </body>
 </html>

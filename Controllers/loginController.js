@@ -1,10 +1,11 @@
 const crypto = require('crypto');
 const User = require('../Models/index').User;
+const createToken = require('../Utils/authorizationTokenUtils').createToken;
 
 const login = async function (req,res){
     try {
-        const username = req.body.username;
-        const password = req.body.password;
+        const username = req.body.usernameRegister;
+        const password = req.body.passwordRegister;
         const userByUsername = await User.findUserByUsername(username);
         if (!userByUsername.length){
             res.statusCode = 401;
@@ -23,12 +24,13 @@ const login = async function (req,res){
                     status : 'Invalid password'
                 }));
             } else {
+                const token = await createToken(username);
                 res.statusCode = 200;
                 res.end(JSON.stringify({
                     success : true,
                     status : "Logged In!",
                     username : username,
-                    token : 'Not Available Yet'
+                    token : token
                 }));
             }
         }

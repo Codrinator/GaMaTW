@@ -11,6 +11,6 @@ const sanitizeMiddleware = async function(req,res,next){
         req.body.passwordConfirmRegister = sanitize(req.body.passwordConfirmRegister);
     }
     next();
-}
+};
 
 module.exports = {sanitizeMiddleware};

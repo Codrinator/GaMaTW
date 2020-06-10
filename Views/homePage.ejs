@@ -1,30 +1,53 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamma</title>
+    <title>Home :: GaMa.TW</title>
     <link rel="stylesheet" href="../Assets/Styles/home.css">
 </head>
 <body>
 
-    <nav>
-        <ul class="navMenu">
-            <li class="title"> The Gamma Project</li>
-            <li><a class="navbarHoverBlock" href="/">Home</a></li>
-            <li><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
-            <li><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
-        </ul>
-    </nav>
+<nav>
+    <ul class="navMenu">
+        <li class="title">The GaMa Project</li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/">Home</a></li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
+    </ul>
+</nav>
 
-    <main>
-        <div class="grid-container">
-            <div class="grid-item1">Hot games right now</div>
-            <div class="grid-item2">Most active users</div>
-            <div class="grid-item3">All time most popular games</div>
+<main>
+    <div class="grid-container">
+        <div class="grid-item1"><p class="newGamesTitle">New Games</p>
+            <% var index = 0; newGames.forEach(function (item) { index = index + 1 %>
+            <p class="newGames">
+                <%= index + '. ' %>
+                <%= '"' + item.name + '"' %> <span
+                        class="newGamesSpan"> <%= 'Released: ' + item.release_date.toLocaleDateString() %> </span></p>
+            <% }); %>
         </div>
-        <script src="/Assets/Scripts/loadPageOptions.js"></script>
-    </main>
+        <div class="grid-item2"><p class="topUserTitle"> Top Users</p>
+
+            <% index = 0; topUsers.forEach(function (item) { index = index + 1 %>
+            <p class="topUser">
+                <%= index + '. ' %>
+                <%= item.username %> <span class="userScoreSpan"><span
+                            class="points"><%= item.user_score %> points</span> </span></p>
+            <% }); %>
+        </div>
+        <div class="grid-item3"><p class="userFavouriteGames">Favourite Games</p>
+            <% index = 0; topGames.forEach(function (item) { index = index + 1 %>
+            <p class="topGames">
+                <%= index + '. ' %>
+                <span class="highlightName"><%= '"' + item.name + '"' %> </span> <span class="madeBy">made
+                    by</span> <%= item.company + ' (' + item.age_restriction + ')' %> <span
+                        class="topUserSpan"> <%= 'Rating = ' + item.popularity %></span>
+                <% }); %>
+            </p>
+        </div>
+    </div>
+    <script src="/Assets/Scripts/loadPageOptions.js"></script>
+</main>
 </body>
 </html>

@@ -5,6 +5,7 @@ const isLogged = (sessionStorage.getItem("isLogged") !== null) ? sessionStorage.
 const navMenu = (document.getElementsByClassName("navMenu"))[0];
 if (isLogged) {
     const signOut = document.createElement('li');
+    signOut.classList.add("navbarButton");
     signOut.textContent = "Logout";
     signOut.id = "signOut";
     signOut.classList.add("navbarHoverBlock");
@@ -13,9 +14,10 @@ if (isLogged) {
     const username = document.createElement('li');
     const displayedName = (sessionStorage.getItem("user") !== null) ?
         sessionStorage.getItem("user") : localStorage.getItem("user");
-    username.textContent = "Logged in as "+displayedName;
+    username.textContent = "Logged in as " + displayedName;
     username.id = "userDisplay";
     username.classList.add("navbarNoHover");
+    username.classList.add("navbarButton");
     navMenu.appendChild(username);
 
     signOut.addEventListener("click", function () {
@@ -28,9 +30,7 @@ if (isLogged) {
             localStorage.removeItem("user");
             localStorage.removeItem("token");
         }
-        username.remove();
-        signOut.remove();
-        appendLoginAndRegister();
+        location.reload();
     })
 } else {
     appendLoginAndRegister();
@@ -43,6 +43,7 @@ function appendLoginAndRegister(){
     loginAnchor.textContent = "Login";
     loginAnchor.classList.add("navbarHoverBlock");
     login.appendChild(loginAnchor);
+    login.classList.add("navbarButton");
     navMenu.appendChild(login);
 
     const register = document.createElement('li');
@@ -51,6 +52,7 @@ function appendLoginAndRegister(){
     registerAnchor.textContent = "Register";
     registerAnchor.classList.add("navbarHoverBlock");
     register.appendChild(registerAnchor);
+    register.classList.add("navbarButton");
     navMenu.appendChild(register);
 }
 
@@ -59,9 +61,9 @@ function addActiveClass(){
     const navBar = document.getElementsByClassName("navMenu");
     const navList = navBar[0].children;
     for (let i = 1 ; i <navList.length ; i++){
-        const tempString = navList[i].firstElementChild.toString().substring(22);
+        const tempString = navList[i].firstChild.toString().substring(22);
         if (tempString === loc){
-            navList[i].firstElementChild.classList.add("active");
+            navList[i].firstChild.classList.add("active");
         }
     }
 }

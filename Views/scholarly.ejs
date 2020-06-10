@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scholarly.css">
+    <title>Scholarly :: GaMa.TW</title>
+</head>
+
+<body prefix="schema: https://schema.org/">
+    <header>
+        <h1>The GaMa Project - Scholarly HTML</h1>
+    </header>
+    <section typeof="sa:Abstract" role="doc-abstract" id="abstract">
+        <h2>1. Abstract</h2>
+        <p>Acest document descrie în amănunt detalii legate de implementarea tuturor funcționalităților din proiect, specificații asupra conceptului arhitectural abordat și ponderea dezvoltării acestei aplicații WEB de către fiecare membru din echipă în parte.
+        </p>
+    </section>
+
+    <section role="doc-introduction">
+        <h2>2. Introducere</h2>
+        <section>
+            <h3>2.1 Cerinta proiectului</h3>
+            <p>Sa se conceapa o aplicatie Web care inventariaza (colectii de) jocuri clasice (fizice) si digitale (electronice), inclusiv realizeaza managementul 
+                (meta-)datelor aferente: categorie, dimensiuni, imagini, destinatari – copii mici, (pre)scolari, adolescenti, 
+                adulti, persoane cu nevoi speciale –, reguli, restrictii (e.g., necesita platforma P, se bazeaza exclusiv pe interactiune vocala) si altele.
+                 Sistemul va oferi suport pentru activitati de organizare de campionate vizand diverse jocuri, plus administrarea utilizatorilor.
+                 Se vor genera statistici diverse ce pot fi exportate in formate deschise – minimal, CSV, DocBook si PDF.
+                 Se va realiza, de asemenea, un clasament al celor mai populare jocuri si grupuri de jucatori, disponibil si ca flux de date RSS.
+            </p>
+        </section>
+
+        <section>
+            <h3>2.2. Funcționalitățile principale</h3>
+            <ul>
+                <h3>Funcționalitatile implementate în acest proiect sunt:</h3>
+                <li>
+                    <p>Stocarea unor jocuri într-o baza de date;</p>
+                </li>
+                <li>
+                    <p>Clasificarea jocurilor după popularitate, data lansării, preț, în ordine alfabetică, după gen ș.a; </p>
+                </li>
+                <li>
+                    <p>Înregistrarea și logarea unor useri;</p>
+                </li>
+                <li>
+                    <p>Vizionarea de informații extinse asupra oricărui joc din baza de date;</p>
+                </li>
+                <li>
+                    <p>Crearea și înscrierea userilor în turnee de 4, 8 sau 16 jucători;</p>
+                </li>
+                <li>
+                    <p>Managementul unui astfel de turneu de către user-ul care l-a creat;</p>
+                </li>
+                <li>
+                    <p>Stabilarea unui învingător în competițiile sub formă de turneu, pe baza jocurilor din baza de date;</p>
+                </li>
+                <li>
+                    <p>Afișarea unor top-uri ale userilor cu cele mai mari punctaje, ale jocurilor cele mai noi și cele mai populare;</p>
+                </li>
+                <li>
+                    <p>Existența unui admin care poate adăuga și șterge jocuri din baza de date;</p>
+                </li>
+                <li>
+                    <p>Exportul de statistici diverse ce pot fi exportate în formate deschise: .CSS, .PDF și feed RSS;</p>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>2.3. Interactiunea cu utilizatorul</h3>
+            <p> La accesul site-ului, pe pagina de Home, orice vizitator poate observa un top al celor mai noi jocuri, al celor mai prolifici useri, precum și al jocurilor cele mai populare all-time. În partea de sus a paginii este meniul principal, de unde orice vizitator poate naviga
+                către celelalte pagini puse la dispozitie: „Game Collection”, „Tournaments”, „Login” sau „Register”. Oricine poate avea acces la colecția de jocuri din baza de date, dând click pe „Game Collection”, și oricine poate vedea lista cu turneele active și cu locuri disponibile, accesând
+                pagina „Tournaments”. Însă pentru a putea participa la un astfel de turneu, vizitatorul este atenționat să se autentifice, folosind pagina de „Login”. Dacă nu are cont, acesta se poate înregistra mai întâi prin pagina „Register”. 
+            </p>
+            <p>
+                Din pagina „Game Collection”, utilizatorul poate vedea imediat toate jocurile din baza de date, sortate implicit după popularitate, cu ajutorul butoanelor din partea de jos „Next” și „Prev”. La trecerea cursorului pe chenarul neagru din stânga, cu icoană de game controller,
+                un meniu de selecție este prezentat, iar acesta conține: categoriile principale - „Digital” și „Board” - cu subcategorii reprezentate de genul jocurilor respective: acțiune, simulare, RPG etc. În orice moment, vizitatorul poate face click pe numele unui joc pentru a vedea informații
+                extinse despre acesta.
+            </p>
+            <p>
+                Dacă user-ul este autentificat, acesta poate găzdui un tournament, cu 4, 8 sau 16 jucători. El va reprezenta host-ul acestei competiții și va face decizii de management asupra acesteia: poate selecta câștigătorii, poate anula turneul. Dacă în schimb, un user dorește să participe la un turneu
+                găzduit de alt user, poate alege „JOIN” pe turneul respectiv și participa la competiție.
+            </p>
+        </section>
+    </section>
+
+    <section>
+        <h2>3. Ideile de design si responsiveness</h2>
+        <p>Am ales să concepem o interfață facilă, intuitivă pentru orice tip de utilizator. Design-ul e minimalist, cu butoane și opțiuni precise, și este adaptat și pentru rezoluții mai mici (în cazul smartphone-urilor și al tabletelor).
+
+        </p>
+    </section>
+    <section role="doc-conclusion">
+        <h2>Concluzii</h2>
+        <p>Proiectul ofera modalități de management (sortare, viziualizare) a unor jocuri dintr-o bază de date, și interacțiunea între useri la nivelul unor competiții, folosind propriul nostru REST API, modelat printr-o interfață facilă.
+        </p>
+    </section>
+    <div role="contentinfo">
+        <dl>
+            <dt id="authors">Autorii:</dt>
+            <dd typeof="schema:Person">
+                <h4>Dominte Florin-Iulian: login (view + style), register (view + style + controller), admin (create/delete game), statistic exports (PDF CSV), homepage (view + style + controller), tournament (create), gameModel, userModel, tournamentModel, responsiveness formulare (login, register, createGame, deleteGame)</h4>
+                <h4>Donciu Mihai-Codrin: game collection (view + style + controller), gameModel, popularea bazei de date (mockaroo), scholarlyHTML, style navmenu</h4>
+                <h4>Pristavu Dragos-Dumitru: nucleul MVC general (routes main pages), middlewares (sanitize data + authorize), login (controller), RSS feed, tournament page (view + style + mare parte din controller), nav-menu pentru toate paginile, responsiveness (homepage + tournaments page), tournamentsModel, userModel, gameModel</h4>
+            </dd>
+        </dl>
+    </div>
+</body>
+
+</html>

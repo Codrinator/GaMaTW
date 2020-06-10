@@ -2,25 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gamma</title>
-
+    <title>Register :: GaMa.TW</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Assets/Styles/register.css">
 </head>
 <body>
 
 <nav>
     <ul class="navMenu">
-        <li class="title"> The Gamma Project</li>
-        <li><a class="navbarHoverBlock" href="/">Home</a></li>
-        <li><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
-        <li><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
-
+        <li class="title">The GaMa Project</li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/">Home</a></li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
     </ul>
 </nav>
 <main>
     <div class="formWrapper">
         <div class="formLogin">
-            <form class="registerForm" method="post" action="/api/auth/register">
+            <form class="registerForm">
                 <p class="pInputBox1">
                 <label class="formText" for="usernameRegister">Choose an
                     username
@@ -49,6 +48,7 @@
                 <input type="submit" class="submitButton"
                        value="Register"> <br>
 
+                <p class="errorText" id="errorHTML">  </p>
             </form>
             <div class="login"><a href="/login" class="already"><b>You already have
                 an account?</b></a></div>

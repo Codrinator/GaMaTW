@@ -2,8 +2,7 @@ function processRequest() {
     const url = '/api/auth/login';
     const request = new XMLHttpRequest();
     const formData = new FormData(form);
-    const loginForm = (document.getElementsByClassName("loginForm"))[0];
-    const error = document.createElement('p');
+    const error = document.getElementById('errorHTML');
     request.open('POST', url);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.responseType = 'json';
@@ -21,17 +20,13 @@ function processRequest() {
             }
             window.location.href = "/"
         } else {
-            //alert(request.response.status);
-            error.textContent = request.response.status;
-            error.id = "errorStatus";
-            error.classList.add("errorText");
-            loginForm.lastChild.remove();
-            loginForm.append(error);
+            error.innerHTML = request.response.status;
+
         }
     };
     request.send(JSON.stringify({
-        username: formData.get("username"),
-        password: formData.get("password")
+        usernameRegister: formData.get("username"),
+        passwordRegister: formData.get("password")
     }));
 }
 

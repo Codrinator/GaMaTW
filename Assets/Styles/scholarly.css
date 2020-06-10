@@ -1,0 +1,71 @@
+body{
+    background-color: #fff3f3;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+dl{
+    display:block;
+}
+
+dt{
+    font-family: serif;
+    text-align: left;
+    color: rgba(36, 37, 102, 0.815);
+    font-weight: bold;
+    text-align: left;
+    margin-left: 2.5vw;
+    margin-bottom: -1.5vh;
+}
+
+#authors{
+    font-style: italic;
+    text-decoration: underline;
+    font-size: 3vh;
+}
+
+dd{
+    display: block;
+}
+
+h1{
+    font-family: serif;
+    text-align: left;
+    color: rgba(36, 37, 102, 0.815);
+    text-align: center;
+  }
+
+  h2{
+    font-family: serif;
+    text-align: left;
+    color: rgba(36, 37, 102, 0.815);
+    margin-left: 2vw;
+  }
+
+  h3{
+    font-family: serif;
+    text-align: left;
+    color: rgba(36, 37, 102, 0.815);
+    margin-left: 2vw;
+  }
+
+  h4{
+    font-family: serif;
+    text-align: left;
+    color: rgba(36, 37, 102, 0.815);
+    margin-bottom: -10px;
+  }
+
+img{
+    width: 45vw;
+}
+
+p{
+    font-family: serif;
+    text-align: justify;
+    color: rgba(36, 37, 102, 0.815);
+    font-size: 2.5vh;
+    margin-left: 2vw;
+}

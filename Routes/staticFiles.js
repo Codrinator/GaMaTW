@@ -1,8 +1,12 @@
 const ejs = require('ejs');
+const User = require('../Models/index').User;
+const Game = require('../Models/index').Game;
 
-
-const homePage = async function (req,res) {
-    ejs.renderFile('./Views/homePage.ejs', function(err, str){
+const homePage = async function (req, res) {
+    const topUsers = await User.getTopUsers();
+    const topGames = await Game.getTopGames();
+    const newGames = await Game.getNewGames();
+    ejs.renderFile('./Views/homePage.ejs', {topUsers: topUsers, topGames: topGames, newGames:newGames}, function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -13,8 +17,8 @@ const homePage = async function (req,res) {
     });
 };
 
-const homePageStyle = async function (req,res) {
-    ejs.renderFile('./Assets/Styles/home.css', function(err, str){
+const homePageStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/home.css', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -26,8 +30,9 @@ const homePageStyle = async function (req,res) {
 };
 
 
-const gameCollection = async function (req,res) {
-    ejs.renderFile('./Views/gameCollection.ejs', function(err, str){
+const gameCollection = async function (req, res) {
+    const loadGames = await Game.loadGames();
+    ejs.renderFile('./Views/gameCollection.ejs', {loadGames: loadGames}, function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -38,8 +43,8 @@ const gameCollection = async function (req,res) {
     });
 };
 
-const gameCollectionStyle = async function (req,res) {
-    ejs.renderFile('./Assets/Styles/gameCollection.css', function(err, str){
+const gameCollectionStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/gameCollection.css', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -50,8 +55,8 @@ const gameCollectionStyle = async function (req,res) {
     });
 };
 
-const tournaments = async function (req,res) {
-    ejs.renderFile('./Views/tournaments.ejs', function(err, str){
+const tournaments = async function (req, res) {
+    ejs.renderFile('./Views/tournaments.ejs', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -62,8 +67,8 @@ const tournaments = async function (req,res) {
     });
 };
 
-const tournamentsStyle = async function (req,res) {
-    ejs.renderFile('./Assets/Styles/tournaments.css', function(err, str){
+const tournamentsStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/tournaments.css', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -74,8 +79,8 @@ const tournamentsStyle = async function (req,res) {
     });
 };
 
-const login = async function (req,res) {
-    ejs.renderFile('./Views/login.ejs', function(err, str){
+const login = async function (req, res) {
+    ejs.renderFile('./Views/login.ejs', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -86,8 +91,8 @@ const login = async function (req,res) {
     });
 };
 
-const loginStyle = async function (req,res) {
-    ejs.renderFile('./Assets/Styles/login.css', function(err, str){
+const loginStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/login.css', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -98,8 +103,8 @@ const loginStyle = async function (req,res) {
     });
 };
 
-const register = async function (req,res) {
-    ejs.renderFile('./Views/register.ejs', function(err, str){
+const register = async function (req, res) {
+    ejs.renderFile('./Views/register.ejs', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -110,8 +115,56 @@ const register = async function (req,res) {
     });
 };
 
-const registerStyle = async function (req,res) {
-    ejs.renderFile('./Assets/Styles/register.css', function(err, str){
+const registerStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/register.css', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/css"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
+const admin = async function (req, res) {
+    ejs.renderFile('./Views/admin.ejs', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/html"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
+const adminStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/admin.css', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/css"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
+const deleteGame = async function (req, res) {
+    ejs.renderFile('./Views/deleteGame.ejs', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/html"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
+
+const deleteGameStyle = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/deleteGame.css', function (err, str) {
         if (err) {
             throw err;
         } else {
@@ -123,7 +176,31 @@ const registerStyle = async function (req,res) {
 };
 
 
+const scholarlyHTML = async function (req, res) {
+    ejs.renderFile('./Views/scholarly.ejs', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/html"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
 
+const scholarlyCSS = async function (req, res) {
+    ejs.renderFile('./Assets/Styles/scholarl.css', function (err, str) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHeader(200, {"Content-Type": "text/css"});
+            res.write(str);
+            res.end();
+        }
+    });
+};
 
-module.exports = {homePage, homePageStyle, gameCollection, gameCollectionStyle, tournaments,
-                  tournamentsStyle, login, loginStyle, register, registerStyle};
+module.exports = {
+    homePage, homePageStyle,scholarlyHTML, scholarlyCSS, gameCollection, gameCollectionStyle, tournaments,
+    tournamentsStyle, login, loginStyle, register, registerStyle, admin, adminStyle,deleteGameStyle,deleteGame
+};

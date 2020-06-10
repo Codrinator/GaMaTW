@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register :: GaMa.TW</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Assets/Styles/deleteGame.css">
+</head>
+<body>
+
+<nav>
+    <ul class="navMenu">
+        <li class="title">The GaMa Project</li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/">Home</a></li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/gameCollection">Game Collection</a></li>
+        <li class="navbarButton"><a class="navbarHoverBlock" href="/tournaments">Tournaments</a></li>
+    </ul>
+</nav>
+<main>
+    <div class="formWrapper">
+        <div class="formAdmin">
+            <form class="registerForm">
+                <p class="formTextTitle"> Delete a Game </p>
+
+                <p class="pInputBox1">
+                    <label class="formText" for="nameRegister">Game's name
+                    </label> </p><br>
+                <p class="pInputBox2">
+                    <input class="inputBox"
+                           type="text"
+                           id="nameRegister"
+                           name="nameRegister">
+                </p> <br>
+
+                <input type="submit" class="submitButton"
+                       value="Delete"> <br>
+                <p class="errorText" id="errorHTML">  </p>
+            </form>
+            <div class="admin"><a class="already"> <b>Admin-only</b></a></div>
+        </div>
+    </div>
+    <script src="./Assets/Scripts/loadPageOptions.js"></script>
+    <script src="./Assets/Scripts/deleteGame.js"></script>
+</main>
+</body>
+</html>

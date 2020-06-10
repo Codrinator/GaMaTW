@@ -1,12 +1,11 @@
 const Router = require('router');
-const sanitize = require('../Middlewares/authMiddleware');
+const sanitize = require('../Middlewares/sanitizeMiddleware');
 const auth = Router();
 
 const controllers = require('../Controllers/index');
 
 auth.use(sanitize.sanitizeMiddleware);
 auth.post('/login' , controllers.login);
-auth.post('/register' ,controllers.register);
-
+auth.post('/register', controllers.register);
 
 module.exports = {auth};
