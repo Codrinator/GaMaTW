@@ -46,7 +46,7 @@ router.get('/register', statics.register);
 router.get('/Assets/Styles/register.css', statics.registerStyle);
 
 router.get('/scholarly', statics.scholarlyHTML);
-router.get('/Assets/Styles/scholarly.css', statics.scholarlyCSS)
+router.get('/Assets/Styles/scholarly.css', statics.scholarlyCSS);
 
 router.get('/Assets/Scripts/register.js', scripts.registerScript);
 router.get('/Assets/Scripts/login.js', scripts.loginScript);
