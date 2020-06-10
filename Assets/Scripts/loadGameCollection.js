@@ -1,6 +1,12 @@
 let pageGlobal = 1;
 
 function loadCollection(noOfItems, categorie, genre, switcher, page){
+
+    document.getElementById("buttonsDiv").classList.remove("hide-stuff");
+    document.getElementById("headSorter").classList.remove("hide-stuff");
+    document.getElementById("gamesMainContainer").classList.remove("hide-stuff");
+    document.getElementById("categoryChosen").classList.remove("hide-stuff");
+
     const url = '/api/gameCollection/loadCollection';
     const request = new XMLHttpRequest();
 
@@ -9,104 +15,106 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
     request.responseType = 'json';
     
     request.onload = function(){
-        if(document.getElementById("displayedList")){
-            document.getElementById("displayedList").remove();
+
+        if(document.getElementById("gameViewerID")){
+            document.getElementById("gameViewerID").remove();
         }
 
-        if(document.getElementById("titlesList")){
-            document.getElementById("titlesList").remove();
+        if(document.getElementById("gameTable")){
+            document.getElementById("gameTable").remove();
         }
 
-        if(document.getElementById("pageNav")){
-            document.getElementById("pageNav").remove();
+        if(document.getElementById("pageNavContainer")){
+            document.getElementById("pageNavContainer").remove();
         }
+
+
 
         sessionStorage.setItem("numberOfGames", request.response.totalNoOfGames);
         sessionStorage.setItem("lastGenrePressed", genre);
         sessionStorage.setItem("lastCategoriePressed", categorie);
-        
+        const categoryChosen = document.getElementById("categoryChosen");
+        categoryChosen.textContent = categorie;
         const container = document.getElementById("gamesMainContainer");
+        const gameTable = document.createElement("table");
+        gameTable.id = "gameTable"
+        gameTable.classList.add("game-table");
+        const pageNavContainer = document.createElement("div");
+        pageNavContainer.classList.add("page-nav-container");
+        pageNavContainer.id = "pageNavContainer";
         
-        const titlesList = document.createElement("div");
+        
+        const titlesList = document.createElement("tr");
         titlesList.id = "titlesList";
         titlesList.classList.add("titles-grid");
         
-        const colNames = document.createElement("ul");
-        colNames.classList.add("column-names");
-        
-        const col1 = document.createElement("li");
-        col1.classList.add("column-names-li");
+        const col1 = document.createElement("th");
+        col1.classList.add("column-name");
         col1.textContent = "Name";
         
-        const col2 = document.createElement("li");
-        col2.classList.add("column-names-li");
+        const col2 = document.createElement("th");
+        col2.classList.add("column-name");
         col2.textContent = "Company";
         
-        const col3 = document.createElement("li");
-        col3.classList.add("column-names-li");
+        const col3 = document.createElement("th");
+        col3.classList.add("column-name");
         col3.textContent = "Popularity";
 
-        const col4 = document.createElement("li");
-        col4.classList.add("column-names-li");
+        const col4 = document.createElement("th");
+        col4.classList.add("column-name");
         col4.textContent = "Platform";
 
-        const col5 = document.createElement("li");
-        col5.classList.add("column-names-li");
+        const col5 = document.createElement("th");
+        col5.classList.add("column-name");
         col5.textContent = "Genre"
 
-        const col6 = document.createElement("li");
-        col6.classList.add("column-names-li");
+        const col6 = document.createElement("th");
+        col6.classList.add("column-name");
         col6.textContent = "Price"
 
-        colNames.appendChild(col1);
-        colNames.appendChild(col2);
-        colNames.appendChild(col3);
-        colNames.appendChild(col4);
-        colNames.appendChild(col5);
-        colNames.appendChild(col6);
-        titlesList.appendChild(colNames);
-
+        titlesList.appendChild(col1);
+        titlesList.appendChild(col2);
+        titlesList.appendChild(col3);
+        titlesList.appendChild(col4);
+        titlesList.appendChild(col5);
+        titlesList.appendChild(col6);
+        gameTable.appendChild(titlesList);
         const games = request.response.games;
-        
-        const displayedList = document.createElement("ul");
-        displayedList.id="displayedList";
-        displayedList.classList.add("displayed-games");
     
-       for(let i = 0; i < games.length; i++){
-            const item = document.createElement("li");
+        for(let i = 0; i < games.length; i++){
+            const item = document.createElement("tr");
             item.classList.add("grid-item");
             
-            const gameName = document.createElement("span");
+            const gameName = document.createElement("td");
+            const gameNameAnchor = document.createElement("button");
+            gameNameAnchor.addEventListener("click",function(){
+                viewGame(games[i]);
+            });
+            gameNameAnchor.id = "gameNameAnchor";
             gameName.classList.add("grid-item-title");
-            gameName.textContent = games[i].name;
+            gameNameAnchor.classList.add("game-name-anchor");
+            gameNameAnchor.textContent = games[i].name;
+            gameName.appendChild(gameNameAnchor);
             
-            const gameCompany = document.createElement("span");
+            const gameCompany = document.createElement("td");
             gameCompany.classList.add("grid-item-title");
             gameCompany.textContent = games[i].company;
 
-            const gamePopularity = document.createElement("span");
+            const gamePopularity = document.createElement("td");
             gamePopularity.classList.add("grid-item-title");
             gamePopularity.textContent = games[i].popularity;
 
-            const gamePlatform = document.createElement("span");
+            const gamePlatform = document.createElement("td");
             gamePlatform.classList.add("grid-item-title");
             gamePlatform.textContent = games[i].platform;
 
-            const gameGenre = document.createElement("span");
+            const gameGenre = document.createElement("td");
             gameGenre.classList.add("grid-item-title");
             gameGenre.textContent = games[i].genre;
 
-            const gamePrice = document.createElement("span");
+            const gamePrice = document.createElement("td");
             gamePrice.classList.add("grid-item-title");
             gamePrice.textContent = games[i].price;
-            
-            const button = document.createElement("button");
-            button.classList.add("view-button");
-            button.textContent = "View";
-            button.addEventListener("click",function(event){
-                event.preventDefault();
-                //revenim pentru view
-            });
 
             item.appendChild(gameName);
             item.appendChild(gameCompany);
@@ -115,10 +123,12 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
             item.appendChild(gameGenre);
             item.appendChild(gamePrice);
 
-            displayedList.appendChild(item);
+            gameTable.appendChild(item);
         }
-        container.appendChild(titlesList);
-        container.appendChild(displayedList);
+    
+        container.appendChild(gameTable);
+
+
         //alegerea paginii, in partea de jos
         pageGlobal = page;
 
@@ -134,6 +144,7 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
         if(page > 1){
             const buttonPrev = document.createElement("button");
             buttonPrev.textContent = "Prev";
+            buttonPrev.classList.add("page-nav-button");
             buttonPrev.addEventListener("click", function(){
                loadCollection(noOfItems, categorie, genre, switcher, page-1);
             });
@@ -142,17 +153,20 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
 
         const currentPageLabel = document.createElement("label");
         currentPageLabel.textContent = page;
+        currentPageLabel.classList.add("current-page-nav");
         pageNav.appendChild(currentPageLabel);
 
         if(page * noOfItems < sessionStorage.getItem("numberOfGames")){
             const buttonNext = document.createElement("button");
             buttonNext.textContent = "Next";
+            buttonNext.classList.add("page-nav-button");
             buttonNext.addEventListener("click", function(){
                 loadCollection(noOfItems,categorie,genre,switcher,page+1);
             });
             pageNav.appendChild(buttonNext);
         } 
-        container.appendChild(pageNav);
+        pageNavContainer.appendChild(pageNav);
+        container.appendChild(pageNavContainer);
     };
     
     request.send(JSON.stringify({
@@ -262,7 +276,7 @@ function downloadCSV() {
 const popularityButton = document.getElementById("popularityButton");
 popularityButton.addEventListener("click", function (event){
     event.preventDefault();
-    loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 1, 1); //default switcher 0 pentru popularity
+    loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 0, 1); //default switcher 0 pentru popularity
 })
 
 const alphabetButton = document.getElementById("alphabeticallyButton");
@@ -277,17 +291,137 @@ dateButton.addEventListener("click", function(event){
     loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 3, 1); //switcher 3 pentru date
 });
 
-/* const ageButton = document.getElementById("ageButton");
-ageButton.addEventListener("click", function(event){
-    event.preventDefault();
-    loadCollection(10, 'digital', 'action', 4, 1); //switcher 4 pentru age
-}); */
-
 const priceButton = document.getElementById("priceButton");
 priceButton.addEventListener("click", function(event){
     event.preventDefault();
     loadCollection(10, sessionStorage.getItem("lastCategoriePressed"), sessionStorage.getItem("lastGenrePressed"), 5, 1); //switcher 5 pentru price
 });
 
+function viewGame(games){
+    document.getElementById("categoryChosen").classList.add("hide-stuff");
+    document.getElementById("gamesMainContainer").classList.add("hide-stuff");
+    document.getElementById("buttonsDiv").classList.add("hide-stuff");
+    document.getElementById("headSorter").classList.add("hide-stuff");
+    const myMain = document.getElementsByTagName("main")[0];
+    const container = document.createElement("div");
+    container.id = "gameViewerID"
+    const gameContainer = document.createElement("ul");
+    gameContainer.classList.add("game-view-container");
 
-loadCollection(10, 'digital', 'action', 0, 1);
+
+    const nameLi = document.createElement("li");
+    const gameNameTitle = document.createElement("div");
+    gameNameTitle.textContent = "Name: "
+    gameNameTitle.classList.add("game-info-title");
+    const gameName = document.createElement("p");
+    gameName.classList.add("game-info");
+    gameName.textContent = games.name;
+    nameLi.appendChild(gameNameTitle);
+    nameLi.appendChild(gameName);
+
+    const dateLi = document.createElement("li");
+    const gameDateTitle = document.createElement("div");
+    gameDateTitle.textContent = "Release date: "
+    gameDateTitle.classList.add("game-info-title");
+    const gameDate = document.createElement("p");
+    gameDate.classList.add("game-info");
+    gameDate.textContent = games.release_date.split("T")[0];
+    dateLi.appendChild(gameDateTitle);
+    dateLi.appendChild(gameDate);
+
+    const companyLi = document.createElement("li");
+    const gameCompanyTitle = document.createElement("div");
+    gameCompanyTitle.textContent = "Company: "
+    gameCompanyTitle.classList.add("game-info-title");
+    const gameCompany = document.createElement("p");
+    gameCompany.classList.add("game-info");
+    gameCompany.textContent = games.company;
+    companyLi.appendChild(gameCompanyTitle);
+    companyLi.appendChild(gameCompany);
+
+    const popularityLi = document.createElement("li");
+    const gamePopularityTitle = document.createElement("div");
+    gamePopularityTitle.textContent = "Poplarity: "
+    gamePopularityTitle.classList.add("game-info-title");
+    const gamePopularity = document.createElement("p");
+    gamePopularity.classList.add("game-info");
+    gamePopularity.textContent = games.popularity;
+    popularityLi.appendChild(gamePopularityTitle);
+    popularityLi.appendChild(gamePopularity);
+
+    const genreLi = document.createElement("li");
+    const gameGenreTitle = document.createElement("div");
+    gameGenreTitle.textContent = "Genre: "
+    gameGenreTitle.classList.add("game-info-title");
+    const gameGenre = document.createElement("p");
+    gameGenre.classList.add("game-info");
+    gameGenre.textContent = games.genre;
+    genreLi.appendChild(gameGenreTitle);
+    genreLi.appendChild(gameGenre);
+
+    const categoryLi = document.createElement("li");
+    const gameCategoryTitle = document.createElement("div");
+    gameCategoryTitle.textContent = "Main category: "
+    gameCategoryTitle.classList.add("game-info-title");
+    const gameCategory = document.createElement("p");
+    gameCategory.classList.add("game-info");
+    gameCategory.textContent = games.category;
+    categoryLi.appendChild(gameCategoryTitle);
+    categoryLi.appendChild(gameCategory);
+
+    const ageRestrictionLi = document.createElement("li");
+    const gameAgeRestrictionTitle = document.createElement("div");
+    gameAgeRestrictionTitle.textContent = "Age restriction: "
+    gameAgeRestrictionTitle.classList.add("game-info-title");
+    const gameAgeRestriction = document.createElement("p");
+    gameAgeRestriction.classList.add("game-info");
+    gameAgeRestriction.textContent = games.age_restriction;
+    ageRestrictionLi.appendChild(gameAgeRestrictionTitle);
+    ageRestrictionLi.appendChild(gameAgeRestriction);
+
+    const platformsLi = document.createElement("li");
+    const gamePlatformsTitle = document.createElement("div");
+    gamePlatformsTitle.textContent = "Available on: "
+    gamePlatformsTitle.classList.add("game-info-title");
+    const gamePlatforms = document.createElement("p");
+    gamePlatforms.classList.add("game-info");
+    gamePlatforms.textContent = games.platform;
+    platformsLi.appendChild(gamePlatformsTitle);
+    platformsLi.appendChild(gamePlatforms);
+
+    const priceLi = document.createElement("li");
+    const gamePriceTitle = document.createElement("div");
+    gamePriceTitle.textContent = "Price (in $): "
+    gamePriceTitle.classList.add("game-info-title");
+    const gamePrice = document.createElement("p");
+    gamePrice.classList.add("game-info");
+    gamePrice.textContent = games.price;
+    priceLi.appendChild(gamePriceTitle);
+    priceLi.appendChild(gamePrice);
+
+    const descriptionLi = document.createElement("li");
+    const gameDescriptionTitle = document.createElement("div");
+    gameDescriptionTitle.textContent = "Description: "
+    gameDescriptionTitle.classList.add("game-info-title");
+    const gameDescription = document.createElement("p");
+    gameDescription.classList.add("game-info");
+    gameDescription.textContent = games.game_description;
+    descriptionLi.appendChild(gameDescriptionTitle);
+    descriptionLi.appendChild(gameDescription);
+
+    gameContainer.appendChild(nameLi);
+    gameContainer.appendChild(dateLi);
+    gameContainer.appendChild(companyLi);
+    gameContainer.appendChild(popularityLi);
+    gameContainer.appendChild(genreLi);
+    gameContainer.appendChild(categoryLi);
+    gameContainer.appendChild(ageRestrictionLi);
+    gameContainer.appendChild(platformsLi);
+    gameContainer.appendChild(priceLi);
+    gameContainer.appendChild(descriptionLi);
+
+    container.appendChild(gameContainer);
+    myMain.appendChild(container);
+}
+
+loadCollection(10, '', '', 0, 1);
