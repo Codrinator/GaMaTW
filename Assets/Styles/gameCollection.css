@@ -172,7 +172,7 @@ main {
 .navbarNoHover {
   color: rgb(159, 159, 194);
   display: block;
-  padding: 20px 25px 20px 25px;
+  padding: 1.5vw 1.8vw 1.5vw 1.8vw;
   font-style: italic;
   text-decoration: none;
 }
