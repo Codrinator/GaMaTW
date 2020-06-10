@@ -58,13 +58,13 @@ const getGamesCollection = async function(noOfItems, category){
 };
 
 const getNumberOfGamesWithParameters = async function(noOfItems, categorie, genre, switcher, page){
-    if(switcher === 1){ // cand alegem din nav-bar
+    if(switcher === 1){
         const query = Game.count();
         query.where({category: categorie, genre: genre}).skip((page-1)*noOfItems);
         const temp = await query.exec();
         return temp;
         }
-    if(switcher === 0 ){ //default cand incarcam pagina --> popularity
+    if(switcher === 0 ){
         const query = Game.count();
         if(categorie === '' && genre !== ''){
             query.sort({popularity: -1}).where({genre: genre}).skip((page-1)*noOfItems);
@@ -148,13 +148,13 @@ const getNumberOfGamesWithParameters = async function(noOfItems, categorie, genr
 
 
 const loadGames = async function(noOfItems, categorie, genre, switcher, page){
-    if(switcher === 1){ // cand alegem din nav-bar
+    if(switcher === 1){ 
         const query = Game.find();
         query.where({category: categorie, genre: genre}).skip((page-1)*noOfItems).limit(noOfItems);
         const temp = await query.exec();
         return temp;
         }
-    if(switcher === 0 ){ //default cand incarcam pagina --> popularity
+    if(switcher === 0 ){
         const query = Game.find();
         if(categorie === '' && genre !== ''){
             query.sort({popularity: -1}).where({genre: genre}).skip((page-1)*noOfItems).limit(noOfItems);

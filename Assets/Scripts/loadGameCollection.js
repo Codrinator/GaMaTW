@@ -37,7 +37,7 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
         categoryChosen.textContent = categorie;
         const container = document.getElementById("gamesMainContainer");
         const gameTable = document.createElement("table");
-        gameTable.id = "gameTable"
+        gameTable.id = "gameTable";
         gameTable.classList.add("game-table");
         const pageNavContainer = document.createElement("div");
         pageNavContainer.classList.add("page-nav-container");
@@ -66,11 +66,11 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
 
         const col5 = document.createElement("th");
         col5.classList.add("column-name");
-        col5.textContent = "Genre"
+        col5.textContent = "Genre";
 
         const col6 = document.createElement("th");
         col6.classList.add("column-name");
-        col6.textContent = "Price"
+        col6.textContent = "Price";
 
         titlesList.appendChild(col1);
         titlesList.appendChild(col2);
@@ -128,8 +128,6 @@ function loadCollection(noOfItems, categorie, genre, switcher, page){
     
         container.appendChild(gameTable);
 
-
-        //alegerea paginii, in partea de jos
         pageGlobal = page;
 
         const pageNav = document.createElement("div");
@@ -304,14 +302,14 @@ function viewGame(games){
     document.getElementById("headSorter").classList.add("hide-stuff");
     const myMain = document.getElementsByTagName("main")[0];
     const container = document.createElement("div");
-    container.id = "gameViewerID"
+    container.id = "gameViewerID";
     const gameContainer = document.createElement("ul");
     gameContainer.classList.add("game-view-container");
 
 
     const nameLi = document.createElement("li");
     const gameNameTitle = document.createElement("div");
-    gameNameTitle.textContent = "Name: "
+    gameNameTitle.textContent = "Name: ";
     gameNameTitle.classList.add("game-info-title");
     const gameName = document.createElement("p");
     gameName.classList.add("game-info");
@@ -321,7 +319,7 @@ function viewGame(games){
 
     const dateLi = document.createElement("li");
     const gameDateTitle = document.createElement("div");
-    gameDateTitle.textContent = "Release date: "
+    gameDateTitle.textContent = "Release date: ";
     gameDateTitle.classList.add("game-info-title");
     const gameDate = document.createElement("p");
     gameDate.classList.add("game-info");
@@ -331,7 +329,7 @@ function viewGame(games){
 
     const companyLi = document.createElement("li");
     const gameCompanyTitle = document.createElement("div");
-    gameCompanyTitle.textContent = "Company: "
+    gameCompanyTitle.textContent = "Company: ";
     gameCompanyTitle.classList.add("game-info-title");
     const gameCompany = document.createElement("p");
     gameCompany.classList.add("game-info");
@@ -341,7 +339,7 @@ function viewGame(games){
 
     const popularityLi = document.createElement("li");
     const gamePopularityTitle = document.createElement("div");
-    gamePopularityTitle.textContent = "Poplarity: "
+    gamePopularityTitle.textContent = "Poplarity: ";
     gamePopularityTitle.classList.add("game-info-title");
     const gamePopularity = document.createElement("p");
     gamePopularity.classList.add("game-info");
@@ -351,7 +349,7 @@ function viewGame(games){
 
     const genreLi = document.createElement("li");
     const gameGenreTitle = document.createElement("div");
-    gameGenreTitle.textContent = "Genre: "
+    gameGenreTitle.textContent = "Genre: ";
     gameGenreTitle.classList.add("game-info-title");
     const gameGenre = document.createElement("p");
     gameGenre.classList.add("game-info");
@@ -361,7 +359,7 @@ function viewGame(games){
 
     const categoryLi = document.createElement("li");
     const gameCategoryTitle = document.createElement("div");
-    gameCategoryTitle.textContent = "Main category: "
+    gameCategoryTitle.textContent = "Main category: ";
     gameCategoryTitle.classList.add("game-info-title");
     const gameCategory = document.createElement("p");
     gameCategory.classList.add("game-info");
@@ -371,7 +369,7 @@ function viewGame(games){
 
     const ageRestrictionLi = document.createElement("li");
     const gameAgeRestrictionTitle = document.createElement("div");
-    gameAgeRestrictionTitle.textContent = "Age restriction: "
+    gameAgeRestrictionTitle.textContent = "Age restriction: ";
     gameAgeRestrictionTitle.classList.add("game-info-title");
     const gameAgeRestriction = document.createElement("p");
     gameAgeRestriction.classList.add("game-info");
@@ -381,7 +379,7 @@ function viewGame(games){
 
     const platformsLi = document.createElement("li");
     const gamePlatformsTitle = document.createElement("div");
-    gamePlatformsTitle.textContent = "Available on: "
+    gamePlatformsTitle.textContent = "Available on: ";
     gamePlatformsTitle.classList.add("game-info-title");
     const gamePlatforms = document.createElement("p");
     gamePlatforms.classList.add("game-info");
@@ -391,7 +389,7 @@ function viewGame(games){
 
     const priceLi = document.createElement("li");
     const gamePriceTitle = document.createElement("div");
-    gamePriceTitle.textContent = "Price (in $): "
+    gamePriceTitle.textContent = "Price (in $): ";
     gamePriceTitle.classList.add("game-info-title");
     const gamePrice = document.createElement("p");
     gamePrice.classList.add("game-info");
@@ -401,7 +399,7 @@ function viewGame(games){
 
     const descriptionLi = document.createElement("li");
     const gameDescriptionTitle = document.createElement("div");
-    gameDescriptionTitle.textContent = "Description: "
+    gameDescriptionTitle.textContent = "Description: ";
     gameDescriptionTitle.classList.add("game-info-title");
     const gameDescription = document.createElement("p");
     gameDescription.classList.add("game-info");
